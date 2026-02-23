@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISIS – Activity History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .score-pill {
+            display: inline-block;
+            min-width: 42px;
+            text-align: center;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .score-high {
+            background: rgba(34, 197, 94, 0.15);
+            color: #16a34a;
+        }
+
+        .score-mid {
+            background: rgba(234, 179, 8, 0.15);
+            color: #b45309;
+        }
+
+        .score-low {
+            background: rgba(239, 68, 68, 0.15);
+            color: #dc2626;
+        }
+
+        .radar-mini {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .radar-mini span {
+            font-size: 0.7rem;
+            padding: 1px 7px;
+            border-radius: 10px;
+            background: rgba(99, 102, 241, 0.12);
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        .history-table th {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .history-table td {
+            vertical-align: middle;
+            font-size: 0.88rem;
+        }
+
+        .history-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .history-table tbody tr:hover {
+            background: rgba(99, 102, 241, 0.04);
+        }
+
+        #searchInput {
+            border-radius: 30px;
+            padding-left: 1.2rem;
+        }
+
+        .empty-state {
+            padding: 80px 0;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .timestamp {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg glass-nav fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/"><i class="bi bi-stars text-primary"></i> ISIS <span
+                    class="fw-light text-muted">Portfolio</span></a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-semibold" href="/history">History</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-container pt-5 mt-5">
+        <!-- Header row -->
+        <div class="row mb-4 align-items-center">
+            <div class="col">
+                <h2 class="fw-bolder gradient-text mb-1">Activity History</h2>
+                <p class="text-muted mb-0">All <strong id="totalCount">{{ activities|length }}</strong> recorded
+                    activities from your portfolio.</p>
+            </div>
+            <div class="col-auto d-flex gap-2">
+                <input type="text" id="searchInput" class="form-control" placeholder="🔍  Search activities…">
+                <a href="/" class="btn btn-primary rounded-pill px-4">
+                    <i class="bi bi-plus-lg me-1"></i> New
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats summary bar -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="card glass-card border-0 text-center py-3 px-2">
+                    <div class="fs-3 fw-bolder gradient-text">{{ activities|length }}</div>
+                    <div class="small text-muted">Total Activities</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card glass-card border-0 text-center py-3 px-2">
+                    <div class="fs-3 fw-bolder" style="color:#6366f1">{{ avg_leadership }}</div>
+                    <div class="small text-muted">Avg Leadership</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card glass-card border-0 text-center py-3 px-2">
+                    <div class="fs-3 fw-bolder" style="color:#ec4899">{{ avg_employability }}</div>
+                    <div class="small text-muted">Avg Employability</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card glass-card border-0 text-center py-3 px-2">
+                    <div class="fs-3 fw-bolder" style="color:#10b981">{{ top_skill }}</div>
+                    <div class="small text-muted">Top Skill Area</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="card glass-card border-0 shadow-sm mb-5">
+            <div class="card-body p-0">
+                {% if activities %}
+                <div class="table-responsive">
+                    <table class="table history-table mb-0" id="historyTable">
+                        <thead class="border-bottom">
+                            <tr>
+                                <th class="ps-4 py-3">#</th>
+                                <th class="py-3">Activity</th>
+                                <th class="py-3">Professional Title</th>
+                                <th class="py-3">Career Match</th>
+                                <th class="py-3">Radar Skills</th>
+                                <th class="py-3 text-center">Leadership</th>
+                                <th class="py-3 text-center">Employability</th>
+                                <th class="py-3 pe-4">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in activities %}
+                            <tr class="history-row">
+                                <td class="ps-4 text-muted">{{ loop.index }}</td>
+                                <td style="max-width:200px">
+                                    <div class="text-truncate" title="{{ a.input_activity }}">{{ a.input_activity }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="fw-semibold">{{ a.mapped_skill }}</span>
+                                    <div class="small text-muted">{{ a.onet_category }}</div>
+                                </td>
+                                <td>
+                                    {% if a.career_equivalency %}
+                                    <span
+                                        class="badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle">{{
+                                        a.career_equivalency }}</span>
+                                    {% else %}
+                                    <span class="text-muted">—</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="radar-mini">
+                                        {% if a.radar_strategic %}<span>Str {{ a.radar_strategic|int }}</span>{% endif
+                                        %}
+                                        {% if a.radar_financial %}<span>Fin {{ a.radar_financial|int }}</span>{% endif
+                                        %}
+                                        {% if a.radar_crisis %}<span>Crs {{ a.radar_crisis|int }}</span>{% endif %}
+                                        {% if a.radar_team %}<span>Tm {{ a.radar_team|int }}</span>{% endif %}
+                                        {% if a.radar_emotional %}<span>Emo {{ a.radar_emotional|int }}</span>{% endif
+                                        %}
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    {% set li = a.leadership_index|int %}
+                                    <span
+                                        class="score-pill {% if li >= 75 %}score-high{% elif li >= 50 %}score-mid{% else %}score-low{% endif %}">{{
+                                        li }}</span>
+                                </td>
+                                <td class="text-center">
+                                    {% set es = a.employability_score|int %}
+                                    <span
+                                        class="score-pill {% if es >= 75 %}score-high{% elif es >= 50 %}score-mid{% else %}score-low{% endif %}">{{
+                                        es }}</span>
+                                </td>
+                                <td class="pe-4 timestamp">{{ a.created_at[:10] if a.created_at else '—' }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <i class="bi bi-inbox fs-1 d-block mb-3 opacity-50"></i>
+                    <p class="mb-2 fw-semibold">No activities yet.</p>
+                    <a href="/" class="btn btn-primary rounded-pill px-4">Record your first activity</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Live search filter
+        document.getElementById('searchInput').addEventListener('input', function () {
+            const q = this.value.toLowerCase();
+            document.querySelectorAll('.history-row').forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

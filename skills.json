@@ -1,0 +1,92 @@
+{
+  "skill_mappings": [
+    {
+      "keywords": ["budget", "finance", "money", "spending", "savings", "cost", "expense", "income"],
+      "professional_skill": "Financial Management & Budget Allocation",
+      "onet_category": "Business & Financial Operations",
+      "leadership_category": "Resource Allocation",
+      "market_value": "High",
+      "base_magnitude": 85
+    },
+    {
+      "keywords": ["organiz", "plan", "schedul", "coordinat", "arrang", "manag"],
+      "professional_skill": "Organizational Planning & Coordination",
+      "onet_category": "Management Occupations",
+      "leadership_category": "Strategic Planning",
+      "market_value": "High",
+      "base_magnitude": 80
+    },
+    {
+      "keywords": ["teach", "tutor", "train", "educat", "mentor", "coach", "guid"],
+      "professional_skill": "Training, Mentoring & Instruction",
+      "onet_category": "Education, Training & Library",
+      "leadership_category": "Team Development",
+      "market_value": "Medium",
+      "base_magnitude": 75
+    },
+    {
+      "keywords": ["negoti", "resolv", "conflict", "mediat", "persuad", "communicat", "discuss"],
+      "professional_skill": "Negotiation & Conflict Resolution",
+      "onet_category": "Legal Occupations",
+      "leadership_category": "Decision Making",
+      "market_value": "Very High",
+      "base_magnitude": 90
+    },
+    {
+      "keywords": ["care", "health", "medical", "nurse", "patient", "elder", "child", "family"],
+      "professional_skill": "Healthcare Coordination & Patient Care",
+      "onet_category": "Healthcare Support",
+      "leadership_category": "Empathy & Crisis Management",
+      "market_value": "High",
+      "base_magnitude": 82
+    },
+    {
+      "keywords": ["event", "communit", "volunteer", "fundrais", "rally", "celebrat", "gathering"],
+      "professional_skill": "Event Planning & Community Outreach",
+      "onet_category": "Arts, Design & Entertainment",
+      "leadership_category": "Team Coordination",
+      "market_value": "Medium",
+      "base_magnitude": 72
+    },
+    {
+      "keywords": ["cook", "meal", "nutrition", "food", "diet", "recipe", "catering"],
+      "professional_skill": "Nutritional Planning & Catering Operations",
+      "onet_category": "Food Preparation & Serving",
+      "leadership_category": "Resource Allocation",
+      "market_value": "Medium",
+      "base_magnitude": 65
+    },
+    {
+      "keywords": ["lead", "supervis", "direct", "motivat", "inspir", "team", "group"],
+      "professional_skill": "Team Leadership & People Management",
+      "onet_category": "Management Occupations",
+      "leadership_category": "Decision Making",
+      "market_value": "Very High",
+      "base_magnitude": 95
+    },
+    {
+      "keywords": ["research", "analys", "data", "report", "assess", "evaluat", "review"],
+      "professional_skill": "Research, Analysis & Reporting",
+      "onet_category": "Computer & Mathematical",
+      "leadership_category": "Strategic Planning",
+      "market_value": "High",
+      "base_magnitude": 88
+    },
+    {
+      "keywords": ["problem", "solution", "fix", "repair", "troubleshoot", "improve", "innovat"],
+      "professional_skill": "Problem Solving & Process Improvement",
+      "onet_category": "Architecture & Engineering",
+      "leadership_category": "Crisis Management",
+      "market_value": "High",
+      "base_magnitude": 86
+    }
+  ],
+  "leadership_categories": {
+    "Decision Making": {"weight": 1.5, "description": "Ability to make informed decisions under uncertainty."},
+    "Resource Allocation": {"weight": 1.3, "description": "Efficient distribution of limited resources."},
+    "Strategic Planning": {"weight": 1.4, "description": "Setting long-term goals and defining steps to reach them."},
+    "Team Coordination": {"weight": 1.2, "description": "Organizing and aligning efforts of a group."},
+    "Team Development": {"weight": 1.2, "description": "Nurturing and growing the skills of others."},
+    "Empathy & Crisis Management": {"weight": 1.3, "description": "Managing high-stress situations with emotional intelligence."}
+  }
+}

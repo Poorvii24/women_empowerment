@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISIS — Sign In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --pink: #ec4899;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .auth-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem 2.8rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .brand-icon {
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, var(--primary), var(--pink));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            color: #f1f5f9;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            margin-bottom: .3rem;
+        }
+
+        p.sub {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 1.8rem;
+        }
+
+        label {
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: .4rem;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f1f5f9;
+            border-radius: 12px;
+            padding: .75rem 1rem;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+            color: #f1f5f9;
+        }
+
+        .form-control::placeholder {
+            color: #64748b;
+        }
+
+        .input-group-text {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-right: none;
+            color: #64748b;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .input-group .form-control {
+            border-left: none !important;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--pink));
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            padding: .75rem;
+            letter-spacing: .03em;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .divider {
+            color: #475569;
+            text-align: center;
+            font-size: .8rem;
+            margin: 1.2rem 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .link-muted {
+            color: #818cf8;
+            text-decoration: none;
+            font-size: .88rem;
+        }
+
+        .link-muted:hover {
+            color: #a5b4fc;
+            text-decoration: underline;
+        }
+
+        .alert-danger {
+            border-radius: 10px;
+            background: rgba(239, 68, 68, .15);
+            border: 1px solid rgba(239, 68, 68, .3);
+            color: #fca5a5;
+            font-size: .86rem;
+        }
+
+        .alert-success {
+            border-radius: 10px;
+            background: rgba(34, 197, 94, .15);
+            border: 1px solid rgba(34, 197, 94, .3);
+            color: #86efac;
+            font-size: .86rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-card">
+        <div class="brand-icon"><i class="bi bi-stars"></i></div>
+        <h2>Welcome back</h2>
+        <p class="sub">Sign in to your ISIS Portfolio</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} py-2 mb-3">
+            <i class="bi bi-{{ 'exclamation-circle' if category == 'error' else 'check-circle' }} me-2"></i>{{ message
+            }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/login">
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="yourname"
+                        required autofocus autocomplete="username">
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="••••••••"
+                        required autocomplete="current-password">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mb-3">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+            </button>
+        </form>
+
+        <div class="divider">or</div>
+        <div class="text-center">
+            <span style="color:#64748b;font-size:.88rem">No account?&nbsp;</span>
+            <a href="/register" class="link-muted fw-semibold">Create one free</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

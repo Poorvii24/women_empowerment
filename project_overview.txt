@@ -1,0 +1,88 @@
+# Project Overview: Invisible Skill Intelligence System (ISIS)
+
+**Mission:** To empower women in rural and semi-urban areas by analyzing their "unpaid" daily activities (like household management, budgeting, and crisis resolution) and translating them into formal, highly-valued corporate skills. 
+
+The application helps bridge the vocabulary gap between informal labor and the professional market by utilizing Google's Gemini AI to parse context-rich user activities into actionable skill metrics and real-world employment opportunities.
+
+---
+
+## 🏗️ Technology Stack
+
+### Backend
+* **Language:** Python 3
+* **Framework:** Flask (Micro-framework for rapid API and routing development)
+* **Database:** SQLite3 (Lightweight, file-based relational database)
+* **Authentication:** Flask-Login & Werkzeug Security (Bcrypt hashing, session management)
+* **Localization / i18n:** Flask-Babel (Dynamic runtime translation for English, Hindi, and Kannada using `.po`/`.mo` catalogs)
+* **Cross-Origin Configuration:** Flask-CORS
+
+### Intelligence Engine (AI)
+* **Model:** Google Gemini Pro API (`google-genai` SDK v2)
+* **Prompt Architecture:** Zero-shot semantic mapping with structured JSON output enforcement. Designed to evaluate inputs against 5 Leadership parameters (Strategic, Financial, Crisis, Team, Emotional).
+
+### Frontend
+* **Core:** HTML5, CSS3, Vanilla JavaScript (ES6+ async/await)
+* **Styling Framework:** Bootstrap 5 (Responsive grid, UI components, utilities)
+* **Data Visualization:** Chart.js (Interactive, responsive Radar/Spider charts to visualize the 5-point leadership map)
+* **PDF Export Generation:** jsPDF (Client-side localized PDF resume generation)
+* **Icons:** Bootstrap Icons (`bi-icons`)
+
+---
+
+## ✨ Core Features & Functionality
+
+### 1. The Intelligence Engine (Activity Analysis)
+* Users input task descriptions through a **4-step guided questionnaire** designed to extract complexity (Task, Involvement, Management, Hardest Part).
+* **Gemini AI Integration:** The backend sends the constructed sentence to Gemini with a highly engineered prompt. The AI returns a strict JSON containing:
+  * A professional Corporate Title (`career_equivalency`).
+  * A metric-driven resume bullet point.
+  * A calculated *Employability Score* and *Leadership Index*.
+  * 5 vector scores for the Professional Skill Map (Radar Chart).
+
+### 2. Multi-Lingual & Regional Context Localization
+* Full UI translation support for **English, Hindi (hi), and Kannada (kn)**.
+* **Smart Prompting:** When Hindi or Kannada is selected, the AI is explicitly instructed to adapt its language to standard, everyday regional terms (avoiding complex academic words) and localizes business ideas to rural India (e.g., Anganwadi partnerships, Self-Help Groups).
+
+### 3. The Dashboard & Data Visualization
+* **Dynamic Radar Maps:** Visualizes the user's mapped skills on a 5-point axis using Chart.js.
+* **Live Gauges:** Animated circular gauges tracking the user's *Leadership Index* and *Employability Score*.
+* **Resume Feed:** Real-time generation of resume "snippets" and skill badges that stack hierarchically on the dashboard as more activities are analyzed.
+
+### 4. Opportunity Engine & Actionable Next Steps
+* Based on the user's analyzed skills, the AI suggests three concrete next steps:
+  * 🚀 **Startup Idea** (Micro-business concept)
+  * 🤝 **Collaboration Match** (Partnership ideas)
+  * 💼 **Specific Job Roles** (Direct employability path)
+* These opportunities are presented as sleek Interactive Notification Cards with **Smart Match Badges** colored dynamically based on the user's Employability Score.
+* Includes **Direct Action Buttons** (*"Learn How to Start This"*, *"Draft a Pitch"*, etc.).
+
+### 5. Notification System
+* Built-in DB polling system. Every time an activity is mapped to market opportunities, those opportunities are appended to the `notifications` table.
+* The frontend navbar features a Bell Icon with a red pulsing badge that polls the `/notifications/count` endpoint every 30 seconds.
+* Clicking the bell fetches the dropdown list and marks them read in the database via the `/notifications/mark_read` endpoint.
+
+### 6. Persistent State & Exporting
+* **Database Storage:** All metrics, mappings, and radar points are logged in SQLite, tied to authenticated user sessions.
+* **History Page (`/history`):** A tabular view of all analyzed activities, enabling users to review past inputs and career equivalencies.
+* **PDF "Professional Portfolio":** With one click, users can download a generated PDF layout containing their Radar Chart canvas, Top Skills, and deduplicated Resume Bullets.
+
+---
+
+## 🗄️ Database Architecture (`isis_portfolio.db`)
+
+**1. `users` Table**
+* Tracks `id`, `username`, `password_hash`, `created_at`.
+
+**2. `activities` Table**
+* The core log of all parsed data.
+* Columns: `id`, `user_id`, `input_activity`, `mapped_skill`, `onet_category`, `leadership_category`, `skill_magnitude`, `market_value`, `career_equivalency`, `radar_strategic`, `radar_financial`, `radar_crisis`, `radar_team`, `radar_emotional`, `leadership_index`, `employability_score`, `skills_mapped`, `created_at`.
+
+**3. `notifications` Table**
+* Alerts generated by the Opportunity Engine.
+* Columns: `id`, `user_id`, `message`, `link`, `is_read`, `created_at`.
+
+---
+
+## 🎨 Design Philosophy
+* **Glassmorphism:** The UI utilizes semi-transparent `glass-card` CSS elements with soft blurs to feel modern and empowering.
+* **Clean & Professional:** Eliminates the feeling of "basic" tools and uses premium color palettes, Bootstrap spacing, and smooth hover transients (like `.hover-lift`).

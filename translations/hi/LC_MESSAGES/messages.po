@@ -1,0 +1,184 @@
+# Hindi translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-02-23 10:20+0530\n"
+"PO-Revision-Date: 2026-02-23 09:32+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: hi\n"
+"Language-Team: hi <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: index.html:37
+msgid "Dashboard"
+msgstr ""
+
+#: index.html:40
+msgid "History"
+msgstr ""
+
+#: index.html:45
+msgid "Language"
+msgstr ""
+
+#: index.html:68
+msgid "Opportunities"
+msgstr ""
+
+#: index.html:71
+msgid "No notifications yet"
+msgstr ""
+
+#: index.html:77
+msgid "Sign Out"
+msgstr ""
+
+#: index.html:94
+msgid "Your Invisible Skills, Visible."
+msgstr ""
+
+#: index.html:95
+msgid "Transform everyday activities into professional assets."
+msgstr ""
+
+#: index.html:98
+msgid "Download Professional Portfolio"
+msgstr ""
+
+#: index.html:115
+msgid "Record Activity"
+msgstr ""
+
+#: index.html:117
+msgid "What did you manage today? Explain your unpaid labor."
+msgstr ""
+
+#: index.html:122
+msgid ""
+"What task did you do\n"
+"                                    today?"
+msgstr ""
+
+#: index.html:125
+msgid "e.g., Managed household budget"
+msgstr ""
+
+#: index.html:128
+msgid ""
+"How many people were\n"
+"                                    involved?"
+msgstr ""
+
+#: index.html:131
+msgid "e.g., 5 family members"
+msgstr ""
+
+#: index.html:134
+msgid ""
+"Did you manage any\n"
+"                                    money or supplies?"
+msgstr ""
+
+#: index.html:137
+msgid "e.g., Rs. 10,000 for groceries"
+msgstr ""
+
+#: index.html:140
+msgid ""
+"What was the hardest\n"
+"                                    part?"
+msgstr ""
+
+#: index.html:143
+msgid "e.g., Balancing conflicting needs"
+msgstr ""
+
+#: index.html:148
+msgid "Analyze Skills"
+msgstr ""
+
+#: index.html:158
+msgid "Core Metrics"
+msgstr ""
+
+#: index.html:171
+msgid "Leadership Index"
+msgstr ""
+
+#: index.html:185
+msgid "Employability Score"
+msgstr ""
+
+#: index.html:196
+msgid "Professional Skill Map"
+msgstr ""
+
+#: index.html:197
+msgid "5-Point Capabilities"
+msgstr ""
+
+#: index.html:212
+msgid "Resume Feed"
+msgstr ""
+
+#: index.html:219
+msgid "Analyze an activity to generate bullets."
+msgstr ""
+
+#: index.html:231
+msgid ""
+"Opportunity\n"
+"                    Engine"
+msgstr ""
+
+#: index.html:233
+msgid ""
+"Based on your hidden skills, here are potential next steps in the\n"
+"                    market."
+msgstr ""
+
+#: index.html:248
+msgid "Startup Idea"
+msgstr ""
+
+#: index.html:249
+msgid "Collaboration Match"
+msgstr ""
+
+#: index.html:250
+msgid "Specific Job Roles"
+msgstr ""
+
+#: index.html:251
+msgid "Match"
+msgstr ""
+
+#: index.html:252
+msgid "Learn How to Start This"
+msgstr ""
+
+#: index.html:253
+msgid "Draft a Pitch to This Company"
+msgstr ""
+
+#: index.html:254
+msgid "View Openings"
+msgstr ""
+
+#~ msgid "Describe your activity"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "E.g., \"Managing the household\n"
+#~ "                                    budget...\""
+#~ msgstr ""
+

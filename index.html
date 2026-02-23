@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISIS - Professional Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- jsPDF for portfolio export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg glass-nav fixed-top mb-5">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-stars text-primary"></i> ISIS <span class="fw-light text-muted">Portfolio</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="bi bi-list fs-2"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">{{ _('Dashboard') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history">{{ _('History') }}</a>
+                    </li>
+                    <li class="nav-item dropdown ms-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-globe me-1"></i>{{ _('Language') }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 glass-dropdown"
+                            aria-labelledby="langDropdown">
+                            <li><a class="dropdown-item lang-selector" href="#" data-lang="en">English</a></li>
+                            <li><a class="dropdown-item lang-selector" href="#" data-lang="hi">हिंदी (Hindi)</a></li>
+                            <li><a class="dropdown-item lang-selector" href="#" data-lang="kn">ಕನ್ನಡ (Kannada)</a></li>
+                        </ul>
+                    </li>
+                    <!-- Notification Bell -->
+                    <li class="nav-item ms-2 position-relative" id="notifBellWrapper">
+                        <a class="nav-link position-relative" href="#" id="notifBell" data-bs-toggle="dropdown"
+                            aria-expanded="false" title="Notifications">
+                            <i class="bi bi-bell-fill fs-5"></i>
+                            <!-- Red dot shown when there are unread notifications -->
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-none"
+                                id="notifDot"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 glass-dropdown p-2"
+                            style="min-width:300px;" aria-labelledby="notifBell" id="notifDropdown">
+                            <li>
+                                <h6 class="dropdown-header fw-bold mb-1"><i
+                                        class="bi bi-lightning-charge-fill text-warning me-1"></i>{{ _('Opportunities')
+                                    }}</h6>
+                            </li>
+                            <li id="notifEmpty" class="text-center text-muted small py-2">{{ _('No notifications yet')
+                                }}</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a href="/generate_pdf" target="_blank" class="btn btn-sm btn-success rounded-pill px-3"
+                            title="Download your deduplicated professional portfolio as a PDF">
+                            <i class="bi bi-file-earmark-arrow-down me-1"></i>{{ _('Download Portfolio') }}
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a href="/logout" class="btn btn-sm btn-outline-danger rounded-pill px-3">
+                            <i class="bi bi-box-arrow-right me-1"></i>{{ _('Sign Out') }}
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-primary rounded-pill px-4" id="theme-toggle">
+                            <i class="bi bi-moon-stars"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-container pt-5 mt-5">
+        <div class="row mb-4 text-center">
+            <div class="col-12">
+                <h1 class="display-4 fw-bolder gradient-text mb-3">{{ _('Your Invisible Skills, Visible.') }}</h1>
+                <p class="lead text-muted">{{ _('Transform everyday activities into professional assets.') }}</p>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- WIZARD STEP 1: Questionnaire               -->
+        <!-- ========================================== -->
+        <div id="step-1" class="row justify-content-center mb-4">
+            <div class="col-lg-8">
+                <!-- Activity Input Card -->
+                <div class="card glass-card border-0 shadow-sm flex-fill">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-box bg-primary-subtle text-primary me-3">
+                                <i class="bi bi-pencil-square fs-4"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-0">{{ _('Record Activity') }}</h4>
+                        </div>
+                        <p class="text-muted mb-4">{{ _('What did you manage today? Explain your unpaid labor.') }}</p>
+
+                        <form id="activityForm">
+                            <div class="mb-4 custom-floating">
+                                <label for="q1" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-activity me-1"></i>{{ _('What specific activity did you lead
+                                    today?') }}</label>
+                                <input type="text" class="form-control form-control-lg" id="q1"
+                                    placeholder="{{ _('e.g., Managed a household event') }}">
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q2" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-people me-1"></i>{{ _('How many people did you coordinate?')
+                                    }}</label>
+                                <input type="text" class="form-control form-control-lg" id="q2"
+                                    placeholder="{{ _('e.g., 5 family members') }}">
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q3" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-clock me-1"></i>{{ _('How much time did you spend on this?')
+                                    }}</label>
+                                <input type="text" class="form-control form-control-lg" id="q3"
+                                    placeholder="{{ _('e.g., 4 hours per day over 3 days') }}">
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q4" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-currency-rupee me-1"></i>{{ _('What was the total budget you
+                                    handled?') }}</label>
+                                <input type="text" class="form-control form-control-lg" id="q4"
+                                    placeholder="{{ _('e.g., Rs. 5,000 for groceries') }}">
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q5" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-box-seam me-1"></i>{{ _('What physical supplies or inventory did
+                                    you manage?') }}</label>
+                                <input type="text" class="form-control form-control-lg" id="q5"
+                                    placeholder="{{ _('e.g., 10kg rice, decorations, 50 chairs') }}">
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q6" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-person-badge me-1"></i>{{ _('Who was the primary audience or
+                                    beneficiary?') }}</label>
+                                <input type="text" class="form-control form-control-lg" id="q6"
+                                    placeholder="{{ _('e.g., 50 neighborhood guests') }}">
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q7" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-shield-check me-1"></i>{{ _('How did you handle any conflicts or
+                                    sudden changes?') }}</label>
+                                <input type="text" class="form-control form-control-lg" id="q7"
+                                    placeholder="{{ _('e.g., Mediated a vendor dispute regarding late delivery') }}">
+                            </div>
+                            <div class="mb-5 custom-floating">
+                                <label for="q8" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-lightning-charge me-1"></i>{{ _('What was the absolute hardest part
+                                    of this task?') }}</label>
+                                <textarea class="form-control form-control-lg" id="q8" rows="2"
+                                    placeholder="{{ _('e.g., Balancing emotional family needs while sticking strictly to the tight budget') }}"></textarea>
+                            </div>
+                            <div class="d-grid gap-2 text-center mt-2">
+                                <button type="button"
+                                    class="btn btn-primary btn-lg rounded-pill shadow-sm py-3 px-5 mx-auto"
+                                    id="analyzeBtn">
+                                    {{ _('Next') }} <i class="bi bi-arrow-right-circle ms-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- WIZARD STEP 2: Results & Opportunities     -->
+        <!-- ========================================== -->
+        <div id="step-2" style="display: none;">
+            <!-- NEW: Back Button -->
+            <div class="row mb-3">
+                <div class="col-12">
+                    <button class="btn btn-link text-muted px-0 text-decoration-none hover-lift" id="backToStep1Btn">
+                        <i class="bi bi-chevron-left me-1"></i> {{ _('Previous') }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <!-- Left Column: Gauges -->
+                <div class="col-lg-4 d-flex flex-column gap-4">
+
+                    <!-- Live Gauges Card -->
+                    <div class="card glass-card border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold mb-4">{{ _('Core Metrics') }}</h5>
+                            <div class="row g-2">
+                                <!-- Leadership Index Gauge -->
+                                <div class="col-6 position-relative">
+                                    <div class="gauge-container mx-auto">
+                                        <svg viewBox="0 0 100 50" class="gauge-svg">
+                                            <path class="gauge-bg" d="M 10,50 A 40,40 0 0,1 90,50" fill="none" />
+                                            <path class="gauge-fill leadership-fill" id="leadershipPath"
+                                                d="M 10,50 A 40,40 0 0,1 90,50" fill="none" stroke-dasharray="125.6"
+                                                stroke-dashoffset="125.6" />
+                                        </svg>
+                                        <div class="gauge-value" id="leadershipVal">0</div>
+                                    </div>
+                                    <div class="small fw-semibold mt-2 text-muted">{{ _('Leadership Index') }}</div>
+                                </div>
+
+                                <!-- Employability Score Gauge -->
+                                <div class="col-6 position-relative">
+                                    <div class="gauge-container mx-auto">
+                                        <svg viewBox="0 0 100 50" class="gauge-svg">
+                                            <path class="gauge-bg" d="M 10,50 A 40,40 0 0,1 90,50" fill="none" />
+                                            <path class="gauge-fill employability-fill" id="employabilityPath"
+                                                d="M 10,50 A 40,40 0 0,1 90,50" fill="none" stroke-dasharray="125.6"
+                                                stroke-dashoffset="125.6" />
+                                        </svg>
+                                        <div class="gauge-value" id="employabilityVal">0</div>
+                                    </div>
+                                    <div class="small fw-semibold mt-2 text-muted">{{ _('Employability Score') }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Column: Radial Map -->
+                <div class="col-lg-4">
+                    <div class="card glass-card border-0 shadow-sm h-100 map-card">
+                        <div class="card-body p-4 d-flex flex-column text-center">
+                            <h5 class="fw-bold mb-2">{{ _('Professional Skill Map') }}</h5>
+                            <p class="small text-muted mb-4">{{ _('5-Point Capabilities') }}</p>
+                            <div class="chart-container flex-grow-1 position-relative d-flex align-items-center justify-content-center"
+                                style="min-height: 250px;">
+                                <canvas id="skillRadarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Resume Feed -->
+                <div class="col-lg-3">
+                    <div class="card glass-card border-0 shadow-sm h-100 feed-card">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="d-flex align-items-center mb-4">
+                                <i class="bi bi-card-text text-secondary fs-5 me-2"></i>
+                                <h5 class="fw-bold mb-0">{{ _('Resume Feed') }}</h5>
+                            </div>
+
+                            <div class="resume-feed flex-grow-1 overflow-auto pe-2" id="resumeFeedContainer">
+                                <!-- Feed Items injected here -->
+                                <div class="text-center text-muted small mt-5 pt-3" id="emptyFeedState">
+                                    <i class="bi bi-inbox fs-1 mb-2 d-block opacity-50"></i>
+                                    {{ _('Analyze an activity to generate bullets.') }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Opportunity Engine Row -->
+            <div class="row mb-4" id="opportunityEngineContainer" style="display: none;">
+                <div class="col-12">
+                    <h4 class="fw-bold mb-3"><i class="bi bi-lightbulb-fill text-warning me-2"></i>{{ _('Opportunity
+                        Engine') }}</h4>
+                    <p class="text-muted small mb-4">{{ _('Based on your hidden skills, here are potential next steps in
+                        the market.') }}</p>
+                    <div class="row g-4" id="opportunitiesRow">
+                        <!-- Cards will be injected here via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smart Matches Section -->
+            <div class="row mb-5" id="smartMatchesContainer" style="display: none;">
+                <div class="col-12">
+                    <h4 class="fw-bold mb-3"><i class="bi bi-person-check-fill text-primary me-2"></i>{{ _('Smart Career
+                        Matches') }}</h4>
+                    <p class="text-muted small mb-4">{{ _('AI-powered roles that best fit your demonstrated strengths.')
+                        }}</p>
+                    <div class="row g-4" id="smartMatchesRow">
+                        <!-- Cards injected here via JS, deduplicated by title -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2 mb-5 text-center">
+                <div class="col-12">
+                    <button class="btn btn-success btn-lg rounded-pill shadow px-5 py-3" id="goToStep3Btn">
+                        {{ _('Generate Final Portfolio') }} <i class="bi bi-check-circle ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- WIZARD STEP 3: Final Download              -->
+        <!-- ========================================== -->
+        <div id="step-3" style="display: none;">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <button class="btn btn-link text-muted px-0 text-decoration-none hover-lift" id="backToStep2Btn">
+                        <i class="bi bi-chevron-left me-1"></i> {{ _('Previous') }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-5 text-center">
+                <div class="col-lg-8">
+                    <div class="card glass-card border-0 shadow-lg py-5 px-4 mt-4">
+                        <i class="bi bi-award-fill text-warning" style="font-size: 4rem;"></i>
+                        <h2 class="fw-bolder mt-3 mb-2">{{ _('Your Portfolio is Ready!') }}</h2>
+                        <p class="text-muted mb-5">{{ _('Your unpaid activities have been fully mapped to corporate
+                            skills
+                            and verified.') }}</p>
+
+                        <button class="btn btn-primary btn-lg rounded-pill shadow px-5 py-3 mx-auto"
+                            id="downloadPdfBtn">
+                            <i class="bi bi-file-earmark-pdf-fill me-2 fs-4"></i> {{ _('Download Professional
+                            Portfolio') }}
+                        </button>
+
+                        <div class="mt-4 pt-3">
+                            <button class="btn btn-link text-muted small" id="restartWizardBtn">{{ _('Start Over with a
+                                New
+                                Activity') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============================================ -->
+        <!-- Action Trigger Modal 1: Business Plan        -->
+        <!-- ============================================ -->
+        <div class="modal fade" id="businessPlanModal" tabindex="-1" aria-labelledby="businessPlanModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content glass-card border-0 shadow-lg">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title fw-bold" id="businessPlanModalLabel">
+                            <i class="bi bi-rocket-takeoff-fill text-success me-2"></i>Your 3-Step Business Roadmap
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-3">
+                        <div class="d-flex align-items-start mb-3 p-3 rounded-3"
+                            style="background:rgba(25,135,84,0.08);">
+                            <span class="badge bg-success rounded-pill me-3 fs-6 px-3">1</span>
+                            <div>
+                                <h6 class="fw-bold mb-1" id="bp-step1-title">Licensing & Operations</h6>
+                                <p class="small text-muted mb-0" id="bp-step1-desc">Register your business legally and
+                                    secure any local compliance documents required for your specific product/service.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-3 p-3 rounded-3"
+                            style="background:rgba(99,102,241,0.08);">
+                            <span class="badge bg-primary rounded-pill me-3 fs-6 px-3">2</span>
+                            <div>
+                                <h6 class="fw-bold mb-1" id="bp-step2-title">Service & Pricing</h6>
+                                <p class="small text-muted mb-0" id="bp-step2-desc">Design your core offering and
+                                    calculate a competitive pricing model based on a markup of your base operating
+                                    costs.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start p-3 rounded-3" style="background:rgba(255,193,7,0.08);">
+                            <span class="badge bg-warning text-dark rounded-pill me-3 fs-6 px-3">3</span>
+                            <div>
+                                <h6 class="fw-bold mb-1" id="bp-step3-title">Local Outreach</h6>
+                                <p class="small text-muted mb-0" id="bp-step3-desc">Identify exactly two community
+                                    channels (e.g., local WhatsApp groups or community boards) to broadcast your launch
+                                    message.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">Got it —
+                            I'm Ready!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- Action Trigger Modal 2: Pitch Email Template -->
+        <!-- ============================================ -->
+        <div class="modal fade" id="pitchModal" tabindex="-1" aria-labelledby="pitchModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content glass-card border-0 shadow-lg">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title fw-bold" id="pitchModalLabel">
+                            <i class="bi bi-envelope-paper-fill text-primary me-2"></i>Your Pitch Email
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-3">
+                        <p class="small text-muted mb-2">Copy and send this to your target company:</p>
+                        <div class="p-3 rounded-3 border" style="background:rgba(99,102,241,0.05);" id="pitchEmailBody">
+                            <p class="mb-1"><strong id="pitch-subject-label">Subject:</strong> <span
+                                    id="pitch-subject">Partnership Proposal — Local Service Collaboration</span></p>
+                            <hr class="my-2">
+                            <p class="mb-1" id="pitch-greeting">Hi [Decision Maker],</p>
+                            <p class="mb-1" id="pitch-body">I have extensive experience coordinating successful
+                                community operations and would love to discuss a potential partnership. I specialize in
+                                delivering culturally authentic, timely structural results for local teams.</p>
+                            <p class="mb-0">Would you be open to a 15-minute call this week?</p>
+                            <br>
+                            <p class="mb-0">Warm regards,<br><em>[Your Name]</em></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-2 gap-2">
+                        <button type="button" class="btn btn-outline-secondary rounded-pill px-3" id="copyPitchBtn">
+                            <i class="bi bi-clipboard me-1"></i>Copy
+                        </button>
+                        <button type="button" class="btn btn-primary rounded-pill px-4"
+                            data-bs-dismiss="modal">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <!-- UI Translations for JS Injections -->
+        <script>
+            window.OPP_I18N = {
+                startup: "{{ _('Startup Idea') }}",
+                collab: "{{ _('Collaboration Match') }}",
+                jobRoles: "{{ _('Specific Job Roles') }}",
+                match: "{{ _('Match') }}",
+                btnStart: "{{ _('Learn How to Start This') }}",
+                btnPitch: "{{ _('Draft a Pitch to This Company') }}",
+                btnDetails: "{{ _('View Openings') }}"
+            };
+        </script>
+
+        <!-- Custom JS -->
+        <script src="script.js"></script>
+</body>
+
+</html>

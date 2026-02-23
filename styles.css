@@ -1,0 +1,290 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --secondary-color: #ec4899;
+    --bg-color: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
+[data-theme="dark"] {
+    --primary-color: #818cf8;
+    --primary-hover: #6366f1;
+    --secondary-color: #f472b6;
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(at 0% 0%, hsla(253, 16%, 97%, 1) 0, transparent 50%),
+        radial-gradient(at 50% 0%, hsla(225, 39%, 80%, 0.3) 0, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(339, 49%, 80%, 0.3) 0, transparent 50%);
+    background-attachment: fixed;
+}
+
+[data-theme="dark"] body {
+    background-image:
+        radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+        radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 0.1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 0.1) 0, transparent 50%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+    font-family: 'Outfit', sans-serif;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.glass-nav {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.08) !important;
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.custom-floating .form-control {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .custom-floating .form-control {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
+
+.custom-floating .form-control:focus {
+    background-color: var(--card-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
+/* SVG Gauges */
+.gauge-container {
+    width: 100%;
+    max-width: 130px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.gauge-svg {
+    width: 100%;
+    overflow: visible;
+}
+
+.gauge-bg {
+    stroke: rgba(0, 0, 0, 0.05);
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+[data-theme="dark"] .gauge-bg {
+    stroke: rgba(255, 255, 255, 0.05);
+}
+
+.gauge-fill {
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s ease-in-out;
+}
+
+.leadership-fill {
+    stroke: var(--primary-color);
+}
+
+.employability-fill {
+    stroke: var(--secondary-color);
+}
+
+.gauge-value {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-main);
+}
+
+/* Resume Feed */
+.resume-feed {
+    max-height: 400px;
+}
+
+.resume-feed::-webkit-scrollbar {
+    width: 4px;
+}
+
+.resume-feed::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.resume-feed::-webkit-scrollbar-thumb {
+    background: var(--glass-border);
+    border-radius: 10px;
+}
+
+.feed-item {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    animation: slideIn 0.4s ease forwards;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .feed-item {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.feed-bullet {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-main);
+    padding-left: 1rem;
+    position: relative;
+}
+
+.feed-bullet::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.skill-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    background: var(--primary-color);
+    color: white;
+    opacity: 0.85;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+[data-theme="dark"] .text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* High-End Opportunity Card Animation */
+@keyframes cardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.animated-card {
+    opacity: 0;
+    /* starts hidden */
+    animation: cardEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Opportunity Engine Badge Animation */
+@keyframes pop-badge {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animated-badge {
+    animation: pop-badge 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.6s;
+    /* Wait for card entrance to finish */
+    opacity: 0;
+    display: inline-block;
+}
