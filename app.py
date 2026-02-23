@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sqlite3
+import urllib.parse
 from flask import (
     Flask, request, jsonify, send_from_directory,
     render_template, redirect, url_for, flash, session
@@ -47,6 +48,21 @@ def get_locale():
     return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES'])
 
 babel = Babel(app, locale_selector=get_locale)
+
+# ---------------------------------------------------------------------------
+# Language-switch URL builders
+# ---------------------------------------------------------------------------
+
+def build_job_link(job_role: str) -> str:
+    """Returns a LinkedIn job-search URL for the given role."""
+    query = urllib.parse.quote_plus(job_role.strip())
+    return f"https://www.linkedin.com/jobs/search/?keywords={query}"
+
+
+def build_learning_link(growth_skill: str) -> str:
+    """Returns a YouTube search URL for learning the given skill."""
+    query = urllib.parse.quote_plus(f"learn {growth_skill.strip()} for beginners")
+    return f"https://www.youtube.com/results?search_query={query}"
 
 # ---------------------------------------------------------------------------
 # Flask-Login Setup
@@ -234,15 +250,6 @@ def logout():
 # Routes
 # ---------------------------------------------------------------------------
 
-@app.route("/set_language", methods=["POST"])
-def set_language():
-    data = request.get_json(silent=True) or {}
-    lang = data.get("language")
-    if lang in app.config['BABEL_SUPPORTED_LOCALES']:
-        session['lang'] = lang
-        session.modified = True
-        return jsonify({"status": "success"})
-    return jsonify({"status": "error", "message": "Invalid language"}), 400
 
 
 @app.route("/")
@@ -278,9 +285,13 @@ def analyze_activity():
         - skills_mapped: list of keyword badges
         - resume_snippet: AI-generated bullet
     """
+    # Safety: initialise all variables that may be referenced in except/finally branches
+    raw_learning = {}
+
     body = request.get_json(silent=True) or {}
     user_input = body.get("activity", "").strip()
-    user_id = str(body.get("user_id", "default_user")).strip()
+    # Always use the authenticated user's ID rather than a client-supplied value
+    user_id = str(current_user.get_id()) if current_user.is_authenticated else "default_user"
 
     if not user_input or len(user_input) < 5:
         return jsonify({"status": "error", "message": "Activity description is required and must be descriptive."}), 400
@@ -288,7 +299,6 @@ def analyze_activity():
     if not os.environ.get("GEMINI_API_KEY"):
         return jsonify({"status": "error", "message": "Server missing GEMINI_API_KEY environment variable."}), 500
 
-    from app import get_locale  # local import avoiding circularity
     lang_code = get_locale()
     lang_map = {
         'en': 'English',
@@ -607,6 +617,9 @@ Rules:
         "job_role":             market_opps["job_role"],
         "growth_skill":         market_opps["growth_skill"],
         "learning_url":         market_opps["learning_url"],
+        # Real external links built from the AI-returned values
+        "job_link":             build_job_link(market_opps["job_role"]),
+        "learning_link":        build_learning_link(market_opps["growth_skill"]),
         "learning_path":        learning_path,
         "matches":              sanitized_matches,
         "source":               "gemini" if gemini_ok else "local_fallback"
@@ -636,6 +649,20 @@ def mark_notifications_read():
     """POST /notifications/mark_read - Mark all notifications as read."""
     db.mark_all_read(user_id=current_user.id)
     return jsonify({"status": "ok"})
+
+
+@app.route("/set_language/<lang>")
+def set_language(lang: str):
+    """
+    GET /set_language/<lang>
+    Saves the user's language choice in the session and redirects back.
+    Supported: 'en', 'hi', 'kn'.
+    """
+    supported = app.config.get('BABEL_SUPPORTED_LOCALES', ['en', 'hi', 'kn'])
+    if lang in supported:
+        session['lang'] = lang
+        session.modified = True
+    return redirect(request.referrer or url_for('index'))
 
 
 @app.route("/dashboard_metrics", methods=["GET"])

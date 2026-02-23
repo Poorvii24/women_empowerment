@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p class="small text-muted mt-2 mb-0" id="opp-job">${jobRoleText}</p>
                             </div>
                             <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
-                                <button class="btn btn-sm btn-outline-info w-100 rounded-pill" style="color:var(--bs-info-text,#055160);border-color:var(--bs-info-border,#b6effb);"><i class="bi bi-search me-1"></i>${i18n.btnDetails || "View Openings"}</button>
+                                <button id="btn-view-openings" class="btn btn-sm btn-outline-info w-100 rounded-pill" title="Searching LinkedIn for you..." style="color:var(--bs-info-text,#055160);border-color:var(--bs-info-border,#b6effb);"><i class="bi bi-search me-1"></i>${i18n.btnDetails || "View Openings"}</button>
                             </div>
                         </div>
                     </div>
@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 </div>
                             </div>
                             <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
-                                <button id="btn-start-learning" class="btn btn-sm btn-outline-warning w-100 rounded-pill"><i class="bi bi-play-circle-fill me-1"></i>${i18n.btnLearn || "Start Learning"}</button>
+                                <button id="btn-start-learning" title="Searching YouTube for you..." class="btn btn-sm btn-outline-warning w-100 rounded-pill"><i class="bi bi-play-circle-fill me-1"></i>${i18n.btnLearn || "Start Learning"}</button>
                             </div>
                         </div>
                     </div>
@@ -482,18 +482,31 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
                 }
 
-                // 3) 'Start Learning' → uses verified URL from backend response
-                const btnStartLearning = document.getElementById('btn-start-learning');
-                if (btnStartLearning) {
-                    btnStartLearning.addEventListener('click', () => {
-                        // learningUrl comes from data.learning_url (embed URL from backend)
-                        // Convert embed URL to regular watch URL for opening in a new tab
-                        const watchUrl = learningUrl.replace('/embed/', '/watch?v=');
-                        window.open(watchUrl, '_blank');
+                // 3) 'View Openings' → opens the LinkedIn search URL
+                const btnViewOpenings = document.getElementById('btn-view-openings');
+                if (btnViewOpenings) {
+                    btnViewOpenings.addEventListener('click', () => {
+                        if (data.job_link) {
+                            window.open(data.job_link, '_blank');
+                        }
                     });
                 }
 
-                // 4) 'Copy' button in Pitch Modal → copies email body to clipboard
+                // 4) 'Start Learning' → uses the dynamic YouTube search URL from backend
+                const btnStartLearning = document.getElementById('btn-start-learning');
+                if (btnStartLearning) {
+                    btnStartLearning.addEventListener('click', () => {
+                        if (data.learning_link) {
+                            window.open(data.learning_link, '_blank');
+                        } else {
+                            // Sub-fallback if old backend response format
+                            const watchUrl = learningUrl.replace('/embed/', '/watch?v=');
+                            window.open(watchUrl, '_blank');
+                        }
+                    });
+                }
+
+                // 5) 'Copy' button in Pitch Modal → copies email body to clipboard
                 const copyPitchBtn = document.getElementById('copyPitchBtn');
                 if (copyPitchBtn) {
                     copyPitchBtn.addEventListener('click', () => {
