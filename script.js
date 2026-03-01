@@ -107,9 +107,104 @@ document.addEventListener('DOMContentLoaded', function () {
     const downloadPdfBtn = document.getElementById('downloadPdfBtn');
 
     // ------------------------------------------------------------------------
+    // Voice Assistant (Web Speech API)
+    // ------------------------------------------------------------------------
+    const micBtn1 = document.getElementById('micBtn1');
+    const micIcon1 = document.getElementById('micIcon1');
+    const q1Input = document.getElementById('q1');
+    const btnListenOpps = document.getElementById('btnListenOpps');
+    const iconListenOpps = document.getElementById('iconListenOpps');
+
+    // Language mapping for Web Speech API
+    let speechLang = 'en-US';
+    if (window.CURRENT_LANG === 'hi') speechLang = 'hi-IN';
+    if (window.CURRENT_LANG === 'kn') speechLang = 'kn-IN';
+
+    // 1. Speech-to-Text (Microphone)
+    if (micBtn1 && q1Input) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = speechLang;
+            let isRecording = false;
+
+            micBtn1.addEventListener('click', () => {
+                if (!isRecording) recognition.start();
+                else recognition.stop();
+            });
+
+            recognition.onstart = () => {
+                isRecording = true;
+                micBtn1.classList.remove('btn-outline-secondary', 'text-muted');
+                micBtn1.classList.add('btn-danger', 'text-white');
+                if (micIcon1) micIcon1.classList.replace('bi-mic-fill', 'bi-mic-mute-fill');
+                q1Input.placeholder = "Listening...";
+            };
+
+            recognition.onresult = (e) => {
+                q1Input.value = e.results[0][0].transcript;
+            };
+
+            recognition.onend = () => {
+                isRecording = false;
+                micBtn1.classList.remove('btn-danger', 'text-white');
+                micBtn1.classList.add('btn-outline-secondary', 'text-muted');
+                if (micIcon1) micIcon1.classList.replace('bi-mic-mute-fill', 'bi-mic-fill');
+                q1Input.placeholder = "e.g., Managed a household event";
+            };
+
+            recognition.onerror = (e) => {
+                console.error("Speech recognition error:", e.error);
+                recognition.stop();
+            };
+        } else {
+            micBtn1.style.display = 'none';
+        }
+    }
+
+    // 2. Text-to-Speech (Listen Button)
+    window.aiSpeechText = ""; // Holds the dynamic text to read
+    if (btnListenOpps) {
+        btnListenOpps.addEventListener('click', () => {
+            if (!window.aiSpeechText || !window.speechSynthesis) return;
+
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                if (iconListenOpps) {
+                    iconListenOpps.classList.replace('bi-volume-up-fill', 'bi-volume-mute-fill');
+                    setTimeout(() => iconListenOpps.classList.replace('bi-volume-mute-fill', 'bi-volume-up-fill'), 500);
+                }
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(window.aiSpeechText);
+            utterance.lang = speechLang;
+
+            utterance.onstart = () => {
+                btnListenOpps.classList.replace('btn-outline-primary', 'btn-primary');
+                btnListenOpps.classList.add('text-white');
+            };
+
+            utterance.onend = () => {
+                btnListenOpps.classList.replace('btn-primary', 'btn-outline-primary');
+                btnListenOpps.classList.remove('text-white');
+            };
+
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+
+    // ------------------------------------------------------------------------
     // 5-Point Skill Radar Chart
-    // ------------------------------------------------------------------------    // Radar Chart Logic
+    // ------------------------------------------------------------------------
+    // Single Activity Radar Chart (Step 2)
     const ctx = document.getElementById('skillRadarChart').getContext('2d');
+
+    // Historical Radar Chart (Step 1 Dashboard)
+    const historyCtxEl = document.getElementById('historyRadarChart');
+    let historyChart;
 
     // Wizard Elements
     const step1 = document.getElementById('step-1');
@@ -139,12 +234,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 min: 0,
                 max: 100,
                 angleLines: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' },
-                grid: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' },
+                grid: { color: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' },
+                ticks: { display: false },
                 pointLabels: {
-                    color: isDark ? '#cbd5e1' : '#475569',
-                    font: { family: "'Inter', sans-serif", size: 11, weight: '600' }
-                },
-                ticks: { display: false }
+                    color: isDark ? '#94a3b8' : '#64748b',
+                    font: { size: 11, family: "'Inter', sans-serif", weight: '600' }
+                }
             }
         }
     });
@@ -170,9 +265,40 @@ document.addEventListener('DOMContentLoaded', function () {
         options: radarOptions(false)
     });
 
+    // Fetch and Initialize Dashboard Metrics (Historical Radar)
+    if (historyCtxEl) {
+        fetch('/dashboard_metrics')
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {
+                if (data && data.status === 'success' && data.leadership_radar) {
+                    historyChart = new Chart(historyCtxEl.getContext('2d'), {
+                        type: 'radar',
+                        data: {
+                            labels: data.leadership_radar.labels,
+                            datasets: [{
+                                label: 'Historical Strength',
+                                data: data.leadership_radar.data,
+                                backgroundColor: 'rgba(16, 185, 129, 0.2)', // emerald green
+                                borderColor: 'rgba(16, 185, 129, 1)',
+                                pointBackgroundColor: 'rgba(16, 185, 129, 1)',
+                                pointBorderColor: '#fff',
+                                borderWidth: 2,
+                            }]
+                        },
+                        options: radarOptions(isDark)
+                    });
+                }
+            })
+            .catch(err => console.error("Could not load dashboard metrics", err));
+    }
+
     function updateChartTheme(isDark) {
         skillRadarChart.options = radarOptions(isDark);
         skillRadarChart.update();
+        if (historyChart) {
+            historyChart.options = radarOptions(isDark);
+            historyChart.update();
+        }
     }
 
     // ------------------------------------------------------------------------
@@ -353,6 +479,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     : {};
 
                 const startupText = String(data.startup_idea || opps.startup_idea || "Analyzing your activity...");
+                const startupBudget = String(data.startup_budget || opps.startup_budget || "₹10,000 – ₹25,000");
                 const collabText = String(data.collaboration_match || opps.collaboration_match || "Generating your match...");
                 const jobRoleText = String(data.job_role || opps.job_role || "Public Health Outreach Coordinator");
 
@@ -403,6 +530,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     match: "Match", btnStart: "Learn How to Start", btnPitch: "Pitch This Partner", btnDetails: "View Openings", btnLearn: "Start Learning"
                 };
 
+                // Populate Voice Assistant Speech Text
+                window.aiSpeechText = `${i18n.startup}: ${startupText}. ${i18n.jobRoles}: ${jobRoleText}.`;
+
+                // Update and show WhatsApp Share Button
+                const waBtn = document.getElementById('whatsappShareBtn');
+                if (waBtn) {
+                    const shareText = `Hi, I just mapped my professional skills using ISIS! I am a ${matchScore}% match for ${jobRoleText}. Check out my open opportunities here: ${window.location.origin}`;
+                    waBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+                    waBtn.classList.remove('d-none');
+                }
+
+
                 const badgeHtml = `<span class="badge ${badgeClass} float-end rounded-pill px-2 py-1 animated-badge"><i class="bi bi-bullseye me-1"></i>${matchScore}% ${i18n.match}</span>`;
 
                 oppRow.innerHTML = `
@@ -411,7 +550,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             <div class="card-body flex-grow-1">
                                 ${badgeHtml}
                                 <h6 class="text-success fw-bold"><i class="bi bi-rocket-takeoff-fill me-2"></i>${i18n.startup || "Startup Idea"}</h6>
-                                <p class="small text-muted mt-2 mb-0" id="opp-startup">${startupText}</p>
+                                <p class="small text-muted mt-2 mb-2" id="opp-startup">${startupText}</p>
+                                <div class="d-flex align-items-center gap-1 mt-1">
+                                    <i class="bi bi-currency-rupee text-success" style="font-size:0.75rem;"></i>
+                                    <span class="badge rounded-pill fw-semibold" style="background:rgba(25,135,84,0.12);color:#198754;font-size:0.7rem;">Est. Budget: ${startupBudget}</span>
+                                </div>
                             </div>
                             <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-3">
                                 <button id="btn-learn-startup" class="btn btn-sm btn-outline-success w-100 rounded-pill"><i class="bi bi-arrow-right-circle me-1"></i>${i18n.btnStart || "Learn How to Start"}</button>

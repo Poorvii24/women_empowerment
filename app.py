@@ -314,10 +314,24 @@ def analyze_activity():
 You are a professional career analyst specializing in translating unpaid and informal labor
 into corporate-standard credentials. Analyze the following activity and return a precise JSON.
 
-IMPORTANT MULTI-LANGUAGE INSTRUCTION: 
-You MUST generate the `professional_title`, `career_equivalency`, `resume_bullet`, 
-`mapped_skill`, and items inside `skills_mapped` in **{target_language}**. 
-When translating into {target_language} (especially Kannada or Hindi), use standard, everyday, regional terms that are easily understood by rural users. Avoid overly formal or complex academic translations. The JSON keys themselves must remain strictly in English.
+IMPORTANT MULTI-LANGUAGE INSTRUCTION — READ THIS FIRST: 
+The user's selected language is **{target_language}**. You MUST generate the following fields in **{target_language}**:
+  - `professional_title`, `career_equivalency`, `resume_bullet`, `mapped_skill`
+  - ALL items inside `skills_mapped`
+  - `market_opportunities.startup_idea` — translate the business concept name and description
+  - `market_opportunities.startup_budget` — keep the ₹ amount as-is, translate only the description suffix
+  - `market_opportunities.collaboration_match` — translate the partnership suggestion
+  - `market_opportunities.job_role` — translate the job title to the most common local term
+  - `market_opportunities.growth_skill` (the upskilling recommendation label)
+  - ALL `title` and `desc` fields inside `business_roadmap`
+  - `pitch_email.subject` and `pitch_email.body`
+  - ALL `why_it_fits` and `action_step` fields in `matches`
+  - ALL `title` fields in `matches`
+
+If {target_language} is **Hindi (हिंदी)** or **Kannada (ಕನ್ನಡ)**:
+  - Use simple, everyday rural/semi-urban India vocabulary. AVOID formal or academic terminology.
+  - Job titles may be kept in English if no good local equivalent exists, but add a 2-word local descriptor.
+  - The JSON **keys** must ALWAYS stay in English regardless of language.
 
 CAREER EQUIVALENCY LOGIC:
 Instead of a fixed title, you MUST select a corporate role for the `career_equivalency` field based on the input's complexity. Base your decision on the number of people managed and the total budget/resources handled:
@@ -381,6 +395,7 @@ Return ONLY a valid JSON object with exactly these keys:
   }},
   "market_opportunities": {{
     "startup_idea":        "<A micro-business concept based on their skills>",
+    "startup_budget":      "<Realistic estimated startup cost in INR, e.g. '₹5,000 – ₹15,000' for micro-businesses or '₹50,000 – ₹1,00,000' for service businesses>",
     "collaboration_match": "<A partnership opportunity>",
     "job_role":            "<A relatable target job role>",
     "business_roadmap": [
@@ -537,6 +552,7 @@ Rules:
 
     # Flatten 5 critical keys — demo fallbacks guarantee non-empty values even on AI failure
     startup_idea_val        = str(raw_opps.get("startup_idea")        or raw_opps.get("startup")       or "Community Wellness Center")
+    startup_budget_val      = str(raw_opps.get("startup_budget")      or "₹10,000 – ₹25,000")
     collaboration_match_val = str(raw_opps.get("collaboration_match") or raw_opps.get("collaboration") or "Partner with Local PHC / District Health Office")
     job_role_val            = str(raw_opps.get("job_role")            or raw_opps.get("specific_job_roles") or "Public Health Outreach Coordinator")
 
@@ -547,6 +563,7 @@ Rules:
     market_opps = {
         # flat keys — primary surface area read by script.js
         "startup_idea":        startup_idea_val,
+        "startup_budget":      startup_budget_val,
         "collaboration_match": collaboration_match_val,
         "job_role":            job_role_val,
         "growth_skill":        growth_skill_val,
@@ -613,6 +630,7 @@ Rules:
         "market_opportunities": market_opps,
         # Flattened top-level keys — guaranteed non-empty for demo
         "startup_idea":         market_opps["startup_idea"],
+        "startup_budget":        market_opps.get("startup_budget", "₹10,000 – ₹25,000"),
         "collaboration_match":  market_opps["collaboration_match"],
         "job_role":             market_opps["job_role"],
         "growth_skill":         market_opps["growth_skill"],
@@ -662,7 +680,10 @@ def set_language(lang: str):
     if lang in supported:
         session['lang'] = lang
         session.modified = True
-    return redirect(request.referrer or url_for('index'))
+    # Safety: only redirect back to same-origin pages
+    referrer = request.referrer or ''
+    safe_back = referrer if referrer.startswith(request.host_url) else url_for('index')
+    return redirect(safe_back)
 
 
 @app.route("/dashboard_metrics", methods=["GET"])
