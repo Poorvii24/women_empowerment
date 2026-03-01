@@ -41,11 +41,9 @@ CORS(app)  # Allow cross-origin requests from the frontend
 # Flask-Babel Setup
 # ---------------------------------------------------------------------------
 def get_locale():
-    # If a user explicitly sets a language in the session, use it
-    if 'lang' in session:
-        return session['lang']
-    # Otherwise guess from browser headers
-    return request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES'])
+    # Always prefer the explicit user session choice.
+    # Never fall back to Accept-Language — that would override the user's toggle.
+    return session.get('lang', 'en')
 
 babel = Babel(app, locale_selector=get_locale)
 
@@ -299,13 +297,15 @@ def analyze_activity():
     if not os.environ.get("GEMINI_API_KEY"):
         return jsonify({"status": "error", "message": "Server missing GEMINI_API_KEY environment variable."}), 500
 
-    lang_code = get_locale()
+    # Read language directly from session — more reliable than get_locale() in AJAX context
+    # get_locale() can fall back to browser Accept-Language on AJAX requests.
+    lang = session.get('lang', 'en')
     lang_map = {
         'en': 'English',
         'hi': 'Hindi (हिंदी)',
         'kn': 'Kannada (ಕನ್ನಡ)'
     }
-    target_language = lang_map.get(str(lang_code), 'English')
+    target_language = lang_map.get(lang, 'English')
 
     # -------------------------------------------------------------------------
     # The High-Precision Gemini Prompt
@@ -313,6 +313,13 @@ def analyze_activity():
     prompt = f"""
 You are a professional career analyst specializing in translating unpaid and informal labor
 into corporate-standard credentials. Analyze the following activity and return a precise JSON.
+
+🌐 LANGUAGE MANDATE — APPLY IMMEDIATELY:
+The user's interface language is **{target_language}**.
+Return `job_role`, `startup_idea`, and `growth_skill` in **{target_language}** only.
+If {target_language} is Hindi (हिंदी): write those fields entirely in हिंदी script.
+If {target_language} is Kannada (ಕನ್ನಡ): write those fields entirely in ಕನ್ನಡ script.
+If {target_language} is English: write in English.
 
 IMPORTANT MULTI-LANGUAGE INSTRUCTION — READ THIS FIRST: 
 The user's selected language is **{target_language}**. You MUST generate the following fields in **{target_language}**:
@@ -343,9 +350,10 @@ OPPORTUNITY ENGINE LOGIC:
 Based on ONLY the user's ACTUAL activity input (which could be healthcare, finance, childcare, education, agriculture, crafts, etc.), you MUST suggest three HYPER-SPECIFIC and CONTEXTUALLY ACCURATE opportunities. You are FORBIDDEN from generating generic or catering-related responses unless the user explicitly mentions cooking or food.
 
 CRITICAL DEMO DATA MAPPING:
-To ensure perfect demonstration, you MUST follow these exact mappings if the user's input matches the domain:
-  * If the input is Health-related: The `job_role` MUST be "Public Health Outreach Coordinator" and `startup_idea` MUST be "Mobile Health & First-Aid Training Center". Ensure the `collaboration_match` is a relevant health partnership.
-  * If the input is Logistics-related: The `job_role` MUST be "Supply Chain Coordinator" and `startup_idea` MUST be "Village-to-City Agri-Logistics Service". Ensure the `collaboration_match` is a relevant logistics/transport partnership.
+To ensure perfect demonstration, you MUST follow these exact mappings if the user's input matches the domain.
+IMPORTANT: Even for these hardcoded concepts, you MUST STILL translate all text values into {target_language}:
+  * If the input is Health-related: Use "Public Health Outreach Coordinator" as the BASE title for `job_role`, then translate it into {target_language}. Use "Mobile Health & First-Aid Training Center" as the BASE for `startup_idea`, then translate it.
+  * If the input is Logistics-related: Use "Supply Chain Coordinator" as the BASE title for `job_role`, then translate it into {target_language}. Use "Village-to-City Agri-Logistics Service" as the BASE for `startup_idea`, then translate it.
 
 For all other domains:
   * **Startup Idea**: A micro-business concept directly tied to the domain they described (e.g., if finance → "Micro-savings coaching group")
@@ -429,6 +437,18 @@ Rules:
 - radar_metrics values must reflect the actual skills evident in the activity.
 - career_equivalency must sound like a real job title in the corporate world.
 - Return ONLY the JSON. No markdown fences, no commentary.
+
+⚠️  ABSOLUTE FINAL MANDATE — THIS OVERRIDES EVERYTHING ABOVE:
+The output language is {target_language}. The following fields MUST be written in {target_language} and ONLY {target_language}. No exceptions, no mixing with English:
+  • market_opportunities.job_role
+  • market_opportunities.startup_idea
+  • market_opportunities.collaboration_match
+  • market_opportunities.growth_skill
+  • ALL business_roadmap title and desc values
+  • ALL matches title, why_it_fits, action_step values
+If {target_language} is **Hindi (हिंदी)**: write in हिंदी script.
+If {target_language} is **Kannada (ಕನ್ನಡ)**: write in ಕನ್ನಡ script.
+The JSON keys themselves stay in English always.
 """
 
     # -------------------------------------------------------------------------
@@ -680,7 +700,9 @@ def set_language(lang: str):
     if lang in supported:
         session['lang'] = lang
         session.modified = True
-    # Safety: only redirect back to same-origin pages
+        # Refresh locale for the current request too
+        from flask import g
+        g._babel_locale = lang
     referrer = request.referrer or ''
     safe_back = referrer if referrer.startswith(request.host_url) else url_for('index')
     return redirect(safe_back)

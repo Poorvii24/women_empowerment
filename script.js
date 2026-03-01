@@ -109,59 +109,71 @@ document.addEventListener('DOMContentLoaded', function () {
     // ------------------------------------------------------------------------
     // Voice Assistant (Web Speech API)
     // ------------------------------------------------------------------------
-    const micBtn1 = document.getElementById('micBtn1');
-    const micIcon1 = document.getElementById('micIcon1');
-    const q1Input = document.getElementById('q1');
     const btnListenOpps = document.getElementById('btnListenOpps');
     const iconListenOpps = document.getElementById('iconListenOpps');
 
     // Language mapping for Web Speech API
     let speechLang = 'en-US';
-    if (window.CURRENT_LANG === 'hi') speechLang = 'hi-IN';
-    if (window.CURRENT_LANG === 'kn') speechLang = 'kn-IN';
+    const docLang = document.documentElement.lang;
+    if (docLang === 'hi') speechLang = 'hi-IN';
+    if (docLang === 'kn') speechLang = 'kn-IN';
 
-    // 1. Speech-to-Text (Microphone)
-    if (micBtn1 && q1Input) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (SpeechRecognition) {
+    // 1. Speech-to-Text (Microphone) - Attach to all inputs
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const allMicBtns = document.querySelectorAll('.mic-btn, #micBtn1'); // Catch the first one + the new ones
+
+    if (SpeechRecognition) {
+        allMicBtns.forEach(btn => {
+            const targetInputId = btn.getAttribute('data-target') || 'q1';
+            const targetInput = document.getElementById(targetInputId);
+            const micIcon = btn.querySelector('i');
+            const originalPlaceholder = targetInput ? targetInput.placeholder : "";
+
+            if (!targetInput) return;
+
             const recognition = new SpeechRecognition();
             recognition.continuous = false;
             recognition.interimResults = false;
             recognition.lang = speechLang;
             let isRecording = false;
 
-            micBtn1.addEventListener('click', () => {
+            btn.addEventListener('click', () => {
                 if (!isRecording) recognition.start();
                 else recognition.stop();
             });
 
             recognition.onstart = () => {
                 isRecording = true;
-                micBtn1.classList.remove('btn-outline-secondary', 'text-muted');
-                micBtn1.classList.add('btn-danger', 'text-white');
-                if (micIcon1) micIcon1.classList.replace('bi-mic-fill', 'bi-mic-mute-fill');
-                q1Input.placeholder = "Listening...";
+                btn.classList.remove('btn-outline-secondary', 'text-muted');
+                btn.classList.add('btn-danger', 'text-white');
+                if (micIcon) micIcon.classList.replace('bi-mic-fill', 'bi-mic-mute-fill');
+                targetInput.placeholder = "Listening...";
             };
 
             recognition.onresult = (e) => {
-                q1Input.value = e.results[0][0].transcript;
+                targetInput.value = e.results[0][0].transcript;
             };
 
             recognition.onend = () => {
                 isRecording = false;
-                micBtn1.classList.remove('btn-danger', 'text-white');
-                micBtn1.classList.add('btn-outline-secondary', 'text-muted');
-                if (micIcon1) micIcon1.classList.replace('bi-mic-mute-fill', 'bi-mic-fill');
-                q1Input.placeholder = "e.g., Managed a household event";
+                btn.classList.remove('btn-danger', 'text-white');
+                btn.classList.add('btn-outline-secondary', 'text-muted');
+                if (micIcon) micIcon.classList.replace('bi-mic-mute-fill', 'bi-mic-fill');
+                targetInput.placeholder = originalPlaceholder;
             };
 
             recognition.onerror = (e) => {
                 console.error("Speech recognition error:", e.error);
                 recognition.stop();
+                btn.classList.remove('btn-danger', 'text-white');
+                btn.classList.add('btn-outline-secondary', 'text-muted');
+                if (micIcon) micIcon.classList.replace('bi-mic-mute-fill', 'bi-mic-fill');
+                targetInput.placeholder = originalPlaceholder;
             };
-        } else {
-            micBtn1.style.display = 'none';
-        }
+        });
+    } else {
+        // Hide all mic buttons if Speech API is unsupported
+        allMicBtns.forEach(btn => btn.style.display = 'none');
     }
 
     // 2. Text-to-Speech (Listen Button)
@@ -181,6 +193,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const utterance = new SpeechSynthesisUtterance(window.aiSpeechText);
             utterance.lang = speechLang;
+
+            // Find natural-sounding local voice
+            const voices = window.speechSynthesis.getVoices();
+            const localVoice = voices.find(v => v.lang.startsWith(speechLang) || v.lang.startsWith(docLang));
+            if (localVoice) {
+                utterance.voice = localVoice;
+            }
 
             utterance.onstart = () => {
                 btnListenOpps.classList.replace('btn-outline-primary', 'btn-primary');

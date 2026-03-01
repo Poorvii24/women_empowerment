@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ session.get('lang', 'en') }}">
 
 <head>
     <meta charset="UTF-8">
@@ -137,29 +137,53 @@
                                 <label for="q2" class="form-label fw-bold text-primary"><i
                                         class="bi bi-people me-1"></i>{{ _('How many people did you coordinate?')
                                     }}</label>
-                                <input type="text" class="form-control form-control-lg" id="q2"
-                                    placeholder="{{ _('e.g., 5 family members') }}">
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q2"
+                                        placeholder="{{ _('e.g., 5 family members') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn2" data-target="q2" title="Click to dictate">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon2"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="mb-4 custom-floating">
                                 <label for="q3" class="form-label fw-bold text-primary"><i
                                         class="bi bi-clock me-1"></i>{{ _('How much time did you spend on this?')
                                     }}</label>
-                                <input type="text" class="form-control form-control-lg" id="q3"
-                                    placeholder="{{ _('e.g., 4 hours per day over 3 days') }}">
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q3"
+                                        placeholder="{{ _('e.g., 4 hours per day over 3 days') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn3" data-target="q3" title="Click to dictate">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon3"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="mb-4 custom-floating">
                                 <label for="q4" class="form-label fw-bold text-primary"><i
                                         class="bi bi-currency-rupee me-1"></i>{{ _('What was the total budget you
                                     handled?') }}</label>
-                                <input type="text" class="form-control form-control-lg" id="q4"
-                                    placeholder="{{ _('e.g., Rs. 5,000 for groceries') }}">
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q4"
+                                        placeholder="{{ _('e.g., Rs. 5,000 for groceries') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn4" data-target="q4" title="Click to dictate">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon4"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="mb-4 custom-floating">
                                 <label for="q5" class="form-label fw-bold text-primary"><i
                                         class="bi bi-box-seam me-1"></i>{{ _('What physical supplies or inventory did
                                     you manage?') }}</label>
-                                <input type="text" class="form-control form-control-lg" id="q5"
-                                    placeholder="{{ _('e.g., 10kg rice, decorations, 50 chairs') }}">
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q5"
+                                        placeholder="{{ _('e.g., 10kg rice, decorations, 50 chairs') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn5" data-target="q5" title="Click to dictate">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon5"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="mb-4 custom-floating">
                                 <label for="q6" class="form-label fw-bold text-primary"><i
