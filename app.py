@@ -321,7 +321,7 @@ The user's selected language is **{target_language}**. You MUST generate the fol
   - `market_opportunities.startup_idea` — translate the business concept name and description
   - `market_opportunities.startup_budget` — keep the ₹ amount as-is, translate only the description suffix
   - `market_opportunities.collaboration_match` — translate the partnership suggestion
-  - `market_opportunities.job_role` — translate the job title to the most common local term
+  - `market_opportunities.job_role` — CRITICAL: Translate the professional job title to the most accurate local term in {target_language}. The JSON key MUST remain exactly `"job_role"`.
   - `market_opportunities.growth_skill` (the upskilling recommendation label)
   - ALL `title` and `desc` fields inside `business_roadmap`
   - `pitch_email.subject` and `pitch_email.body`
@@ -350,7 +350,7 @@ To ensure perfect demonstration, you MUST follow these exact mappings if the use
 For all other domains:
   * **Startup Idea**: A micro-business concept directly tied to the domain they described (e.g., if finance → "Micro-savings coaching group")
   * **Collaboration Match**: A partnership idea uniquely suited to the domain they described.
-  * **Job Role**: A directly employable role matching their demonstrated skills in that domain.
+  * **Job Role**: You MUST map their unpaid/informal labor to a legitimate, high-value professional title. For example, managing a 300-person health camp should map to "Logistics Coordinator" or "Public Health Manager". It must reflect the true scale of their work, stripped of "household" stigma.
 
 **Regional Context Rule**: If `{target_language}` is Hindi or Kannada, the ideas MUST be culturally and regionally localized to rural/semi-urban India.
 UPSKILLING RECOMMENDATION LOGIC:
