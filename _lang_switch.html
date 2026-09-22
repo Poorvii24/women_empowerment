@@ -1,0 +1,18 @@
+{# ---------------------------------------------------------------------
+   _lang_switch.html — compact language switcher for pages with no full
+   navbar (login.html, register.html). Uses the same set_language route
+   and the same 3 supported locales as _navbar.html, so the switcher is
+   visually different (no navbar chrome on auth pages) but functionally
+   identical and always in sync with what's actually translated.
+--------------------------------------------------------------------- #}
+<div class="dropdown">
+    <a href="#" class="link-muted small dropdown-toggle" id="langDropdownAuth" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration:none;">
+        <i class="bi bi-globe me-1"></i>{{ _('Language') }}
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="langDropdownAuth">
+        <li><a class="dropdown-item {{ 'active fw-semibold' if session.get('lang', 'en') == 'en' else '' }}" href="{{ url_for('set_language', lang='en') }}">English</a></li>
+        <li><a class="dropdown-item {{ 'active fw-semibold' if session.get('lang') == 'hi' else '' }}" href="{{ url_for('set_language', lang='hi') }}">हिंदी (Hindi)</a></li>
+        <li><a class="dropdown-item {{ 'active fw-semibold' if session.get('lang') == 'kn' else '' }}" href="{{ url_for('set_language', lang='kn') }}">ಕನ್ನಡ (Kannada)</a></li>
+    </ul>
+</div>

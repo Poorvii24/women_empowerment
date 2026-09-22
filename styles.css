@@ -1,0 +1,701 @@
+/* ============================================================
+   ISIS Portfolio — Design System v4.5A
+   Phase 4.5A: Production-grade SaaS polish
+   ============================================================ */
+
+/* ── 1. Design Tokens ──────────────────────────────────────── */
+:root {
+  --primary:        #6366f1;
+  --primary-hover:  #4f46e5;
+  --primary-light:  rgba(99,102,241,0.08);
+  --secondary:      #ec4899;
+  --success:        #10b981;
+  --warning:        #f59e0b;
+  --danger:         #ef4444;
+  --info:           #3b82f6;
+
+  --bg:             #f4f6fb;
+  --bg-alt:         #eef0f8;
+  --surface:        #ffffff;
+  --surface-glass:  rgba(255,255,255,0.72);
+  --border:         rgba(99,102,241,0.10);
+  --border-subtle:  rgba(0,0,0,0.06);
+
+  --text:           #1e293b;
+  --text-secondary: #475569;
+  --text-muted:     #64748b;
+  --text-faint:     #94a3b8;
+
+  --shadow-xs:  0 1px 3px rgba(0,0,0,0.05);
+  --shadow-sm:  0 2px 8px rgba(99,102,241,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 20px rgba(99,102,241,0.10), 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-lg:  0 8px 40px rgba(99,102,241,0.12), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-hover: 0 12px 48px rgba(99,102,241,0.18), 0 4px 12px rgba(0,0,0,0.08);
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+
+  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+  --transition-spring: 0.35s cubic-bezier(0.34,1.56,0.64,1);
+
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem;    --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem;    --space-10: 2.5rem; --space-12: 3rem;
+}
+
+[data-bs-theme="dark"] {
+  --bg:             #0d1117;
+  --bg-alt:         #161b22;
+  --surface:        #1c2333;
+  --surface-glass:  rgba(28,35,51,0.80);
+  --border:         rgba(139,148,158,0.12);
+  --border-subtle:  rgba(255,255,255,0.06);
+
+  --text:           #e6edf3;
+  --text-secondary: #adbac7;
+  --text-muted:     #768390;
+  --text-faint:     #636e7b;
+
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.30);
+  --shadow-md:  0 4px 20px rgba(0,0,0,0.40);
+  --shadow-lg:  0 8px 40px rgba(0,0,0,0.50);
+  --shadow-hover: 0 12px 48px rgba(99,102,241,0.25);
+}
+
+/* ── 2. Base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color var(--transition), color var(--transition);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(99,102,241,0.06), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 10%,  rgba(236,72,153,0.05), transparent);
+  background-attachment: fixed;
+}
+
+[data-bs-theme="dark"] body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(99,102,241,0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 10%,  rgba(236,72,153,0.08), transparent);
+}
+
+h1,h2,h3,h4,h5,h6,.navbar-brand { font-family:'Outfit',system-ui,sans-serif; letter-spacing: -0.01em; }
+
+/* ── 3. Typography helpers ────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-primary-soft  { color: var(--primary) !important; }
+.label-xs { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.label-sm { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; }
+
+/* ── 4. Navigation ────────────────────────────────────────── */
+.glass-nav {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition);
+}
+.glass-nav .navbar-brand { font-size: 1.1rem; }
+.glass-nav .nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+}
+.glass-nav .nav-link:hover,
+.glass-nav .nav-link.active { background: var(--primary-light); color: var(--primary); }
+.glass-nav .nav-link.active { font-weight: 600; }
+
+/* ── 5. Card system ───────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.glass-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-md);
+}
+.card-hover:hover, .glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover) !important;
+}
+.card-flat { box-shadow: none !important; border: 1px solid var(--border-subtle) !important; }
+.card-body { padding: var(--space-6) !important; }
+.card-body.p-compact { padding: var(--space-4) !important; }
+
+/* ── 6. Section dividers ──────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: var(--space-3);
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+/* ── 7. Buttons ───────────────────────────────────────────── */
+.btn {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all var(--transition);
+  border-radius: var(--radius-sm);
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  border: none;
+  color: #fff;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99,102,241,0.4);
+  background: linear-gradient(135deg, var(--primary-hover), #3730a3);
+}
+.btn-primary:active { transform: scale(0.97); }
+.btn-icon {
+  width: 36px; height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* ── 8. Icon boxes ────────────────────────────────────────── */
+.icon-box {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icon-box-sm { width: 34px; height: 34px; border-radius: var(--radius-sm); }
+.icon-box-lg { width: 56px; height: 56px; border-radius: var(--radius-lg); }
+
+/* ── 9. SVG Gauges (preserved, refined) ──────────────────── */
+.gauge-wrap { text-align: center; padding: var(--space-2); }
+.gauge-container { width: 100%; max-width: 128px; margin: 0 auto; position: relative; padding-bottom: 12px; }
+.gauge-svg { width: 100%; overflow: visible; }
+.gauge-bg { stroke: var(--border-subtle); stroke-width: 8; stroke-linecap: round; fill: none; }
+[data-bs-theme="dark"] .gauge-bg { stroke: rgba(255,255,255,0.06); }
+.gauge-fill { stroke-width: 8; stroke-linecap: round; fill: none; transition: stroke-dashoffset 1.6s cubic-bezier(0.4,0,0.2,1); }
+.leadership-fill   { stroke: var(--primary); }
+.employability-fill { stroke: var(--secondary); }
+.gauge-value {
+  position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%);
+  font-size: 1.6rem; font-weight: 800; font-family: 'Outfit', sans-serif;
+  color: var(--text); white-space: nowrap;
+}
+.gauge-label { font-size: 0.72rem; font-weight: 600; color: var(--text-muted); margin-top: var(--space-2); }
+
+/* ── 10. Resume Feed ──────────────────────────────────────── */
+.resume-feed-scroll {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scroll-behavior: smooth;
+}
+.resume-feed-scroll::-webkit-scrollbar { width: 4px; }
+.resume-feed-scroll::-webkit-scrollbar-track { background: transparent; }
+.resume-feed-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+.feed-card {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  animation: slideInFade 0.4s ease forwards;
+  transition: box-shadow var(--transition), transform var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.feed-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  border-radius: 0 0 0 var(--radius-md);
+}
+.feed-card:hover { box-shadow: var(--shadow-md); transform: translateX(2px); }
+
+[data-bs-theme="dark"] .feed-card { background: rgba(255,255,255,0.03); border-color: var(--border); }
+
+.feed-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+.feed-skill-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.3;
+}
+.feed-bullet {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: var(--space-2);
+}
+.feed-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: var(--space-2); }
+.skill-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--primary-light);
+  color: var(--primary);
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(99,102,241,0.15);
+}
+.skill-badge.badge-success  { background: rgba(16,185,129,0.10); color: var(--success); border-color: rgba(16,185,129,0.15); }
+.skill-badge.badge-warning  { background: rgba(245,158,11,0.10); color: #d97706; border-color: rgba(245,158,11,0.15); }
+.skill-badge.badge-info     { background: rgba(59,130,246,0.10); color: var(--info);    border-color: rgba(59,130,246,0.15); }
+.skill-badge.badge-pink     { background: rgba(236,72,153,0.10); color: var(--secondary); border-color: rgba(236,72,153,0.15); }
+
+.feed-expand-btn {
+  background: none; border: none; padding: 0;
+  font-size: 0.72rem; color: var(--primary); cursor: pointer;
+  font-weight: 600; text-decoration: none;
+  transition: opacity var(--transition);
+}
+.feed-expand-btn:hover { opacity: 0.7; }
+
+/* AI explainability sub-panel inside feed card */
+.ai-explainability {
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  margin-top: var(--space-2);
+  font-size: 0.73rem;
+  border: 1px solid rgba(99,102,241,0.10);
+}
+.ai-explainability summary {
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.ai-explainability summary::-webkit-details-marker { display: none; }
+.ai-explainability summary::before {
+  content: '▶';
+  margin-right: 4px;
+  font-size: 0.6rem;
+  transition: transform var(--transition);
+}
+.ai-explainability[open] summary::before { transform: rotate(90deg); }
+
+/* ── 11. Opportunity Cards ────────────────────────────────── */
+.opp-card {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.opp-card-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.opp-card .opp-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+.opp-meta-item {
+  background: var(--bg-alt);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.7rem;
+}
+[data-bs-theme="dark"] .opp-meta-item { background: rgba(255,255,255,0.04); }
+.opp-meta-item .label-xs { color: var(--text-faint); margin-bottom: 1px; }
+.opp-meta-item .value { font-weight: 600; color: var(--text); font-size: 0.78rem; }
+.match-ring {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.8rem;
+  border: 3px solid;
+  flex-shrink: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ── 12. Smart Match Cards ────────────────────────────────── */
+.match-card {
+  border-left: 4px solid var(--primary) !important;
+  transition: all var(--transition);
+}
+.match-card:hover { border-left-color: var(--secondary) !important; }
+
+/* ── 13. Loading Skeletons ────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--bg-alt) 25%,
+    rgba(99,102,241,0.06) 50%,
+    var(--bg-alt) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.skeleton-line { height: 12px; margin-bottom: 8px; }
+.skeleton-line.w-90 { width: 90%; }
+.skeleton-line.w-70 { width: 70%; }
+.skeleton-line.w-50 { width: 50%; }
+.skeleton-circle { border-radius: 50%; }
+
+/* Progress-step loading bar */
+.analysis-progress {
+  display: none;
+}
+.analysis-progress.active { display: block; }
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+.progress-step.done   { color: var(--success); }
+.progress-step.active { color: var(--primary); font-weight: 600; }
+.progress-step .step-icon { width: 20px; text-align: center; }
+.progress-step.done   .step-icon::before { content: '✓'; color: var(--success); }
+.progress-step.active .step-icon { animation: pulse-dot 1s ease infinite; }
+.progress-step .step-spinner {
+  width: 14px; height: 14px;
+  border: 2px solid var(--primary-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── 14. Empty States ─────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-10) var(--space-6);
+  text-align: center;
+  color: var(--text-muted);
+}
+.empty-state-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: var(--space-4);
+}
+.empty-state h6 { font-weight: 700; color: var(--text); margin-bottom: var(--space-1); }
+.empty-state p  { font-size: 0.82rem; max-width: 220px; margin: 0 auto var(--space-4); }
+
+/* ── 15. Roadmap Timeline ─────────────────────────────────── */
+.roadmap-timeline { position: relative; padding-left: 28px; }
+.roadmap-timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+.roadmap-node {
+  position: relative;
+  margin-bottom: var(--space-4);
+  animation: slideInFade 0.3s ease forwards;
+}
+.roadmap-node::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 10px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+.roadmap-node-card {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.roadmap-node-card:hover { box-shadow: var(--shadow-md); transform: translateX(3px); }
+.roadmap-phase-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.difficulty-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.difficulty-beginner { background: rgba(16,185,129,0.10); color: var(--success); }
+.difficulty-intermediate { background: rgba(245,158,11,0.10); color: #d97706; }
+.difficulty-advanced { background: rgba(239,68,68,0.10); color: var(--danger); }
+
+/* ── 16. Progress Bars (enhanced) ────────────────────────── */
+.progress {
+  background: var(--bg-alt);
+  border-radius: 100px;
+  overflow: visible;
+}
+.progress-bar {
+  border-radius: 100px;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+}
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  right: -1px; top: -2px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: inherit;
+  box-shadow: 0 0 6px rgba(99,102,241,0.5);
+}
+
+/* ── 17. Animations ───────────────────────────────────────── */
+@keyframes slideInFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes cardEntrance {
+  0%   { opacity: 0; transform: translateY(24px) scale(0.96); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0)   scale(1);    filter: blur(0); }
+}
+@keyframes pop-badge {
+  0%   { transform: scale(0.6); opacity: 0; }
+  60%  { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes successPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+  70%  { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+
+.animated-card {
+  opacity: 0;
+  animation: cardEntrance 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.animated-badge {
+  opacity: 0;
+  animation: pop-badge 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  animation-delay: 0.5s;
+  display: inline-block;
+}
+.hover-lift { transition: transform var(--transition-spring), box-shadow var(--transition); }
+.hover-lift:hover { transform: translateY(-2px); }
+
+/* ── 18. Form polish ──────────────────────────────────────── */
+.custom-floating .form-control,
+.custom-floating textarea,
+.form-control {
+  background: var(--surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+  background: var(--surface);
+  color: var(--text);
+}
+[data-bs-theme="dark"] .form-control {
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  border-color: var(--border);
+}
+[data-bs-theme="dark"] .form-control:focus {
+  background: rgba(255,255,255,0.08);
+}
+.input-group .btn-outline-secondary {
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+  background: var(--surface);
+}
+.input-group .btn-outline-secondary:hover { background: var(--primary-light); color: var(--primary); }
+
+/* ── 19. Badges & Chips ───────────────────────────────────── */
+.value-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* ── 20. Modals ───────────────────────────────────────────── */
+.modal-content {
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── 21. Dropdown ─────────────────────────────────────────── */
+.dropdown-menu.glass-dropdown {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-1);
+}
+.dropdown-item {
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: var(--text);
+  padding: var(--space-2) var(--space-3);
+  transition: background var(--transition);
+}
+.dropdown-item:hover { background: var(--primary-light); color: var(--primary); }
+
+/* ── 22. Scrollbar global ─────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.3); }
+
+/* ── 23. Accessibility ────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── 24. Responsive ───────────────────────────────────────── */
+@media (max-width: 991px) {
+  .card-body { padding: var(--space-4) !important; }
+  .main-container { padding-top: 5rem; }
+}
+@media (max-width: 575px) {
+  .gauge-container { max-width: 100px; }
+  .opp-card .opp-meta { grid-template-columns: 1fr; }
+  .feed-card { padding: var(--space-3); }
+}
+
+/* ── 25. Misc utilities ───────────────────────────────────── */
+.main-container { padding-top: 5rem; padding-bottom: var(--space-12); }
+.divider { height: 1px; background: var(--border-subtle); margin: var(--space-6) 0; }
+.badge-pill { border-radius: 20px; }
+.rounded-xl { border-radius: var(--radius-xl) !important; }
+
+/* map/radar chart container */
+.chart-container { position: relative; min-height: 240px; }
+
+/* ── 26. Career Journey visual (Task 7) ──────────────────────── */
+.journey-track {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+.journey-step {
+  flex: 1 1 180px;
+  min-width: 160px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.journey-step .journey-icon {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1rem; margin-bottom: 4px;
+}
+.journey-step .journey-title { font-weight: 700; font-size: 0.82rem; }
+.journey-step .journey-body { font-size: 0.74rem; color: var(--text-muted); line-height: 1.4; }
+.journey-arrow {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-faint); font-size: 1.1rem; flex: 0 0 auto;
+}
+@media (max-width: 767px) {
+  .journey-arrow { transform: rotate(90deg); }
+}

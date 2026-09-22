@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="{{ session.get('lang', 'en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ _("ISIS - Career Intelligence Hub") }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+{% set active = 'career' %}
+{% set show_theme_toggle = true %}
+{% set extra_action_url = url_for('career_portfolio_pdf') %}
+{% set extra_action_label = _('Career Portfolio PDF') %}
+{% include "_navbar.html" with context %}
+
+<div class="container main-container pt-5 mt-5">
+
+    <!-- Hero -->
+    <div class="row mb-4 text-center">
+        <div class="col-12">
+            <h1 class="display-5 fw-bolder gradient-text mb-2">
+                <i class="bi bi-bullseye me-2"></i>{{ _('Career Intelligence Hub') }}
+            </h1>
+            <p class="lead text-muted">{{ _("See how ready you are for a role you want, and a simple plan to get even more ready") }}</p>
+        </div>
+    </div>
+
+    <!-- Step 1: Set Target Role + Upload Resume (two cards side by side) -->
+    <div class="row g-4 mb-4">
+
+        <!-- Target Role Card -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-1"><i class="bi bi-crosshair2 text-primary me-2"></i>{{ _('Step 1 — What Role Are You Hoping For?') }}</h5>
+                    <p class="text-muted small mb-3">{{ _("Pick something you'd like to work toward. We'll use this to see how your experience already matches up.") }}</p>
+                    <form method="POST" action="/career/set_target">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <select name="target_role" class="form-select mb-3">
+                            {% for role in roles %}
+                            <option value="{{ role }}" {% if role == target_role %}selected{% endif %}>{{ role }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4 w-100">
+                            <i class="bi bi-check-circle me-1"></i>{{ _('Save This Goal') }}
+                        </button>
+                    </form>
+                    {% if target_role %}
+                    <div class="mt-3 alert alert-success py-2 mb-0">
+                        <i class="bi bi-bullseye me-1"></i> {{ _("You're aiming for:") }} <strong>{{ target_role }}</strong>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume Upload Card -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-1"><i class="bi bi-file-earmark-person text-success me-2"></i>{{ _('Step 2 — Have a Resume? Add It (Optional)') }}</h5>
+                    <p class="text-muted small mb-3">{{ _("Don't have one? No problem at all — the activities you've already shared on your Dashboard are enough on their own.") }}</p>
+                    {% if has_resume %}
+                    <div class="alert alert-info py-2 mb-3">
+                        <i class="bi bi-file-check me-1"></i> {{ _("We have this on file:") }} <strong>{{ resume_filename }}</strong>
+                        <span class="text-muted">{{ _("(add a new one any time to replace it)") }}</span>
+                    </div>
+                    {% endif %}
+                    <div id="resumeUploadArea" class="upload-drop-zone border-2 border-dashed rounded p-3 text-center mb-3"
+                         style="border-color:#6366f1; cursor:pointer; transition: background 0.2s;"
+                         ondragover="event.preventDefault(); this.style.background='#f0f0ff';"
+                         ondragleave="this.style.background='';"
+                         ondrop="handleResumeDrop(event)">
+                        <i class="bi bi-cloud-upload fs-2 text-primary"></i>
+                        <p class="mb-1 mt-1 fw-semibold">{{ _("Drag & drop, or click to choose a file") }}</p>
+                        <p class="text-muted small mb-0">{{ _("PDF or Word document · up to 8MB") }}</p>
+                        <input type="file" id="resumeFileInput" accept=".pdf,.docx" class="d-none" onchange="uploadResume(this.files[0])">
+                    </div>
+                    <button class="btn btn-outline-success rounded-pill px-4 w-100" onclick="document.getElementById('resumeFileInput').click()">
+                        <i class="bi bi-folder2-open me-1"></i>{{ _('Choose a File') }}
+                    </button>
+                    <div id="resumeUploadStatus" class="mt-2 small"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analyse Button -->
+    {% if target_role %}
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <button class="btn btn-lg btn-primary rounded-pill px-5 shadow" id="analyseBtn" onclick="runAnalysis()">
+                <i class="bi bi-lightning-charge-fill me-2"></i>{{ _('See How Ready I Am') }}
+            </button>
+            <div id="analyseSpinner" class="mt-3 d-none">
+                <div class="spinner-border text-primary" role="status"></div>
+                <p class="text-muted mt-2">{{ _("Looking at everything you've shared with us…") }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inline error display (shown instead of browser alert) -->
+    <div id="analysisError" class="d-none alert alert-danger mt-3 rounded-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i><span></span>
+    </div>
+
+    <!-- Results (hidden until analysis runs) -->
+    <div id="resultsSection" class="d-none">
+
+        <!-- Your Career Journey -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-1"><i class="bi bi-signpost-2-fill text-primary me-2"></i>{{ _('Your Career Journey') }}</h5>
+                        <p class="text-muted small mb-4">{{ _("A simple path from what you're already great at, to where you could go next.") }}</p>
+                        <div class="journey-track" id="journeyTrack">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Career Readiness Score Row -->
+        <div class="row g-4 mb-4" id="scoreRow">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-award-fill text-warning me-2"></i>{{ _('How Ready You Are for This Role') }}</h5>
+                        <div class="row align-items-center">
+                            <div class="col-md-3 text-center">
+                                <div class="display-2 fw-bolder gradient-text" id="overallScore">—</div>
+                                <div class="text-muted">{{ _('out of 100') }}</div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row g-2" id="axisScores">
+                                    <!-- Injected by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill Gap Row -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold text-success mb-2"><i class="bi bi-check-circle-fill me-1"></i>{{ _('Things You Already Do Well') }}</h6>
+                        <div id="matchedSkills" class="small"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold text-warning mb-2"><i class="bi bi-dash-circle-fill me-1"></i>{{ _("You're Partway There") }}</h6>
+                        <div id="partialSkills" class="small"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold text-danger mb-2"><i class="bi bi-x-circle-fill me-1"></i>{{ _('Skills You Can Learn Next') }}</h6>
+                        <div id="missingSkills" class="small"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coverage Bar -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-semibold small">{{ _('How Well You Match This Role') }}</span>
+                            <span class="fw-bold text-primary" id="coveragePct">—%</span>
+                        </div>
+                        <div class="progress" style="height:12px; border-radius:8px;">
+                            <div class="progress-bar bg-primary" id="coverageBar" style="width:0%; border-radius:8px; transition: width 1s ease;"></div>
+                        </div>
+                        <div class="text-muted small mt-1">{{ _('Match on the most important skills:') }} <span id="coreCoveragePct">—%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recruiter Summary Panel -->
+        <div class="row g-4 mb-4" id="recruiterPanel" style="display:none;">
+            <div class="col-12">
+                <div class="card shadow-sm border-0" style="border-left: 4px solid #6366f1 !important;">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#ec4899);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="bi bi-person-badge-fill text-white fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-0">{{ _('Your Story, Summed Up') }}</h5>
+                                <div class="text-muted small">{{ _('A quick overview, the way an employer might see it') }}</div>
+                            </div>
+                            <div class="ms-auto text-end">
+                                <div class="display-6 fw-bolder gradient-text" id="recOverall">—</div>
+                                <div class="label-xs text-muted">{{ _('How Ready You Are') }}</div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-4" id="recMetricsRow">
+                            <!-- Injected by JS -->
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-3" style="background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.15);">
+                                    <div class="label-xs text-success mb-2"><i class="bi bi-star-fill me-1"></i>{{ _('Top Strengths') }}</div>
+                                    <div id="recStrengths" class="small"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-3" style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.12);">
+                                    <div class="label-xs text-danger mb-2"><i class="bi bi-arrow-up-circle me-1"></i>{{ _('Where You Could Grow') }}</div>
+                                    <div id="recAreas" class="small"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 p-3 rounded-3" style="background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.12);">
+                            <div class="label-xs text-primary mb-1"><i class="bi bi-lightning-charge-fill me-1"></i>{{ _('What To Try Next') }}</div>
+                            <div class="fw-semibold small" id="recNextAction">—</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ATS & Interview Readiness Panel -->
+        <div class="row g-4 mb-4" id="atsPanel" style="display:none;">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-file-earmark-check text-success me-2"></i>{{ _('Resume Quality &amp; Interview Readiness') }}</h5>
+                        <div class="row g-3 mb-4">
+                            <div class="col-6 col-md-3" id="atsScoreCard"></div>
+                            <div class="col-6 col-md-3" id="resumeStrCard"></div>
+                            <div class="col-6 col-md-3" id="interviewCard"></div>
+                            <div class="col-6 col-md-3" id="completenessCard"></div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="label-xs text-muted mb-2">{{ _('Words Worth Adding to Your Resume') }}</div>
+                                <div id="missingKeywords" class="d-flex flex-wrap gap-1"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="label-xs text-muted mb-2">{{ _('Ways to Strengthen It') }}</div>
+                                <div id="atsImprovements" class="small"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Score Explainability Panel -->
+        <div class="row mb-4" id="explainPanel" style="display:none;">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-info-circle-fill text-primary me-2"></i>{{ _('Score Explainability') }}</h5>
+                        <p class="text-muted small mb-3">{{ _("Every score is derived from your actual activities, resume, and skill gap — not a black box.") }}</p>
+                        <div id="axisExplainAccordion" class="accordion accordion-flush"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 30/60/90 Day Plan -->
+        <div class="row g-4 mb-4">
+            <div class="col-12">
+                <h5 class="fw-bold mb-3"><i class="bi bi-calendar3 text-primary me-2"></i>{{ _('Your 30/60/90-Day Learning Roadmap') }}</h5>
+            </div>
+            {% for phase, label, color in [('day_30', _('First 30 Days'), 'success'), ('day_60', _('Days 31–60'), 'warning'), ('day_90', _('Days 61–90'), 'danger')] %}
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 h-100" style="border-top: 4px solid var(--bs-{{ color }}) !important;">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold text-{{ color }}"><i class="bi bi-flag-fill me-1"></i>{{ label }}</h6>
+                        <div id="plan_{{ phase }}" class="small"></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Growth Charts -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold mb-2"><i class="bi bi-graph-up text-primary me-1"></i>{{ _('Skill Growth Over Time') }}</h6>
+                        <canvas id="growthChart" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold mb-2"><i class="bi bi-pie-chart-fill text-success me-1"></i>{{ _('Skill Distribution') }}</h6>
+                        <canvas id="distributionChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Heatmap (bar chart) -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold mb-2"><i class="bi bi-calendar2-week text-warning me-1"></i>{{ _('Activity Consistency (Last 12 Weeks)') }}</h6>
+                        <canvas id="activityChart" height="60"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opportunities -->
+        <div class="row g-4 mb-4">
+            <div class="col-12">
+                <h5 class="fw-bold mb-1"><i class="bi bi-rocket-takeoff text-danger me-2"></i>{{ _('Things Worth Trying Next') }}</h5>
+                <p class="text-muted small mb-3" id="oppWhyIntro">{{ _("Chosen because they build on what you're already good at, and move you closer to the role you're hoping for.") }}</p>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold text-primary"><i class="bi bi-code-square me-1"></i>{{ _('Projects to Build') }}</h6>
+                        <div id="oppProjects" class="small"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold text-success"><i class="bi bi-trophy me-1"></i>{{ _('Hackathons') }}</h6>
+                        <div id="oppHackathons" class="small"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold text-warning"><i class="bi bi-patch-check me-1"></i>{{ _('Certifications') }}</h6>
+                        <div id="oppCerts" class="small"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-3">
+                        <h6 class="fw-bold text-danger"><i class="bi bi-git me-1"></i>{{ _('Open Source') }}</h6>
+                        <div id="oppOSS" class="small"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /resultsSection -->
+    {% else %}
+    <div class="alert alert-info text-center py-4">
+        <i class="bi bi-arrow-up-circle fs-2 text-primary d-block mb-2"></i>
+        <strong>{{ _('Set your target role above') }}</strong> {{ _('to unlock your personalised career analysis.') }}
+    </div>
+    {% endif %}
+
+</div><!-- /container -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// I18N: JS-generated labels for the analysis panels below, translated the
+// same way as the rest of the page (Flask-Babel) — these are static UI
+// strings, not AI-generated content, so they go through _() like everything
+// else. Kept as one object (not scattered inline in every template literal)
+// so this is the only place these strings live for this page.
+const CAREER_I18N = {
+    uploading: {{ _('Uploading and parsing…')|tojson }},
+    sectionsFound: {{ _('Sections found:')|tojson }},
+    skillsExtracted: {{ _('Skills extracted:')|tojson }},
+    uploadFailed: {{ _('Upload failed:')|tojson }},
+    pickRoleFirst: {{ _("Pick a role you're aiming for above first, then try again.")|tojson }},
+    couldntAssemble: {{ _("We couldn't put this together just now. Please try again in a moment.")|tojson }},
+    couldntAssemblePrefix: {{ _("We couldn't put this together just now — ")|tojson }},
+    axisTechnical: {{ _('Skills & Know-How')|tojson }},
+    axisLeadership: {{ _('Leading Others')|tojson }},
+    axisCommunication: {{ _('Explaining Things Clearly')|tojson }},
+    axisConsistency: {{ _('Staying Consistent')|tojson }},
+    axisGrowth: {{ _('Growing Over Time')|tojson }},
+    confHigh: {{ _("We're quite sure")|tojson }},
+    confMed: {{ _("We're fairly sure")|tojson }},
+    confLow: {{ _('Still learning about this')|tojson }},
+    whyWeThink: {{ _('Why We Think This')|tojson }},
+    whereWeSaw: {{ _('Where We Saw It In Your Story')|tojson }},
+    howToStrengthen: {{ _('How to Strengthen This')|tojson }},
+    nothingSpecificYet: {{ _("Nothing specific yet — tell us more and we'll find it")|tojson }},
+    doingGreatHere: {{ _("You're doing great here!")|tojson }},
+    journeyGreatAt: {{ _("What You're Already Great At")|tojson }},
+    journeyGreatAtEmpty: {{ _('Every story you share helps us find more of these.')|tojson }},
+    journeyHiddenSkills: {{ _('Hidden Skills We Found')|tojson }},
+    journeyHiddenEmpty: {{ _("Tell us a bit more and we'll spot skills you may not realise you have.")|tojson }},
+    journeyJobs: {{ _('Jobs You Could Explore Today')|tojson }},
+    journeyRolesLike: {{ _('Roles like %%(role)s')|tojson }},
+    journeyJobsEmpty: {{ _("Once you pick a role like %%(role)s, we'll show real next steps here.")|tojson }},
+    journeyLearnNext: {{ _('Skills You Can Learn Next')|tojson }},
+    journeyLearnNextEmpty: {{ _("You're already covering everything important — nicely done!")|tojson }},
+    journeyWhereNext: {{ _('Where This Could Take You')|tojson }},
+    journeyWhereNextBody: {{ _('With a bit more practice, %%(role)s could be well within reach.')|tojson }},
+    yourNextRole: {{ _('your next role')|tojson }},
+    matchStrong: {{ _('Strong match')|tojson }},
+    matchGood: {{ _('Good match')|tojson }},
+    matchSome: {{ _('Some overlap')|tojson }},
+    gapMatchedEmpty: {{ _("Nothing to show yet — tell us about a few more things you've done, or add your resume.")|tojson }},
+    gapPartialEmpty: {{ _('Nothing here right now.')|tojson }},
+    gapMissingEmpty: {{ _("You're already covering everything important — wonderful!")|tojson }},
+    fromLabel: {{ _('from:')|tojson }},
+    tierCore: {{ _('Especially useful')|tojson }},
+    tierNice: {{ _('Good to have')|tojson }},
+    learningPlanEmpty: {{ _('Nothing to do — great coverage!')|tojson }},
+    oppIntroWithMatches: {{ _("Chosen because you've already shown skills like %%(skills)s — these build on that, and move you closer to %%(role)s.")|tojson }},
+    oppIntroGeneric: {{ _('These are good general starting points for %%(role)s.')|tojson }},
+    roleFallback: {{ _("the role you're hoping for")|tojson }},
+    oppEmpty: {{ _('Nothing here yet — set a target role above to see suggestions.')|tojson }},
+    whyProjects: {{ _('Why: hands-on practice that shows employers what you can do for %%(role)s.')|tojson }},
+    whyHackathons: {{ _('Why: a chance to practice under real conditions, alongside others aiming for similar work.')|tojson }},
+    whyCerts: {{ _('Why: fills in a skill this role usually asks for, backed by a recognised provider.')|tojson }},
+    whyOSS: {{ _('Why: a low-pressure way to build a public track record of your skills over time.')|tojson }},
+    chartActivitiesLogged: {{ _('Activities logged')|tojson }},
+    chartAvgScore: {{ _('Avg Employability Score')|tojson }},
+    chartActivities: {{ _('Activities')|tojson }},
+    thisRole: {{ _('this role')|tojson }},
+    tierGreat: {{ _('Great')|tojson }},
+    tierGrowing: {{ _('Growing')|tojson }},
+    tierJustStarting: {{ _('Just Starting')|tojson }},
+};
+// Tiny %(name)s-style formatter so the strings above stay in the same
+// gettext placeholder format used everywhere else in this app (Python
+// flash messages, JSON error messages) rather than introducing f-string
+// style templating just for this file.
+function fmt(str, params) {
+    return str.replace(/%\(([^)]+)\)s/g, (_, key) => (params && key in params) ? params[key] : '');
+}
+
+const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+// ── Theme toggle (same logic as index.html) ──────────────────────────────
+const themeBtn = document.getElementById('theme-toggle');
+const htmlEl = document.documentElement;
+let isDark = localStorage.getItem('isis-theme') === 'dark';
+function applyTheme() {
+    htmlEl.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+    if (themeBtn) themeBtn.innerHTML = isDark ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-stars"></i>';
+}
+applyTheme();
+themeBtn?.addEventListener('click', () => { isDark = !isDark; localStorage.setItem('isis-theme', isDark ? 'dark' : 'light'); applyTheme(); });
+
+// ── Resume Upload ─────────────────────────────────────────────────────────
+document.getElementById('resumeUploadArea')?.addEventListener('click', () =>
+    document.getElementById('resumeFileInput')?.click()
+);
+
+function handleResumeDrop(e) {
+    e.preventDefault();
+    document.getElementById('resumeUploadArea').style.background = '';
+    const file = e.dataTransfer?.files[0];
+    if (file) uploadResume(file);
+}
+
+async function uploadResume(file) {
+    if (!file) return;
+    const statusEl = document.getElementById('resumeUploadStatus');
+    statusEl.innerHTML = `<span class="text-muted"><i class="bi bi-hourglass-split me-1"></i>${CAREER_I18N.uploading}</span>`;
+
+    const form = new FormData();
+    form.append('resume', file);
+
+    try {
+        const resp = await fetch('/career/upload_resume', {
+            method: 'POST',
+            headers: { 'X-CSRFToken': csrfToken },
+            body: form,
+        });
+        const data = await resp.json();
+        if (data.status === 'success') {
+            statusEl.innerHTML = `<span class="text-success"><i class="bi bi-check-circle me-1"></i>${data.message}
+                <br>${CAREER_I18N.sectionsFound} <strong>${data.sections_found.join(', ')}</strong>
+                <br>${CAREER_I18N.skillsExtracted} <strong>${data.candidate_skills.length}</strong></span>`;
+        } else {
+            statusEl.innerHTML = `<span class="text-danger"><i class="bi bi-exclamation-triangle me-1"></i>${data.message}</span>`;
+        }
+    } catch (err) {
+        statusEl.innerHTML = `<span class="text-danger">${CAREER_I18N.uploadFailed} ${err.message}</span>`;
+    }
+}
+
+// ── Career Analysis ───────────────────────────────────────────────────────
+let growthChartInst = null, distChartInst = null, actChartInst = null;
+
+async function runAnalysis() {
+    const btn     = document.getElementById('analyseBtn');
+    const spinner = document.getElementById('analyseSpinner');
+    const section = document.getElementById('resultsSection');
+    const errEl   = document.getElementById('analysisError');
+
+    btn.disabled = true;
+    spinner.classList.remove('d-none');
+    if (errEl) errEl.classList.add('d-none');
+
+    try {
+        const resp = await fetch('/career/analysis');
+        if (!resp.ok) {
+            const body = await resp.text();
+            throw new Error(`Server ${resp.status}: ${body.substring(0,200)}`);
+        }
+        const data = await resp.json();
+
+        if (data.status === 'no_target') {
+            if (errEl) { errEl.querySelector('span').textContent = CAREER_I18N.pickRoleFirst; errEl.classList.remove('d-none'); }
+            return;
+        }
+        if (data.status !== 'ok') {
+            if (errEl) { errEl.querySelector('span').textContent = data.message || CAREER_I18N.couldntAssemble; errEl.classList.remove('d-none'); }
+            return;
+        }
+
+        // Reveal section BEFORE rendering so Chart.js canvas elements have real dimensions.
+        section.classList.remove('d-none');
+
+        // Render each panel independently — one failure never blocks the rest.
+        const safeRender = (name, fn) => {
+            try { fn(); }
+            catch(e) { console.error(`[ISIS] ${name}:`, e.message, e); }
+        };
+
+        safeRender('journey',        () => renderJourney(data));
+        safeRender('score',          () => renderScore(data.score));
+        safeRender('gap',            () => renderGap(data.gap));
+        safeRender('recruiter',      () => renderRecruiterPanel(data.recruiter, data.score));
+        safeRender('ats',            () => renderATSPanel(data.ats));
+        safeRender('explainability', () => renderExplainability(data.score));
+        safeRender('learningPlan',   () => renderLearningPlan(data.learning_plan));
+        safeRender('opportunities',  () => renderOpportunities(data.opportunities, data.gap, data.target_role));
+        safeRender('growthCharts',   () => renderGrowthCharts(data.growth));
+
+        // Scroll to results after a short delay so the browser has painted
+        setTimeout(() => section.scrollIntoView({behavior:'smooth', block:'start'}), 120);
+
+    } catch (err) {
+        console.error('[ISIS] runAnalysis failed:', err);
+        section.classList.add('d-none');
+        if (errEl) { errEl.querySelector('span').textContent = CAREER_I18N.couldntAssemblePrefix + err.message; errEl.classList.remove('d-none'); }
+    } finally {
+        btn.disabled = false;
+        spinner.classList.add('d-none');
+    }
+}
+
+function renderRecruiterPanel(rec, score) {
+    if (!rec) return;
+    const panel = document.getElementById('recruiterPanel');
+    if (panel) panel.style.display = '';
+
+    document.getElementById('recOverall').textContent = `${rec.career_readiness?.toFixed(0) || 0}`;
+
+    const tierColor = {'Great': '#10b981', 'Growing': '#f59e0b', 'Just Starting': '#ef4444'};
+    const toTier = (val) => val >= 75 ? 'Great' : val >= 50 ? 'Growing' : 'Just Starting';
+    const metricsRow = document.getElementById('recMetricsRow');
+    if (metricsRow) {
+        const metrics = [
+            {label: {{ _('How Ready You Are')|tojson }}, val: rec.career_readiness, tier: rec.overall_tier === 'Strong' ? 'Great' : rec.overall_tier === 'Developing' ? 'Growing' : 'Just Starting'},
+            {label: {{ _('Resume Quality')|tojson }},    val: rec.ats_score,         tier: toTier(rec.ats_score)},
+            {label: {{ _('How Strong Your Resume Is')|tojson }}, val: rec.resume_strength, tier: toTier(rec.resume_strength)},
+            {label: {{ _('Interview Readiness')|tojson }}, val: rec.interview_ready, tier: toTier(rec.interview_ready)},
+        ];
+        metricsRow.innerHTML = metrics.map(m => {
+            const col = tierColor[m.tier] || '#6366f1';
+            const tierLabel = {'Great': CAREER_I18N.tierGreat, 'Growing': CAREER_I18N.tierGrowing, 'Just Starting': CAREER_I18N.tierJustStarting}[m.tier] || m.tier;
+            return `<div class="col-6 col-md-3">
+                <div class="card border-0 text-center p-3" style="background:rgba(0,0,0,0.03);border-radius:12px;">
+                    <div class="fw-bolder" style="font-size:1.6rem;color:${col};">${(m.val||0).toFixed(0)}%</div>
+                    <div class="label-xs text-muted">${m.label}</div>
+                    <span class="badge mt-1" style="background:${col}22;color:${col};font-size:0.62rem;">${tierLabel}</span>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    const strengthsEl = document.getElementById('recStrengths');
+    if (strengthsEl) {
+        strengthsEl.innerHTML = (rec.top_strengths || []).length
+            ? rec.top_strengths.map(s => `<div class="mb-1"><i class="bi bi-check-circle-fill text-success me-1"></i>${s}</div>`).join('')
+            : `<span class="text-muted">{{ _("Share a few more activities and we'll spot your strengths here.") }}</span>`;
+    }
+    const areasEl = document.getElementById('recAreas');
+    if (areasEl) {
+        areasEl.innerHTML = (rec.improvement_areas || []).length
+            ? rec.improvement_areas.map(a => `<div class="mb-1"><i class="bi bi-arrow-right-circle text-danger me-1"></i>${a}</div>`).join('')
+            : `<span class="text-success">{{ _('No major gaps identified.') }}</span>`;
+    }
+    const nextEl = document.getElementById('recNextAction');
+    if (nextEl) nextEl.textContent = rec.next_action || '—';
+}
+
+function renderATSPanel(ats) {
+    if (!ats) return;
+    const panel = document.getElementById('atsPanel');
+    if (panel) panel.style.display = '';
+
+    const cardData = [
+        {id: 'atsScoreCard',  label: {{ _('ATS Score')|tojson }},         val: ats.ats_score,       icon: 'bi-robot'},
+        {id: 'resumeStrCard', label: {{ _('Resume Strength')|tojson }},    val: ats.resume_strength, icon: 'bi-file-text'},
+        {id: 'interviewCard', label: {{ _('Interview Ready')|tojson }},    val: ats.interview_ready, icon: 'bi-camera-video'},
+        {id: 'completenessCard', label: {{ _('Completeness')|tojson }},    val: ats.completeness,    icon: 'bi-check2-all'},
+    ];
+    cardData.forEach(({id, label, val, icon}) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const col = val >= 75 ? '#10b981' : val >= 50 ? '#f59e0b' : '#ef4444';
+        el.innerHTML = `<div class="card border-0 h-100 text-center p-3" style="background:rgba(0,0,0,0.03);border-radius:12px;">
+            <i class="bi ${icon} mb-1" style="color:${col};font-size:1.2rem;"></i>
+            <div class="fw-bolder" style="font-size:1.4rem;color:${col};">${(val||0).toFixed(0)}%</div>
+            <div class="label-xs text-muted">${label}</div>
+        </div>`;
+    });
+
+    const kwEl = document.getElementById('missingKeywords');
+    if (kwEl) {
+        kwEl.innerHTML = (ats.missing_keywords || []).slice(0,10).map(kw =>
+            `<span class="badge" style="background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);font-size:0.7rem;font-weight:600;padding:3px 8px;border-radius:20px;">${kw}</span>`
+        ).join('') || `<span class="text-success small">{{ _('All key ATS keywords are covered.') }}</span>`;
+    }
+
+    const impEl = document.getElementById('atsImprovements');
+    if (impEl) {
+        impEl.innerHTML = (ats.improvements || []).slice(0,3).map(tip => {
+            const pc = tip.priority === 'High' ? '#ef4444' : '#f59e0b';
+            return `<div class="mb-2 p-2 rounded" style="background:rgba(0,0,0,0.03);">
+                <span class="badge me-1" style="background:${pc}22;color:${pc};font-size:0.62rem;">${tip.priority}</span>
+                <strong>${tip.area}:</strong> ${tip.action}
+                <div class="text-muted" style="font-size:0.72rem;">${tip.impact}</div>
+            </div>`;
+        }).join('') || `<span class="text-success small">{{ _('No major improvements needed.') }}</span>`;
+    }
+}
+
+function renderExplainability(score) {
+    if (!score || !score.axis_details) return;
+    const panel = document.getElementById('explainPanel');
+    if (panel) panel.style.display = '';
+
+    const accordion = document.getElementById('axisExplainAccordion');
+    if (!accordion) return;
+
+    const axes = [
+        {key: 'technical',     label: CAREER_I18N.axisTechnical,       icon: 'bi-cpu',              color: '#6366f1'},
+        {key: 'leadership',    label: CAREER_I18N.axisLeadership,          icon: 'bi-people-fill',      color: '#10b981'},
+        {key: 'communication', label: CAREER_I18N.axisCommunication, icon: 'bi-chat-dots-fill', color: '#f59e0b'},
+        {key: 'consistency',   label: CAREER_I18N.axisConsistency,      icon: 'bi-calendar-check',   color: '#3b82f6'},
+        {key: 'growth',        label: CAREER_I18N.axisGrowth,       icon: 'bi-graph-up-arrow',   color: '#ec4899'},
+    ];
+
+    const confidenceLabel = (pct) => pct >= 75 ? CAREER_I18N.confHigh : pct >= 45 ? CAREER_I18N.confMed : CAREER_I18N.confLow;
+
+    accordion.innerHTML = axes.map((ax, i) => {
+        const d = score.axis_details[ax.key];
+        if (!d) return '';
+        const val = score[ax.key] || 0;
+        const factors   = (d.contributing_factors || []).map(f => `<li>${f}</li>`).join('');
+        const evidence  = (d.matched_evidence || []).map(e => `<li class="text-success">${e}</li>`).join('');
+        const missing   = (d.missing_evidence  || []).map(m => `<li class="text-danger">${m}</li>`).join('');
+        const conf      = d.confidence?.toFixed(0) || 0;
+
+        return `
+        <div class="accordion-item border-0 mb-2" style="border-radius:10px;overflow:hidden;">
+            <h6 class="accordion-header">
+                <button class="accordion-button collapsed py-3" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#ax${i}" style="background:rgba(0,0,0,0.03);">
+                    <i class="bi ${ax.icon} me-2" style="color:${ax.color}"></i>
+                    <strong>${ax.label}</strong>
+                    <span class="ms-2 fw-bolder" style="color:${ax.color}">${val.toFixed(0)}/100</span>
+                    <span class="ms-2 badge" style="background:${ax.color}22;color:${ax.color};font-size:0.65rem;">
+                        ${confidenceLabel(conf)}
+                    </span>
+                </button>
+            </h6>
+            <div id="ax${i}" class="accordion-collapse collapse">
+                <div class="accordion-body pt-2">
+                    <p class="text-muted small mb-3">${d.summary}</p>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="label-xs text-muted mb-1">${CAREER_I18N.whyWeThink}</div>
+                            <ul class="small ps-3 mb-0">${factors}</ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="label-xs text-success mb-1">${CAREER_I18N.whereWeSaw}</div>
+                            <ul class="small ps-3 mb-0">${evidence || `<li class="text-muted">${CAREER_I18N.nothingSpecificYet}</li>`}</ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="label-xs text-danger mb-1">${CAREER_I18N.howToStrengthen}</div>
+                            <ul class="small ps-3 mb-0">${missing || `<li class="text-muted">${CAREER_I18N.doingGreatHere}</li>`}</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function renderJourney(data) {
+    const track = document.getElementById('journeyTrack');
+    if (!track) return;
+
+    const strengths = (data.recruiter && data.recruiter.top_strengths) || [];
+    const matched = (data.gap && data.gap.matched) || [];
+    const missing = (data.gap && data.gap.missing) || [];
+    const projects = (data.opportunities && data.opportunities.projects) || [];
+    const hackathons = (data.opportunities && data.opportunities.hackathons) || [];
+    const role = data.target_role || CAREER_I18N.yourNextRole;
+
+    const steps = [
+        {
+            icon: 'bi-star-fill', color: '#f59e0b', title: CAREER_I18N.journeyGreatAt,
+            body: strengths.length ? strengths.slice(0, 2).join('; ') : CAREER_I18N.journeyGreatAtEmpty,
+        },
+        {
+            icon: 'bi-eye-fill', color: '#8b5cf6', title: CAREER_I18N.journeyHiddenSkills,
+            body: matched.length
+                ? matched.slice(0, 3).map(m => m.skill).join(', ')
+                : CAREER_I18N.journeyHiddenEmpty,
+        },
+        {
+            icon: 'bi-door-open-fill', color: '#10b981', title: CAREER_I18N.journeyJobs,
+            body: (projects.length || hackathons.length)
+                ? [...projects.slice(0, 1), ...hackathons.slice(0, 1)].map(o => o.title).filter(Boolean).join(', ') || fmt(CAREER_I18N.journeyRolesLike, {role})
+                : fmt(CAREER_I18N.journeyJobsEmpty, {role}),
+        },
+        {
+            icon: 'bi-book-fill', color: '#3b82f6', title: CAREER_I18N.journeyLearnNext,
+            body: missing.length ? missing.slice(0, 3).map(m => m.skill).join(', ') : CAREER_I18N.journeyLearnNextEmpty,
+        },
+        {
+            icon: 'bi-rocket-takeoff-fill', color: '#ec4899', title: CAREER_I18N.journeyWhereNext,
+            body: fmt(CAREER_I18N.journeyWhereNextBody, {role}),
+        },
+    ];
+
+    track.innerHTML = steps.map((s, i) => `
+        <div class="journey-step">
+            <div class="journey-icon" style="background:${s.color};"><i class="bi ${s.icon}"></i></div>
+            <div class="journey-title">${s.title}</div>
+            <div class="journey-body">${s.body}</div>
+        </div>
+        ${i < steps.length - 1 ? '<div class="journey-arrow"><i class="bi bi-arrow-right"></i></div>' : ''}
+    `).join('');
+}
+
+function renderScore(score) {
+    document.getElementById('overallScore').textContent = score.overall.toFixed(0);
+    const axes = [
+        { key: 'technical', label: CAREER_I18N.axisTechnical, icon: 'bi-cpu', color: '#6366f1' },
+        { key: 'leadership', label: CAREER_I18N.axisLeadership, icon: 'bi-people-fill', color: '#10b981' },
+        { key: 'communication', label: CAREER_I18N.axisCommunication, icon: 'bi-chat-dots', color: '#f59e0b' },
+        { key: 'consistency', label: CAREER_I18N.axisConsistency, icon: 'bi-calendar-check', color: '#3b82f6' },
+        { key: 'growth', label: CAREER_I18N.axisGrowth, icon: 'bi-graph-up-arrow', color: '#ef4444' },
+    ];
+    document.getElementById('axisScores').innerHTML = axes.map(a => `
+        <div class="col-md-6 col-lg-4">
+            <div class="d-flex align-items-center gap-2 mb-1">
+                <i class="bi ${a.icon} text-muted small"></i>
+                <span class="small fw-semibold">${a.label}</span>
+                <span class="ms-auto fw-bold" style="color:${a.color}">${score[a.key].toFixed(0)}</span>
+            </div>
+            <div class="progress mb-1" style="height:6px; border-radius:4px;">
+                <div class="progress-bar" style="width:${score[a.key]}%; background:${a.color}; border-radius:4px;"></div>
+            </div>
+            <div class="text-muted" style="font-size:0.7rem;">${(score.explanations[a.key] || '').substring(0, 100)}…</div>
+        </div>
+    `).join('');
+}
+
+function renderGap(gap) {
+    const matchedEl = document.getElementById('matchedSkills');
+    const partialEl = document.getElementById('partialSkills');
+    const missingEl = document.getElementById('missingSkills');
+
+    const matchLabel = (sim) => sim >= 0.75 ? CAREER_I18N.matchStrong : sim >= 0.5 ? CAREER_I18N.matchGood : CAREER_I18N.matchSome;
+
+    matchedEl.innerHTML = gap.matched.length
+        ? gap.matched.map(m => `<div class="mb-1">
+            <i class="bi bi-check-circle-fill text-success me-1"></i>${m.skill}
+            <span class="badge bg-success ms-1" style="font-size:0.65rem;">${matchLabel(m.similarity)}</span>
+            <div class="text-muted" style="font-size:0.7rem; padding-left:16px;">${CAREER_I18N.fromLabel} "${m.matched_by}"</div>
+          </div>`).join('')
+        : `<span class="text-muted">${CAREER_I18N.gapMatchedEmpty}</span>`;
+
+    partialEl.innerHTML = gap.partial.length
+        ? gap.partial.map(m => `<div class="mb-1">
+            <i class="bi bi-dash-circle-fill text-warning me-1"></i>${m.skill}
+            <span class="badge bg-warning text-dark ms-1" style="font-size:0.65rem;">${matchLabel(m.similarity)}</span>
+          </div>`).join('')
+        : `<span class="text-muted">${CAREER_I18N.gapPartialEmpty}</span>`;
+
+    missingEl.innerHTML = gap.missing.length
+        ? gap.missing.map(m => `<div class="mb-1">
+            <i class="bi bi-x-circle-fill text-danger me-1"></i>${m.skill}
+            <span class="badge ${m.tier==='core' ? 'bg-danger' : 'bg-secondary'} ms-1" style="font-size:0.65rem;">${m.tier === 'core' ? CAREER_I18N.tierCore : CAREER_I18N.tierNice}</span>
+          </div>`).join('')
+        : `<span class="text-success fw-bold">${CAREER_I18N.gapMissingEmpty}</span>`;
+
+    const pct = gap.coverage_pct;
+    document.getElementById('coveragePct').textContent = pct.toFixed(1) + '%';
+    document.getElementById('coverageBar').style.width = pct + '%';
+    document.getElementById('coreCoveragePct').textContent = gap.core_coverage_pct.toFixed(1) + '%';
+}
+
+function renderLearningPlan(plan) {
+    for (const [phase, label] of [['day_30','30'], ['day_60','60'], ['day_90','90']]) {
+        const el = document.getElementById('plan_' + phase);
+        if (!plan[phase] || !plan[phase].length) { el.innerHTML = `<span class="text-muted">${CAREER_I18N.learningPlanEmpty}</span>`; continue; }
+        el.innerHTML = plan[phase].map(item => `
+            <div class="mb-3">
+                <div class="fw-semibold">${item.skill}</div>
+                <div class="text-muted mb-1" style="font-size:0.72rem;">${item.why}</div>
+                ${(item.resources || []).map(r => `
+                    <a href="${r.url}" target="_blank" class="d-block text-primary" style="font-size:0.75rem;">
+                        <i class="bi ${r.type==='course'?'bi-play-circle':r.type==='certification'?'bi-patch-check':'bi-box-arrow-up-right'} me-1"></i>
+                        ${r.title} <span class="text-muted">(${r.duration})</span>
+                    </a>`).join('')}
+            </div>`).join('');
+    }
+}
+
+function renderOpportunities(opps, gap, role) {
+    const matchedNames = ((gap && gap.matched) || []).map(m => m.skill);
+    const introEl = document.getElementById('oppWhyIntro');
+    if (introEl) {
+        introEl.textContent = matchedNames.length
+            ? fmt(CAREER_I18N.oppIntroWithMatches, {skills: matchedNames.slice(0, 2).join(' and '), role: role || CAREER_I18N.roleFallback})
+            : fmt(CAREER_I18N.oppIntroGeneric, {role: role || CAREER_I18N.roleFallback});
+    }
+
+    const renderList = (id, items, labelKey, urlKey, whyText) => {
+        const el = document.getElementById(id);
+        if (!items || !items.length) { el.innerHTML = `<span class="text-muted">${CAREER_I18N.oppEmpty}</span>`; return; }
+        el.innerHTML = items.map((o, i) => `
+            <div class="mb-2">
+                <a href="${o[urlKey] || '#'}" target="_blank" class="fw-semibold text-decoration-none">${o[labelKey]}</a>
+                ${o.description ? `<div class="text-muted" style="font-size:0.72rem;">${o.description.substring(0,120)}…</div>` : ''}
+                ${i === 0 ? `<div class="text-primary" style="font-size:0.7rem;"><i class="bi bi-lightbulb me-1"></i>${whyText}</div>` : ''}
+                ${o.priority_note ? `<div class="text-warning small"><i class="bi bi-star-fill me-1"></i>${o.priority_note}</div>` : ''}
+                ${o.difficulty ? `<span class="badge bg-light text-dark border" style="font-size:0.65rem;">${o.difficulty}</span>` : ''}
+                ${o.frequency ? `<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">${o.frequency}</span>` : ''}
+            </div>`).join('');
+    };
+    renderList('oppProjects', opps.projects, 'title', 'url',
+        fmt(CAREER_I18N.whyProjects, {role: role || CAREER_I18N.thisRole}));
+    renderList('oppHackathons', opps.hackathons, 'title', 'url',
+        CAREER_I18N.whyHackathons);
+    renderList('oppCerts', opps.certifications, 'title', 'url',
+        CAREER_I18N.whyCerts);
+    renderList('oppOSS', opps.open_source, 'title', 'url',
+        CAREER_I18N.whyOSS);
+}
+
+function renderGrowthCharts(growth) {
+    if (!growth) return;
+    const weeks     = (growth.weekly_activity || []).map(w => (w.week || '').slice(5));
+    const counts    = (growth.weekly_activity || []).map(w => w.count || 0);
+    const avgScores = (growth.weekly_skill_trend || []).map(w => w.avg_score);
+
+    const chartDefaults = {
+        responsive: true,
+        maintainAspectRatio: true,
+        animation: { duration: 800 },
+        plugins: { legend: { display: true, labels: { font: { size: 11 } } } },
+    };
+
+    // Growth: two separate single-axis charts avoid dual-axis yAxisID issues
+    const growthCanvas = document.getElementById('growthChart');
+    if (growthCanvas) {
+        if (growthChartInst) { growthChartInst.destroy(); growthChartInst = null; }
+        growthChartInst = new Chart(growthCanvas, {
+            type: 'line',
+            data: {
+                labels: weeks,
+                datasets: [
+                    { label: CAREER_I18N.chartActivitiesLogged, data: counts,
+                      borderColor: '#6366f1', backgroundColor: 'rgba(99,102,241,0.12)',
+                      tension: 0.4, fill: true, pointRadius: 4, pointBackgroundColor: '#6366f1' },
+                    { label: CAREER_I18N.chartAvgScore, data: avgScores,
+                      borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.08)',
+                      tension: 0.4, fill: false, pointRadius: 4, pointBackgroundColor: '#10b981',
+                      spanGaps: true },
+                ]
+            },
+            options: { ...chartDefaults, scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } } } }
+        });
+    }
+
+    // Skill distribution donut
+    const dist = growth.skill_distribution || [];
+    const distCanvas = document.getElementById('distributionChart');
+    if (distCanvas && dist.length) {
+        if (distChartInst) { distChartInst.destroy(); distChartInst = null; }
+        distChartInst = new Chart(distCanvas, {
+            type: 'doughnut',
+            data: {
+                labels: dist.map(d => d.category),
+                datasets: [{ data: dist.map(d => d.count),
+                    backgroundColor: ['#6366f1','#10b981','#f59e0b','#ef4444','#3b82f6','#8b5cf6','#06b6d4'],
+                    borderWidth: 2, borderColor: '#fff' }]
+            },
+            options: { ...chartDefaults, plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } } }
+        });
+    }
+
+    // Activity consistency bar
+    const actCanvas = document.getElementById('activityChart');
+    if (actCanvas) {
+        if (actChartInst) { actChartInst.destroy(); actChartInst = null; }
+        actChartInst = new Chart(actCanvas, {
+            type: 'bar',
+            data: {
+                labels: weeks,
+                datasets: [{ label: CAREER_I18N.chartActivities, data: counts,
+                    backgroundColor: counts.map(c => c > 0 ? 'rgba(99,102,241,0.8)' : 'rgba(0,0,0,0.06)'),
+                    borderRadius: 4, borderSkipped: false }]
+            },
+            options: { ...chartDefaults,
+                plugins: { legend: { display: false } },
+                scales: { y: { min: 0, ticks: { stepSize: 1, precision: 0 }, grid: { color: 'rgba(0,0,0,0.05)' } } } }
+        });
+    }
+}
+</script>
+<script src="copilot_widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,1698 @@
+# Kannada translations for ISIS Portfolio — complete
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-09-07 18:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: kn\n"
+"Language: kn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: _lang_switch.html:11 _navbar.html:42
+msgid "Language"
+msgstr "ಭಾಷೆ"
+
+#: _navbar.html:31
+msgid "Dashboard"
+msgstr "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
+
+#: _navbar.html:34
+msgid "Career Hub"
+msgstr "ಕೆರಿಯರ್ ಹಬ್"
+
+#: _navbar.html:37
+msgid "History"
+msgstr "ಇತಿಹಾಸ"
+
+#: _navbar.html:55
+msgid "Notifications"
+msgstr "ಸೂಚನೆಗಳು"
+
+#: _navbar.html:63
+msgid "Opportunities"
+msgstr "ಅವಕಾಶಗಳು"
+
+#: _navbar.html:65
+msgid "No notifications yet"
+msgstr "ಇನ್ನೂ ಯಾವುದೇ ಅಧಿಸೂಚನೆ ಇಲ್ಲ"
+
+#: _navbar.html:78
+msgid "Sign Out"
+msgstr "ಸೈನ್ ಔಟ್"
+
+#: _navbar.html:99
+msgid "Open Your Career Guide"
+msgstr "ನಿಮ್ಮ ಕೆರಿಯರ್ ಗೈಡ್ ತೆರೆಯಿರಿ"
+
+#: _navbar.html:100
+msgid "Your Career Guide"
+msgstr "ನಿಮ್ಮ ಕೆರಿಯರ್ ಗೈಡ್"
+
+#: _navbar.html:101
+msgid "Clear conversation"
+msgstr "ಸಂಭಾಷಣೆ ಅಳಿಸಿ"
+
+#: _navbar.html:102 index.html:422 index.html:467
+msgid "Close"
+msgstr "ಮುಚ್ಚಿ"
+
+#: _navbar.html:103
+msgid "Send"
+msgstr "ಕಳುಹಿಸಿ"
+
+#: _navbar.html:104
+msgid ""
+"Ask me anything — how ready you are, what to learn next, what to try..."
+msgstr ""
+"ನನ್ನನ್ನು ಏನು ಬೇಕಾದರೂ ಕೇಳಿ — ನೀವು ಎಷ್ಟು ಸಿದ್ಧರಿದ್ದೀರಿ, ಮುಂದೆ ಏನು ಕಲಿಯಬೇಕು, "
+"ಏನು ಪ್ರಯತ್ನಿಸಬೇಕು..."
+
+#: _navbar.html:106
+msgid "How ready am I for my next opportunity?"
+msgstr "ನನ್ನ ಮುಂದಿನ ಅವಕಾಶಕ್ಕೆ ನಾನು ಎಷ್ಟು ಸಿದ್ಧನಾಗಿದ್ದೇನೆ?"
+
+#: _navbar.html:107
+msgid "What skills could I learn next?"
+msgstr "ಮುಂದೆ ನಾನು ಯಾವ ಕೌಶಲ್ಯಗಳನ್ನು ಕಲಿಯಬಹುದು?"
+
+#: _navbar.html:108
+msgid "What should I try building next?"
+msgstr "ಮುಂದೆ ನಾನು ಏನನ್ನು ನಿರ್ಮಿಸಲು ಪ್ರಯತ್ನಿಸಬೇಕು?"
+
+#: _navbar.html:109
+msgid "Am I ready for the role I want?"
+msgstr "ನಾನು ಬಯಸುವ ಪಾತ್ರಕ್ಕೆ ನಾನು ಸಿದ್ಧನಿದ್ದೇನೆಯೇ?"
+
+#: _navbar.html:111
+msgid "Something went wrong. Please try again."
+msgstr "ಏನೋ ತಪ್ಪಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: _navbar.html:112
+msgid "Network error — please check your connection and try again."
+msgstr ""
+"ನೆಟ್‌ವರ್ಕ್ ದೋಷ — ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ "
+"ಪ್ರಯತ್ನಿಸಿ."
+
+#: _navbar.html:113
+msgid "Clear this conversation? This can't be undone."
+msgstr "ಈ ಸಂಭಾಷಣೆಯನ್ನು ಅಳಿಸಬೇಕೇ? ಇದನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗುವುದಿಲ್ಲ."
+
+#: app.py:356
+msgid "That took a little too long — please refresh the page and try again."
+msgstr ""
+"ಇದಕ್ಕೆ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ಸಮಯ ಬೇಕಾಯಿತು — ದಯವಿಟ್ಟು ಪುಟವನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ ಮತ್ತೆ "
+"ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:366
+msgid "You're moving fast! Please wait a moment and try again."
+msgstr ""
+"ನೀವು ವೇಗವಾಗಿ ಮುಂದುವರಿಯುತ್ತಿದ್ದೀರಿ! ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಕಾದು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:378
+msgid "Something didn't work on our end — please try again."
+msgstr "ನಮ್ಮ ಕಡೆಯಿಂದ ಏನೋ ಕೆಲಸ ಮಾಡಲಿಲ್ಲ — ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:477
+msgid ""
+"We couldn't find an account with that username and password. Please double-"
+"check and try again."
+msgstr ""
+"ಆ ಬಳಕೆದಾರಹೆಸರು ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್‌ನೊಂದಿಗೆ ನಮಗೆ ಯಾವುದೇ ಖಾತೆ ಸಿಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು "
+"ಮತ್ತೊಮ್ಮೆ ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:492
+msgid "Please use a username with at least 3 letters or numbers."
+msgstr "ದಯವಿಟ್ಟು ಕನಿಷ್ಠ 3 ಅಕ್ಷರ ಅಥವಾ ಸಂಖ್ಯೆಗಳಿರುವ ಬಳಕೆದಾರಹೆಸರನ್ನು ಬಳಸಿ."
+
+#: app.py:494
+msgid ""
+"Usernames can only have letters, numbers, and underscores — no spaces or "
+"symbols."
+msgstr ""
+"ಬಳಕೆದಾರಹೆಸರುಗಳಲ್ಲಿ ಕೇವಲ ಅಕ್ಷರಗಳು, ಸಂಖ್ಯೆಗಳು ಮತ್ತು ಅಂಡರ್‌ಸ್ಕೋರ್‌ಗಳು ಮಾತ್ರ "
+"ಇರಬಹುದು — ಸ್ಪೇಸ್ ಅಥವಾ ಚಿಹ್ನೆಗಳಿಲ್ಲ."
+
+#: app.py:496
+msgid "Please choose a password with at least 8 characters."
+msgstr "ದಯವಿಟ್ಟು ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳಿರುವ ಪಾಸ್‌ವರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ."
+
+#: app.py:498
+msgid "Those two passwords don't match — please try typing them again."
+msgstr ""
+"ಆ ಎರಡು ಪಾಸ್‌ವರ್ಡ್‌ಗಳು ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ — ದಯವಿಟ್ಟು ಅವುಗಳನ್ನು ಮತ್ತೆ ಟೈಪ್ "
+"ಮಾಡಿ."
+
+#: app.py:504
+msgid "Someone's already using that username — please try a different one."
+msgstr ""
+"ಆ ಬಳಕೆದಾರಹೆಸರನ್ನು ಈಗಾಗಲೇ ಯಾರೋ ಬಳಸುತ್ತಿದ್ದಾರೆ — ದಯವಿಟ್ಟು ಬೇರೆ ಹೆಸರನ್ನು "
+"ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:507
+msgid "You're all set! Please sign in to get started."
+msgstr "ಎಲ್ಲವೂ ಸಿದ್ಧವಾಗಿದೆ! ಪ್ರಾರಂಭಿಸಲು ದಯವಿಟ್ಟು ಸೈನ್ ಇನ್ ಮಾಡಿ."
+
+#: app.py:516
+msgid "You've been signed out. See you next time!"
+msgstr "ನಿಮ್ಮನ್ನು ಸೈನ್ ಔಟ್ ಮಾಡಲಾಗಿದೆ. ಮತ್ತೆ ಸಿಗೋಣ!"
+
+#: app.py:629
+msgid ""
+"Please tell us a little more about what you did — even a sentence or two "
+"helps."
+msgstr ""
+"ನೀವು ಏನು ಮಾಡಿದ್ದೀರಿ ಎಂಬುದರ ಬಗ್ಗೆ ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಹೆಚ್ಚು ತಿಳಿಸಿ — ಒಂದೆರಡು "
+"ವಾಕ್ಯಗಳೂ ಸಹಾಯ ಮಾಡುತ್ತವೆ."
+
+#: app.py:1401
+msgid "Could not load your portfolio data. Please try again."
+msgstr "ನಿಮ್ಮ ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಡೇಟಾ ಲೋಡ್ ಆಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:1743
+msgid "Could not generate your PDF. Please try again."
+msgstr "ನಿಮ್ಮ PDF ರಚಿಸಲು ಆಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:1782
+msgid "Please choose one of the roles from the list."
+msgstr "ದಯವಿಟ್ಟು ಪಟ್ಟಿಯಿಂದ ಒಂದು ಪಾತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+
+#: app.py:1785
+#, python-format
+msgid "Got it! You're now aiming for %(role)s."
+msgstr "ಅರ್ಥವಾಯಿತು! ಈಗ ನಿಮ್ಮ ಗುರಿ %(role)s."
+
+#: app.py:1800
+msgid "Please choose a file to upload."
+msgstr "ದಯವಿಟ್ಟು ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಒಂದು ಫೈಲ್ ಆಯ್ಕೆಮಾಡಿ."
+
+#: app.py:1804
+msgid "Please choose a file first."
+msgstr "ದಯವಿಟ್ಟು ಮೊದಲು ಒಂದು ಫೈಲ್ ಆಯ್ಕೆಮಾಡಿ."
+
+#: app.py:1815
+msgid ""
+"We had trouble reading that file. Please try again, or try a different file."
+msgstr ""
+"ಆ ಫೈಲ್ ಓದಲು ನಮಗೆ ತೊಂದರೆಯಾಯಿತು. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಬೇರೆ ಫೈಲ್ "
+"ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:1821
+msgid "We read your resume but couldn't save it just now. Please try again."
+msgstr ""
+"ನಾವು ನಿಮ್ಮ ರೆಸ್ಯೂಮೆ ಓದಿದ್ದೇವೆ ಆದರೆ ಈಗ ಅದನ್ನು ಉಳಿಸಲು ಆಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ "
+"ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:1825
+#, python-format
+msgid "Great! We've added '%(filename)s' to your profile."
+msgstr "ಚೆನ್ನಾಗಿದೆ! ನಾವು '%(filename)s' ಅನ್ನು ನಿಮ್ಮ ಪ್ರೊಫೈಲ್‌ಗೆ ಸೇರಿಸಿದ್ದೇವೆ."
+
+#: app.py:1849
+msgid "Please tell us what role you're hoping for first, in the Career Hub."
+msgstr "ದಯವಿಟ್ಟು ಮೊದಲು ಕೆರಿಯರ್ ಹಬ್‌ನಲ್ಲಿ ನೀವು ಬಯಸುವ ಪಾತ್ರವನ್ನು ತಿಳಿಸಿ."
+
+#: app.py:1880
+msgid ""
+"Skill gap analysis failed. This usually means the local AI model couldn't be"
+" loaded (it needs to download once from the internet the first time it's "
+"used). Check your connection and try again in a moment."
+msgstr ""
+"ಕೌಶಲ್ಯ ಅಂತರ ವಿಶ್ಲೇಷಣೆ ವಿಫಲವಾಗಿದೆ. ಇದು ಸಾಮಾನ್ಯವಾಗಿ ಸ್ಥಳೀಯ AI ಮಾದರಿಯನ್ನು ಲೋಡ್ "
+"ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ ಎಂದರ್ಥ (ಮೊದಲ ಬಳಕೆಯಲ್ಲಿ ಇಂಟರ್ನೆಟ್‌ನಿಂದ ಒಮ್ಮೆ ಡೌನ್‌ಲೋಡ್ "
+"ಆಗಬೇಕು). ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಸ್ವಲ್ಪ ಸಮಯದಲ್ಲಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:2004
+msgid "We couldn't put your portfolio together just now. Please try again."
+msgstr ""
+"ನಾವು ಈಗ ನಿಮ್ಮ ಪೋರ್ಟ್‌ಫೋಲಿಯೊವನ್ನು ಜೋಡಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ "
+"ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:2430
+msgid "Could not render portfolio PDF. Please try again."
+msgstr "ಪೋರ್ಟ್‌ಫೋಲಿಯೊ PDF ರಚಿಸಲು ಆಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:2474
+msgid "The Copilot couldn't respond. Please try again."
+msgstr "ಕೋಪೈಲಟ್ ಪ್ರತಿಕ್ರಿಯಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: app.py:2488
+msgid "Could not load conversation history."
+msgstr "ಸಂಭಾಷಣೆಯ ಇತಿಹಾಸ ಲೋಡ್ ಆಗಲಿಲ್ಲ."
+
+#: app.py:2502
+msgid "Could not clear conversation history."
+msgstr "ಸಂಭಾಷಣೆಯ ಇತಿಹಾಸ ಅಳಿಸಲು ಆಗಲಿಲ್ಲ."
+
+#: career.html:7
+msgid "ISIS - Career Intelligence Hub"
+msgstr "ISIS - ಕೆರಿಯರ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ಹಬ್"
+
+#: career.html:18
+msgid "Career Portfolio PDF"
+msgstr "ಕೆರಿಯರ್ ಪೋರ್ಟ್‌ಫೋಲಿಯೊ PDF"
+
+#: career.html:27 index.html:372
+msgid "Career Intelligence Hub"
+msgstr "ಕೆರಿಯರ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ಹಬ್"
+
+#: career.html:29
+msgid ""
+"See how ready you are for a role you want, and a simple plan to get even "
+"more ready"
+msgstr ""
+"ನೀವು ಬಯಸುವ ಪಾತ್ರಕ್ಕೆ ಎಷ್ಟು ಸಿದ್ಧರಿದ್ದೀರಿ ಎಂಬುದನ್ನು ನೋಡಿ, ಮತ್ತು ಇನ್ನಷ್ಟು "
+"ಸಿದ್ಧರಾಗಲು ಸರಳ ಯೋಜನೆ ಪಡೆಯಿರಿ"
+
+#: career.html:40
+msgid "Step 1 — What Role Are You Hoping For?"
+msgstr "ಹಂತ 1 — ನೀವು ಯಾವ ಪಾತ್ರವನ್ನು ಬಯಸುತ್ತೀರಿ?"
+
+#: career.html:41
+msgid ""
+"Pick something you'd like to work toward. We'll use this to see how your "
+"experience already matches up."
+msgstr ""
+"ನೀವು ಸಾಧಿಸಲು ಬಯಸುವ ಯಾವುದನ್ನಾದರೂ ಆಯ್ಕೆಮಾಡಿ. ನಿಮ್ಮ ಅನುಭವ ಈಗಾಗಲೇ ಎಷ್ಟು "
+"ಹೊಂದಿಕೆಯಾಗುತ್ತದೆ ಎಂಬುದನ್ನು ನೋಡಲು ನಾವು ಇದನ್ನು ಬಳಸುತ್ತೇವೆ."
+
+#: career.html:50
+msgid "Save This Goal"
+msgstr "ಈ ಗುರಿಯನ್ನು ಉಳಿಸಿ"
+
+#: career.html:55
+msgid "You're aiming for:"
+msgstr "ನಿಮ್ಮ ಗುರಿ:"
+
+#: career.html:66
+msgid "Step 2 — Have a Resume? Add It (Optional)"
+msgstr "ಹಂತ 2 — ರೆಸ್ಯೂಮೆ ಇದೆಯೇ? ಸೇರಿಸಿ (ಐಚ್ಛಿಕ)"
+
+#: career.html:67
+msgid ""
+"Don't have one? No problem at all — the activities you've already shared on "
+"your Dashboard are enough on their own."
+msgstr ""
+"ಇಲ್ಲವೇ? ಪರವಾಗಿಲ್ಲ — ನೀವು ಈಗಾಗಲೇ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಹಂಚಿಕೊಂಡ ಚಟುವಟಿಕೆಗಳೇ "
+"ಸಾಕಷ್ಟಾಗುತ್ತವೆ."
+
+#: career.html:70
+msgid "We have this on file:"
+msgstr "ಇದು ನಮ್ಮ ಬಳಿ ಈಗಾಗಲೇ ಇದೆ:"
+
+#: career.html:71
+msgid "(add a new one any time to replace it)"
+msgstr "(ಇದನ್ನು ಬದಲಿಸಲು ಯಾವಾಗ ಬೇಕಾದರೂ ಹೊಸದನ್ನು ಸೇರಿಸಿ)"
+
+#: career.html:80
+msgid "Drag & drop, or click to choose a file"
+msgstr "ಎಳೆದು ಬಿಡಿ, ಅಥವಾ ಫೈಲ್ ಆಯ್ಕೆಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
+
+#: career.html:81
+msgid "PDF or Word document · up to 8MB"
+msgstr "PDF ಅಥವಾ Word ಡಾಕ್ಯುಮೆಂಟ್ · 8MB ವರೆಗೆ"
+
+#: career.html:85
+msgid "Choose a File"
+msgstr "ಒಂದು ಫೈಲ್ ಆಯ್ಕೆಮಾಡಿ"
+
+#: career.html:98
+msgid "See How Ready I Am"
+msgstr "ನಾನು ಎಷ್ಟು ಸಿದ್ಧನಿದ್ದೇನೆ ಎಂದು ನೋಡಿ"
+
+#: career.html:102
+msgid "Looking at everything you've shared with us…"
+msgstr "ನೀವು ನಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಂಡ ಎಲ್ಲವನ್ನೂ ನೋಡಲಾಗುತ್ತಿದೆ…"
+
+#: career.html:120
+msgid "Your Career Journey"
+msgstr "ನಿಮ್ಮ ಕೆರಿಯರ್ ಪಯಣ"
+
+#: career.html:121
+msgid ""
+"A simple path from what you're already great at, to where you could go next."
+msgstr ""
+"ನೀವು ಈಗಾಗಲೇ ಉತ್ತಮವಾಗಿರುವುದರಿಂದ, ಮುಂದೆ ಎಲ್ಲಿಗೆ ಹೋಗಬಹುದು ಎಂಬಲ್ಲಿಗೆ ಒಂದು ಸರಳ "
+"ಮಾರ್ಗ."
+
+#: career.html:135
+msgid "How Ready You Are for This Role"
+msgstr "ಈ ಪಾತ್ರಕ್ಕೆ ನೀವು ಎಷ್ಟು ಸಿದ್ಧರಿದ್ದೀರಿ"
+
+#: career.html:139
+msgid "out of 100"
+msgstr "100 ರಲ್ಲಿ"
+
+#: career.html:157
+msgid "Things You Already Do Well"
+msgstr "ನೀವು ಈಗಾಗಲೇ ಚೆನ್ನಾಗಿ ಮಾಡುವ ವಿಷಯಗಳು"
+
+#: career.html:165
+msgid "You're Partway There"
+msgstr "ನೀವು ಅರ್ಧದಾರಿ ತಲುಪಿದ್ದೀರಿ"
+
+#: career.html:173 career.html:420
+msgid "Skills You Can Learn Next"
+msgstr "ಮುಂದೆ ನೀವು ಕಲಿಯಬಹುದಾದ ಕೌಶಲ್ಯಗಳು"
+
+#: career.html:186
+msgid "How Well You Match This Role"
+msgstr "ಈ ಪಾತ್ರಕ್ಕೆ ನೀವು ಎಷ್ಟು ಚೆನ್ನಾಗಿ ಹೊಂದಿಕೆಯಾಗುತ್ತೀರಿ"
+
+#: career.html:192
+msgid "Match on the most important skills:"
+msgstr "ಅತ್ಯಂತ ಪ್ರಮುಖ ಕೌಶಲ್ಯಗಳಲ್ಲಿ ಹೊಂದಿಕೆ:"
+
+#: career.html:208
+msgid "Your Story, Summed Up"
+msgstr "ನಿಮ್ಮ ಕಥೆ, ಸಂಕ್ಷಿಪ್ತವಾಗಿ"
+
+#: career.html:209
+msgid "A quick overview, the way an employer might see it"
+msgstr "ಒಂದು ತ್ವರಿತ ಅವಲೋಕನ, ಉದ್ಯೋಗದಾತರು ನೋಡಬಹುದಾದ ರೀತಿಯಲ್ಲಿ"
+
+#: career.html:213 career.html:585
+msgid "How Ready You Are"
+msgstr "ನೀವು ಎಷ್ಟು ಸಿದ್ಧರಿದ್ದೀರಿ"
+
+#: career.html:224
+msgid "Top Strengths"
+msgstr "ಪ್ರಮುಖ ಸಾಮರ್ಥ್ಯಗಳು"
+
+#: career.html:230
+msgid "Where You Could Grow"
+msgstr "ನೀವು ಎಲ್ಲಿ ಬೆಳೆಯಬಹುದು"
+
+#: career.html:237
+msgid "What To Try Next"
+msgstr "ಮುಂದೆ ಏನು ಪ್ರಯತ್ನಿಸಬೇಕು"
+
+#: career.html:250
+msgid "Resume Quality &amp; Interview Readiness"
+msgstr "ರೆಸ್ಯೂಮೆ ಗುಣಮಟ್ಟ ಮತ್ತು ಸಂದರ್ಶನ ಸಿದ್ಧತೆ"
+
+#: career.html:260
+msgid "Words Worth Adding to Your Resume"
+msgstr "ನಿಮ್ಮ ರೆಸ್ಯೂಮೆಗೆ ಸೇರಿಸಲು ಯೋಗ್ಯವಾದ ಪದಗಳು"
+
+#: career.html:264
+msgid "Ways to Strengthen It"
+msgstr "ಇದನ್ನು ಬಲಪಡಿಸುವ ಮಾರ್ಗಗಳು"
+
+#: career.html:278
+msgid "Score Explainability"
+msgstr "ಸ್ಕೋರ್ ವಿವರಣೆ"
+
+#: career.html:279
+msgid ""
+"Every score is derived from your actual activities, resume, and skill gap — "
+"not a black box."
+msgstr ""
+"ಪ್ರತಿ ಸ್ಕೋರ್ ನಿಮ್ಮ ನಿಜವಾದ ಚಟುವಟಿಕೆಗಳು, ರೆಸ್ಯೂಮೆ, ಮತ್ತು ಕೌಶಲ್ಯ ಅಂತರದಿಂದ "
+"ಪಡೆಯಲಾಗಿದೆ — ಇದೊಂದು ಬ್ಲ್ಯಾಕ್ ಬಾಕ್ಸ್ ಅಲ್ಲ."
+
+#: career.html:289
+msgid "Your 30/60/90-Day Learning Roadmap"
+msgstr "ನಿಮ್ಮ 30/60/90-ದಿನದ ಕಲಿಕೆಯ ರೋಡ್‌ಮ್ಯಾಪ್"
+
+#: career.html:291
+msgid "First 30 Days"
+msgstr "ಮೊದಲ 30 ದಿನಗಳು"
+
+#: career.html:291
+msgid "Days 31–60"
+msgstr "ದಿನ 31–60"
+
+#: career.html:291
+msgid "Days 61–90"
+msgstr "ದಿನ 61–90"
+
+#: career.html:308
+msgid "Skill Growth Over Time"
+msgstr "ಕಾಲಾಂತರದಲ್ಲಿ ಕೌಶಲ್ಯ ಬೆಳವಣಿಗೆ"
+
+#: career.html:316
+msgid "Skill Distribution"
+msgstr "ಕೌಶಲ್ಯ ಹಂಚಿಕೆ"
+
+#: career.html:328
+msgid "Activity Consistency (Last 12 Weeks)"
+msgstr "ಚಟುವಟಿಕೆ ಸ್ಥಿರತೆ (ಕಳೆದ 12 ವಾರಗಳು)"
+
+#: career.html:338
+msgid "Things Worth Trying Next"
+msgstr "ಮುಂದೆ ಪ್ರಯತ್ನಿಸಲು ಯೋಗ್ಯವಾದ ವಿಷಯಗಳು"
+
+#: career.html:339
+msgid ""
+"Chosen because they build on what you're already good at, and move you "
+"closer to the role you're hoping for."
+msgstr ""
+"ನೀವು ಈಗಾಗಲೇ ಚೆನ್ನಾಗಿರುವುದರ ಮೇಲೆ ಇವು ನಿರ್ಮಾಣವಾಗುವುದರಿಂದ ಮತ್ತು ನೀವು ಬಯಸುವ "
+"ಪಾತ್ರಕ್ಕೆ ಹತ್ತಿರವಾಗಿಸುವುದರಿಂದ ಇವುಗಳನ್ನು ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ."
+
+#: career.html:344
+msgid "Projects to Build"
+msgstr "ನಿರ್ಮಿಸಬೇಕಾದ ಯೋಜನೆಗಳು"
+
+#: career.html:352
+msgid "Hackathons"
+msgstr "ಹ್ಯಾಕಥಾನ್‌ಗಳು"
+
+#: career.html:360
+msgid "Certifications"
+msgstr "ಪ್ರಮಾಣಪತ್ರಗಳು"
+
+#: career.html:368
+msgid "Open Source"
+msgstr "ಓಪನ್ ಸೋರ್ಸ್"
+
+#: career.html:379
+msgid "Set your target role above"
+msgstr "ಮೇಲೆ ನಿಮ್ಮ ಗುರಿ ಪಾತ್ರವನ್ನು ಹೊಂದಿಸಿ"
+
+#: career.html:379
+msgid "to unlock your personalised career analysis."
+msgstr "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಕೆರಿಯರ್ ವಿಶ್ಲೇಷಣೆಯನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲು."
+
+#: career.html:393
+msgid "Uploading and parsing…"
+msgstr "ಅಪ್‌ಲೋಡ್ ಮತ್ತು ವಿಶ್ಲೇಷಣೆ ಆಗುತ್ತಿದೆ…"
+
+#: career.html:394
+msgid "Sections found:"
+msgstr "ಕಂಡುಬಂದ ವಿಭಾಗಗಳು:"
+
+#: career.html:395
+msgid "Skills extracted:"
+msgstr "ಹೊರತೆಗೆದ ಕೌಶಲ್ಯಗಳು:"
+
+#: career.html:396
+msgid "Upload failed:"
+msgstr "ಅಪ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ:"
+
+#: career.html:397
+msgid "Pick a role you're aiming for above first, then try again."
+msgstr "ಮೊದಲು ಮೇಲೆ ನಿಮ್ಮ ಗುರಿ ಪಾತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ, ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
+#: career.html:398
+msgid "We couldn't put this together just now. Please try again in a moment."
+msgstr ""
+"ನಾವು ಇದನ್ನು ಈಗ ಜೋಡಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದಲ್ಲಿ ಮತ್ತೆ "
+"ಪ್ರಯತ್ನಿಸಿ."
+
+#: career.html:399
+msgid "We couldn't put this together just now — "
+msgstr "ನಾವು ಇದನ್ನು ಈಗ ಜೋಡಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ — "
+
+#: career.html:400
+msgid "Skills & Know-How"
+msgstr "ಕೌಶಲ್ಯ ಮತ್ತು ಜ್ಞಾನ"
+
+#: career.html:401
+msgid "Leading Others"
+msgstr "ಇತರರನ್ನು ಮುನ್ನಡೆಸುವುದು"
+
+#: career.html:402
+msgid "Explaining Things Clearly"
+msgstr "ವಿಷಯಗಳನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ವಿವರಿಸುವುದು"
+
+#: career.html:403
+msgid "Staying Consistent"
+msgstr "ಸ್ಥಿರವಾಗಿ ಇರುವುದು"
+
+#: career.html:404
+msgid "Growing Over Time"
+msgstr "ಕಾಲಾಂತರದಲ್ಲಿ ಬೆಳೆಯುವುದು"
+
+#: career.html:405 history.html:173
+msgid "We're quite sure"
+msgstr "ನಮಗೆ ಸಂಪೂರ್ಣ ಖಚಿತವಿದೆ"
+
+#: career.html:406 history.html:173
+msgid "We're fairly sure"
+msgstr "ನಮಗೆ ಸಾಕಷ್ಟು ಖಚಿತವಿದೆ"
+
+#: career.html:407 history.html:173
+msgid "Still learning about this"
+msgstr "ಇದರ ಬಗ್ಗೆ ಇನ್ನೂ ಕಲಿಯುತ್ತಿದ್ದೇವೆ"
+
+#: career.html:408
+msgid "Why We Think This"
+msgstr "ನಾವು ಇದನ್ನು ಏಕೆ ಭಾವಿಸುತ್ತೇವೆ"
+
+#: career.html:409
+msgid "Where We Saw It In Your Story"
+msgstr "ನಿಮ್ಮ ಕಥೆಯಲ್ಲಿ ನಾವು ಇದನ್ನು ಎಲ್ಲಿ ಕಂಡೆವು"
+
+#: career.html:410
+msgid "How to Strengthen This"
+msgstr "ಇದನ್ನು ಹೇಗೆ ಬಲಪಡಿಸುವುದು"
+
+#: career.html:411
+msgid "Nothing specific yet — tell us more and we'll find it"
+msgstr ""
+"ಇನ್ನೂ ನಿರ್ದಿಷ್ಟವಾಗಿ ಏನೂ ಇಲ್ಲ — ನಮಗೆ ಇನ್ನಷ್ಟು ತಿಳಿಸಿ, ನಾವು ಅದನ್ನು "
+"ಕಂಡುಹಿಡಿಯುತ್ತೇವೆ"
+
+#: career.html:412
+msgid "You're doing great here!"
+msgstr "ನೀವು ಇಲ್ಲಿ ಚೆನ್ನಾಗಿ ಮಾಡುತ್ತಿದ್ದೀರಿ!"
+
+#: career.html:413
+msgid "What You're Already Great At"
+msgstr "ನೀವು ಈಗಾಗಲೇ ಉತ್ತಮವಾಗಿರುವುದು"
+
+#: career.html:414
+msgid "Every story you share helps us find more of these."
+msgstr ""
+"ನೀವು ಹಂಚಿಕೊಳ್ಳುವ ಪ್ರತಿಯೊಂದು ಕಥೆಯೂ ಇವುಗಳನ್ನು ಇನ್ನಷ್ಟು ಕಂಡುಹಿಡಿಯಲು ನಮಗೆ ಸಹಾಯ "
+"ಮಾಡುತ್ತದೆ."
+
+#: career.html:415
+msgid "Hidden Skills We Found"
+msgstr "ನಮಗೆ ಸಿಕ್ಕ ಗುಪ್ತ ಕೌಶಲ್ಯಗಳು"
+
+#: career.html:416
+msgid "Tell us a bit more and we'll spot skills you may not realise you have."
+msgstr ""
+"ನಮಗೆ ಸ್ವಲ್ಪ ಹೆಚ್ಚು ತಿಳಿಸಿ, ನಿಮಗೆ ತಿಳಿದಿಲ್ಲದ ಕೌಶಲ್ಯಗಳನ್ನು ನಾವು "
+"ಗುರುತಿಸುತ್ತೇವೆ."
+
+#: career.html:417
+msgid "Jobs You Could Explore Today"
+msgstr "ಇಂದು ನೀವು ಪರಿಶೀಲಿಸಬಹುದಾದ ಉದ್ಯೋಗಗಳು"
+
+#: career.html:418
+#, python-format
+msgid "Roles like %%(role)s"
+msgstr "%%(role)s ರೀತಿಯ ಪಾತ್ರಗಳು"
+
+#: career.html:419
+#, python-format
+msgid "Once you pick a role like %%(role)s, we'll show real next steps here."
+msgstr ""
+"%%(role)s ರೀತಿಯ ಪಾತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿದ ನಂತರ, ನಾವು ಇಲ್ಲಿ ನಿಜವಾದ ಮುಂದಿನ "
+"ಹಂತಗಳನ್ನು ತೋರಿಸುತ್ತೇವೆ."
+
+#: career.html:421
+msgid "You're already covering everything important — nicely done!"
+msgstr ""
+"ನೀವು ಈಗಾಗಲೇ ಎಲ್ಲಾ ಪ್ರಮುಖ ವಿಷಯಗಳನ್ನು ಒಳಗೊಂಡಿದ್ದೀರಿ — ಚೆನ್ನಾಗಿ ಮಾಡಿದ್ದೀರಿ!"
+
+#: career.html:422
+msgid "Where This Could Take You"
+msgstr "ಇದು ನಿಮ್ಮನ್ನು ಎಲ್ಲಿಗೆ ಕರೆದೊಯ್ಯಬಹುದು"
+
+#: career.html:423
+#, python-format
+msgid "With a bit more practice, %%(role)s could be well within reach."
+msgstr "ಇನ್ನಷ್ಟು ಅಭ್ಯಾಸದೊಂದಿಗೆ, %%(role)s ನಿಮ್ಮ ಕೈಗೆಟುಕುವಂತಿರಬಹುದು."
+
+#: career.html:424
+msgid "your next role"
+msgstr "ನಿಮ್ಮ ಮುಂದಿನ ಪಾತ್ರ"
+
+#: career.html:425
+msgid "Strong match"
+msgstr "ಬಲವಾದ ಹೊಂದಿಕೆ"
+
+#: career.html:426
+msgid "Good match"
+msgstr "ಒಳ್ಳೆಯ ಹೊಂದಿಕೆ"
+
+#: career.html:427
+msgid "Some overlap"
+msgstr "ಸ್ವಲ್ಪ ಹೊಂದಿಕೆ"
+
+#: career.html:428
+msgid ""
+"Nothing to show yet — tell us about a few more things you've done, or add "
+"your resume."
+msgstr ""
+"ತೋರಿಸಲು ಇನ್ನೂ ಏನೂ ಇಲ್ಲ — ನೀವು ಮಾಡಿದ ಇನ್ನಷ್ಟು ವಿಷಯಗಳ ಬಗ್ಗೆ ತಿಳಿಸಿ, ಅಥವಾ ನಿಮ್ಮ"
+" ರೆಸ್ಯೂಮೆ ಸೇರಿಸಿ."
+
+#: career.html:429
+msgid "Nothing here right now."
+msgstr "ಈಗ ಇಲ್ಲಿ ಏನೂ ಇಲ್ಲ."
+
+#: career.html:430
+msgid "You're already covering everything important — wonderful!"
+msgstr "ನೀವು ಈಗಾಗಲೇ ಎಲ್ಲಾ ಪ್ರಮುಖ ವಿಷಯಗಳನ್ನು ಒಳಗೊಂಡಿದ್ದೀರಿ — ಅದ್ಭುತ!"
+
+#: career.html:431
+msgid "from:"
+msgstr "ಮೂಲ:"
+
+#: career.html:432
+msgid "Especially useful"
+msgstr "ವಿಶೇಷವಾಗಿ ಉಪಯುಕ್ತ"
+
+#: career.html:433
+msgid "Good to have"
+msgstr "ಇದ್ದರೆ ಒಳ್ಳೆಯದು"
+
+#: career.html:434
+msgid "Nothing to do — great coverage!"
+msgstr "ಮಾಡಲು ಏನೂ ಇಲ್ಲ — ಅತ್ಯುತ್ತಮ ವ್ಯಾಪ್ತಿ!"
+
+#: career.html:435
+#, python-format
+msgid ""
+"Chosen because you've already shown skills like %%(skills)s — these build on"
+" that, and move you closer to %%(role)s."
+msgstr ""
+"%%(skills)s ರೀತಿಯ ಕೌಶಲ್ಯಗಳನ್ನು ನೀವು ಈಗಾಗಲೇ ತೋರಿಸಿರುವುದರಿಂದ ಇವುಗಳನ್ನು "
+"ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ — ಇವು ಅದರ ಮೇಲೆ ನಿರ್ಮಾಣವಾಗುತ್ತವೆ, ಮತ್ತು ನಿಮ್ಮನ್ನು %%(role)s ಗೆ"
+" ಹತ್ತಿರವಾಗಿಸುತ್ತವೆ."
+
+#: career.html:436
+#, python-format
+msgid "These are good general starting points for %%(role)s."
+msgstr "ಇವು %%(role)s ಗಾಗಿ ಉತ್ತಮ ಸಾಮಾನ್ಯ ಆರಂಭಿಕ ಬಿಂದುಗಳಾಗಿವೆ."
+
+#: career.html:437
+msgid "the role you're hoping for"
+msgstr "ನೀವು ಬಯಸುವ ಪಾತ್ರ"
+
+#: career.html:438
+msgid "Nothing here yet — set a target role above to see suggestions."
+msgstr "ಇನ್ನೂ ಇಲ್ಲಿ ಏನೂ ಇಲ್ಲ — ಸಲಹೆಗಳನ್ನು ನೋಡಲು ಮೇಲೆ ಗುರಿ ಪಾತ್ರವನ್ನು ಹೊಂದಿಸಿ."
+
+#: career.html:439
+#, python-format
+msgid ""
+"Why: hands-on practice that shows employers what you can do for %%(role)s."
+msgstr ""
+"ಏಕೆ: %%(role)s ಗಾಗಿ ನೀವು ಏನು ಮಾಡಬಹುದು ಎಂಬುದನ್ನು ಉದ್ಯೋಗದಾತರಿಗೆ ತೋರಿಸುವ "
+"ಪ್ರಾಯೋಗಿಕ ಅಭ್ಯಾಸ."
+
+#: career.html:440
+msgid ""
+"Why: a chance to practice under real conditions, alongside others aiming for"
+" similar work."
+msgstr ""
+"ಏಕೆ: ನಿಜವಾದ ಪರಿಸ್ಥಿತಿಗಳಲ್ಲಿ, ಸಮಾನ ಕೆಲಸವನ್ನು ಬಯಸುವ ಇತರರೊಂದಿಗೆ ಅಭ್ಯಾಸ ಮಾಡುವ "
+"ಅವಕಾಶ."
+
+#: career.html:441
+msgid ""
+"Why: fills in a skill this role usually asks for, backed by a recognised "
+"provider."
+msgstr ""
+"ಏಕೆ: ಈ ಪಾತ್ರ ಸಾಮಾನ್ಯವಾಗಿ ಕೇಳುವ ಕೌಶಲ್ಯವನ್ನು ಇದು ಪೂರೈಸುತ್ತದೆ, ಮಾನ್ಯತೆ ಪಡೆದ "
+"ಪೂರೈಕೆದಾರರಿಂದ ಬೆಂಬಲಿತವಾಗಿದೆ."
+
+#: career.html:442
+msgid ""
+"Why: a low-pressure way to build a public track record of your skills over "
+"time."
+msgstr ""
+"ಏಕೆ: ಕಾಲಾಂತರದಲ್ಲಿ ನಿಮ್ಮ ಕೌಶಲ್ಯಗಳ ಸಾರ್ವಜನಿಕ ದಾಖಲೆಯನ್ನು ನಿರ್ಮಿಸಲು ಒತ್ತಡವಿಲ್ಲದ "
+"ಮಾರ್ಗ."
+
+#: career.html:443
+msgid "Activities logged"
+msgstr "ದಾಖಲಾದ ಚಟುವಟಿಕೆಗಳು"
+
+#: career.html:444
+msgid "Avg Employability Score"
+msgstr "ಸರಾಸರಿ ಉದ್ಯೋಗ-ಅರ್ಹತಾ ಸ್ಕೋರ್"
+
+#: career.html:445
+msgid "Activities"
+msgstr "ಚಟುವಟಿಕೆಗಳು"
+
+#: career.html:446
+msgid "this role"
+msgstr "ಈ ಪಾತ್ರ"
+
+#: career.html:447
+msgid "Great"
+msgstr "ಅತ್ಯುತ್ತಮ"
+
+#: career.html:448
+msgid "Growing"
+msgstr "ಬೆಳೆಯುತ್ತಿದೆ"
+
+#: career.html:449
+msgid "Just Starting"
+msgstr "ಈಗಷ್ಟೇ ಪ್ರಾರಂಭ"
+
+#: career.html:586
+msgid "Resume Quality"
+msgstr "ರೆಸ್ಯೂಮೆ ಗುಣಮಟ್ಟ"
+
+#: career.html:587
+msgid "How Strong Your Resume Is"
+msgstr "ನಿಮ್ಮ ರೆಸ್ಯೂಮೆ ಎಷ್ಟು ಬಲವಾಗಿದೆ"
+
+#: career.html:588
+msgid "Interview Readiness"
+msgstr "ಸಂದರ್ಶನ ಸಿದ್ಧತೆ"
+
+#: career.html:607
+msgid "Share a few more activities and we'll spot your strengths here."
+msgstr ""
+"ಇನ್ನಷ್ಟು ಚಟುವಟಿಕೆಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ, ನಾವು ಇಲ್ಲಿ ನಿಮ್ಮ ಸಾಮರ್ಥ್ಯಗಳನ್ನು "
+"ಗುರುತಿಸುತ್ತೇವೆ."
+
+#: career.html:613
+msgid "No major gaps identified."
+msgstr "ಯಾವುದೇ ಪ್ರಮುಖ ಕೊರತೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
+
+#: career.html:625
+msgid "ATS Score"
+msgstr "ATS ಸ್ಕೋರ್"
+
+#: career.html:626
+msgid "Resume Strength"
+msgstr "ರೆಸ್ಯೂಮೆ ಬಲ"
+
+#: career.html:627
+msgid "Interview Ready"
+msgstr "ಸಂದರ್ಶನಕ್ಕೆ ಸಿದ್ಧ"
+
+#: career.html:628
+msgid "Completeness"
+msgstr "ಸಂಪೂರ್ಣತೆ"
+
+#: career.html:645
+msgid "All key ATS keywords are covered."
+msgstr "ಎಲ್ಲಾ ಪ್ರಮುಖ ATS ಕೀವರ್ಡ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿದೆ."
+
+#: career.html:657
+msgid "No major improvements needed."
+msgstr "ಯಾವುದೇ ಪ್ರಮುಖ ಸುಧಾರಣೆಗಳು ಅಗತ್ಯವಿಲ್ಲ."
+
+#: history.html:8
+msgid "ISIS – Activity History"
+msgstr "ISIS – ಚಟುವಟಿಕೆ ಇತಿಹಾಸ"
+
+#: history.html:103
+msgid "Everything You've Shared With Us"
+msgstr "ನೀವು ನಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಂಡ ಎಲ್ಲವೂ"
+
+#: history.html:104
+#, python-format
+msgid "All %(count)s recorded activities from your portfolio."
+msgstr "ನಿಮ್ಮ ಪೋರ್ಟ್‌ಫೋಲಿಯೊದಿಂದ ದಾಖಲಾದ ಎಲ್ಲಾ %(count)s ಚಟುವಟಿಕೆಗಳು."
+
+#: history.html:107
+msgid "🔍  Find something you shared before…"
+msgstr "🔍  ಮೊದಲು ಹಂಚಿಕೊಂಡ ಯಾವುದನ್ನಾದರೂ ಹುಡುಕಿ…"
+
+#: history.html:109
+msgid "New"
+msgstr "ಹೊಸದು"
+
+#: history.html:119
+msgid "Total Activities"
+msgstr "ಒಟ್ಟು ಚಟುವಟಿಕೆಗಳು"
+
+#: history.html:125
+msgid "Avg Leadership"
+msgstr "ಸರಾಸರಿ ನಾಯಕತ್ವ"
+
+#: history.html:131
+msgid "Avg Employability"
+msgstr "ಸರಾಸರಿ ಉದ್ಯೋಗ-ಅರ್ಹತೆ"
+
+#: history.html:137
+msgid "Top Skill Area"
+msgstr "ಪ್ರಮುಖ ಕೌಶಲ್ಯ ಕ್ಷೇತ್ರ"
+
+#: history.html:151
+msgid "What You Did"
+msgstr "ನೀವು ಏನು ಮಾಡಿದ್ದೀರಿ"
+
+#: history.html:152
+msgid "Skill We Found"
+msgstr "ನಮಗೆ ಸಿಕ್ಕ ಕೌಶಲ್ಯ"
+
+#: history.html:153
+msgid "Career Match"
+msgstr "ಕೆರಿಯರ್ ಹೊಂದಿಕೆ"
+
+#: history.html:154
+msgid "Key Strengths"
+msgstr "ಪ್ರಮುಖ ಸಾಮರ್ಥ್ಯಗಳು"
+
+#: history.html:155 index.html:246
+msgid "Leadership Shown"
+msgstr "ತೋರಿಸಿದ ನಾಯಕತ್ವ"
+
+#: history.html:156 index.html:258
+msgid "Job Readiness"
+msgstr "ಉದ್ಯೋಗ ಸಿದ್ಧತೆ"
+
+#: history.html:157
+msgid "Date"
+msgstr "ದಿನಾಂಕ"
+
+#: history.html:172
+msgid "How sure we are that this is the right skill match"
+msgstr "ಇದು ಸರಿಯಾದ ಕೌಶಲ್ಯ ಹೊಂದಿಕೆ ಎಂದು ನಮಗೆ ಎಷ್ಟು ಖಚಿತವಿದೆ"
+
+#: history.html:188 index.html:523
+msgid "Planning Ahead"
+msgstr "ಮುಂದಾಲೋಚನೆ"
+
+#: history.html:188
+msgid "Plan"
+msgstr "ಯೋಜನೆ"
+
+#: history.html:190 index.html:524
+msgid "Managing Money"
+msgstr "ಹಣ ನಿರ್ವಹಣೆ"
+
+#: history.html:190
+msgid "Money"
+msgstr "ಹಣ"
+
+#: history.html:192 index.html:525
+msgid "Handling Problems"
+msgstr "ಸಮಸ್ಯೆಗಳನ್ನು ನಿಭಾಯಿಸುವುದು"
+
+#: history.html:192
+msgid "Problems"
+msgstr "ಸಮಸ್ಯೆಗಳು"
+
+#: history.html:193 index.html:526
+msgid "Working With Others"
+msgstr "ಇತರರೊಂದಿಗೆ ಕೆಲಸ ಮಾಡುವುದು"
+
+#: history.html:193
+msgid "Team"
+msgstr "ತಂಡ"
+
+#: history.html:194 index.html:527
+msgid "Understanding People"
+msgstr "ಜನರನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು"
+
+#: history.html:194
+msgid "People"
+msgstr "ಜನರು"
+
+#: history.html:219
+msgid "You haven't shared anything with us yet."
+msgstr "ನೀವು ಇನ್ನೂ ನಮ್ಮೊಂದಿಗೆ ಏನನ್ನೂ ಹಂಚಿಕೊಂಡಿಲ್ಲ."
+
+#: history.html:220
+msgid "Tell us about something you did"
+msgstr "ನೀವು ಮಾಡಿದ ಯಾವುದನ್ನಾದರೂ ಬಗ್ಗೆ ತಿಳಿಸಿ"
+
+#: index.html:8
+msgid "ISIS - Professional Portfolio"
+msgstr "ISIS - ವೃತ್ತಿಪರ ಪೋರ್ಟ್‌ಫೋಲಿಯೊ"
+
+#: index.html:28
+msgid "Download Portfolio"
+msgstr "ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
+
+#: index.html:35
+msgid "Your Everyday Efforts Have Real Value."
+msgstr "ನಿಮ್ಮ ದೈನಂದಿನ ಪ್ರಯತ್ನಗಳಿಗೆ ನಿಜವಾದ ಮೌಲ್ಯವಿದೆ."
+
+#: index.html:36
+msgid ""
+"Tell us what you did — we'll help you see the skills already hiding inside "
+"it."
+msgstr ""
+"ನೀವು ಏನು ಮಾಡಿದ್ದೀರಿ ಎಂದು ತಿಳಿಸಿ — ಅದರೊಳಗೆ ಈಗಾಗಲೇ ಅಡಗಿರುವ ಕೌಶಲ್ಯಗಳನ್ನು ನೋಡಲು "
+"ನಾವು ನಿಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತೇವೆ."
+
+#: index.html:53
+msgid "Tell Us What You Did"
+msgstr "ನೀವು ಏನು ಮಾಡಿದ್ದೀರಿ ಎಂದು ತಿಳಿಸಿ"
+
+#: index.html:55
+msgid ""
+"There's no wrong answer here — just tell us about something you handled "
+"recently, in your own words."
+msgstr ""
+"ಇಲ್ಲಿ ಯಾವುದೇ ತಪ್ಪು ಉತ್ತರವಿಲ್ಲ — ಇತ್ತೀಚೆಗೆ ನೀವು ನಿಭಾಯಿಸಿದ ಯಾವುದನ್ನಾದರೂ "
+"ನಿಮ್ಮದೇ ಮಾತುಗಳಲ್ಲಿ ತಿಳಿಸಿ."
+
+#: index.html:60
+msgid "What's something you took charge of recently?"
+msgstr "ಇತ್ತೀಚೆಗೆ ನೀವು ಯಾವುದರ ಜವಾಬ್ದಾರಿ ವಹಿಸಿಕೊಂಡಿದ್ದೀರಿ?"
+
+#: index.html:63
+msgid "e.g., Managed a household event"
+msgstr "ಉದಾ., ಮನೆಯ ಕಾರ್ಯಕ್ರಮ ನಿರ್ವಹಿಸಿದೆ"
+
+#: index.html:65 index.html:78 index.html:91 index.html:103 index.html:115
+#: index.html:127 index.html:139 index.html:151
+msgid "Click to speak instead of typing"
+msgstr "ಟೈಪ್ ಮಾಡುವ ಬದಲು ಮಾತನಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
+
+#: index.html:72
+msgid "Were other people involved or counting on you?"
+msgstr "ಇತರ ಜನರು ಒಳಗೊಂಡಿದ್ದರೇ ಅಥವಾ ನಿಮ್ಮ ಮೇಲೆ ಅವಲಂಬಿತರಾಗಿದ್ದರೇ?"
+
+#: index.html:76
+msgid "e.g., 5 family members"
+msgstr "ಉದಾ., 5 ಕುಟುಂಬ ಸದಸ್ಯರು"
+
+#: index.html:85
+msgid "About how much time did this take?"
+msgstr "ಇದಕ್ಕೆ ಸುಮಾರು ಎಷ್ಟು ಸಮಯ ಬೇಕಾಯಿತು?"
+
+#: index.html:89
+msgid "e.g., 4 hours per day over 3 days"
+msgstr "ಉದಾ., 3 ದಿನಗಳಲ್ಲಿ ಪ್ರತಿದಿನ 4 ಗಂಟೆ"
+
+#: index.html:98
+msgid "Did you handle any money for this? Roughly how much?"
+msgstr "ಇದಕ್ಕಾಗಿ ನೀವು ಯಾವುದೇ ಹಣ ನಿರ್ವಹಿಸಿದ್ದೀರಾ? ಸುಮಾರು ಎಷ್ಟು?"
+
+#: index.html:101
+msgid "e.g., Rs. 5,000 for groceries"
+msgstr "ಉದಾ., ದಿನಸಿಗೆ ₹5,000"
+
+#: index.html:110
+msgid "Did you keep track of any items, supplies, or stock?"
+msgstr "ನೀವು ಯಾವುದೇ ವಸ್ತುಗಳು, ಸರಬರಾಜು ಅಥವಾ ಸ್ಟಾಕ್‌ನ ಲೆಕ್ಕ ಇಟ್ಟಿದ್ದೀರಾ?"
+
+#: index.html:113
+msgid "e.g., 10kg rice, decorations, 50 chairs"
+msgstr "ಉದಾ., 10 ಕೆಜಿ ಅಕ್ಕಿ, ಅಲಂಕಾರ, 50 ಕುರ್ಚಿಗಳು"
+
+#: index.html:122
+msgid "Who was this for?"
+msgstr "ಇದು ಯಾರಿಗಾಗಿ?"
+
+#: index.html:125
+msgid "e.g., 50 neighborhood guests"
+msgstr "ಉದಾ., ನೆರೆಹೊರೆಯ 50 ಅತಿಥಿಗಳು"
+
+#: index.html:134
+msgid "Did anything go wrong or change suddenly? How did you handle it?"
+msgstr ""
+"ಏನಾದರೂ ತಪ್ಪಾಯಿತೇ ಅಥವಾ ಇದ್ದಕ್ಕಿದ್ದಂತೆ ಬದಲಾಯಿತೇ? ನೀವು ಅದನ್ನು ಹೇಗೆ "
+"ನಿಭಾಯಿಸಿದ್ದೀರಿ?"
+
+#: index.html:137
+msgid "e.g., Mediated a vendor dispute regarding late delivery"
+msgstr "ಉದಾ., ತಡ ವಿತರಣೆ ಕುರಿತು ಮಾರಾಟಗಾರ ವಿವಾದ ಬಗೆಹರಿಸಿದೆ"
+
+#: index.html:146
+msgid "What was the hardest part?"
+msgstr "ಅತ್ಯಂತ ಕಷ್ಟದ ಭಾಗ ಯಾವುದು?"
+
+#: index.html:149
+msgid ""
+"e.g., Balancing emotional family needs while sticking strictly to the tight "
+"budget"
+msgstr ""
+"ಉದಾ., ಕಟ್ಟುನಿಟ್ಟಿನ ಬಜೆಟ್‌ನಲ್ಲಿ ಕುಟುಂಬದ ಭಾವನಾತ್ಮಕ ಅಗತ್ಯಗಳನ್ನು "
+"ಸಮತೋಲನಗೊಳಿಸುವುದು"
+
+#: index.html:160
+msgid "Next"
+msgstr "ಮುಂದೆ"
+
+#: index.html:172
+msgid "Your Skill Profile"
+msgstr "ನಿಮ್ಮ ಕೌಶಲ ಪ್ರೊಫೈಲ್"
+
+#: index.html:173
+msgid "Based on your logged history"
+msgstr "ನಿಮ್ಮ ದಾಖಲಾದ ಇತಿಹಾಸದ ಆಧಾರದ ಮೇಲೆ"
+
+#: index.html:180
+msgid "View Full History"
+msgstr "ಪೂರ್ಣ ಇತಿಹಾಸ ನೋಡಿ"
+
+#: index.html:196
+msgid "Back to activity form"
+msgstr "ಚಟುವಟಿಕೆ ಫಾರ್ಮ್‌ಗೆ ಹಿಂತಿರುಗಿ"
+
+#: index.html:197 index.html:385
+msgid "Previous"
+msgstr "ಹಿಂದೆ"
+
+#: index.html:206
+msgid "Analysing your activity…"
+msgstr "ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ…"
+
+#: index.html:209
+msgid "Running semantic skill extraction…"
+msgstr "ಕೌಶಲ್ಯ ಹೊರತೆಗೆಯುವಿಕೆ ನಡೆಯುತ್ತಿದೆ…"
+
+#: index.html:213
+msgid "Generating career intelligence…"
+msgstr "ಕೆರಿಯರ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ರಚಿಸಲಾಗುತ್ತಿದೆ…"
+
+#: index.html:217
+msgid "Matching opportunities…"
+msgstr "ಅವಕಾಶಗಳನ್ನು ಹೊಂದಿಸಲಾಗುತ್ತಿದೆ…"
+
+#: index.html:221
+msgid "Building dashboard…"
+msgstr "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ನಿರ್ಮಿಸಲಾಗುತ್ತಿದೆ…"
+
+#: index.html:228
+msgid "Your Career Snapshot"
+msgstr "ನಿಮ್ಮ ಕೆರಿಯರ್ ಸ್ನ್ಯಾಪ್‌ಶಾಟ್"
+
+#: index.html:234
+msgid "Your Strengths"
+msgstr "ನಿಮ್ಮ ಸಾಮರ್ಥ್ಯಗಳು"
+
+#: index.html:244
+msgid "Leadership shown"
+msgstr "ತೋರಿಸಿದ ನಾಯಕತ್ವ"
+
+#: index.html:256
+msgid "Job readiness"
+msgstr "ಉದ್ಯೋಗ ಸಿದ್ಧತೆ"
+
+#: index.html:275
+msgid "Professional Skill Map"
+msgstr "ವೃತ್ತಿಪರ ಕೌಶಲ ನಕ್ಷೆ"
+
+#: index.html:276
+msgid "Five key strengths, at a glance"
+msgstr "ಐದು ಪ್ರಮುಖ ಸಾಮರ್ಥ್ಯಗಳು, ಒಂದೇ ನೋಟದಲ್ಲಿ"
+
+#: index.html:283
+msgid "Skill radar chart"
+msgstr "ಕೌಶಲ್ಯ ರಡಾರ್ ಚಾರ್ಟ್"
+
+#: index.html:298
+msgid "Resume Feed"
+msgstr "ರೆಸ್ಯೂಮ್ ಫೀಡ್"
+
+#: index.html:317
+msgid "You haven't shared anything yet"
+msgstr "ನೀವು ಇನ್ನೂ ಏನನ್ನೂ ಹಂಚಿಕೊಂಡಿಲ್ಲ"
+
+#: index.html:318
+msgid ""
+"Tell us about something you did recently — we'll turn it into a professional"
+" highlight for you."
+msgstr ""
+"ಇತ್ತೀಚೆಗೆ ನೀವು ಮಾಡಿದ ಯಾವುದನ್ನಾದರೂ ಬಗ್ಗೆ ತಿಳಿಸಿ — ನಾವು ಅದನ್ನು ನಿಮಗಾಗಿ "
+"ವೃತ್ತಿಪರ ಹೈಲೈಟ್ ಆಗಿ ಪರಿವರ್ತಿಸುತ್ತೇವೆ."
+
+#: index.html:323
+msgid "Resume feed"
+msgstr "ರೆಸ್ಯೂಮೆ ಫೀಡ್"
+
+#: index.html:332
+msgid "Jobs That Match Your Strengths"
+msgstr "ನಿಮ್ಮ ಸಾಮರ್ಥ್ಯಗಳಿಗೆ ಹೊಂದಿಕೆಯಾಗುವ ಉದ್ಯೋಗಗಳು"
+
+#: index.html:336
+msgid ""
+"Based on what you've already shown you can do, here are some paths worth "
+"exploring."
+msgstr ""
+"ನೀವು ಈಗಾಗಲೇ ಮಾಡಬಲ್ಲಿರಿ ಎಂದು ತೋರಿಸಿರುವುದರ ಆಧಾರದ ಮೇಲೆ, ಇಲ್ಲಿ ಪರಿಶೀಲಿಸಲು "
+"ಯೋಗ್ಯವಾದ ಕೆಲವು ಮಾರ್ಗಗಳಿವೆ."
+
+#: index.html:338
+msgid "Listen to opportunities"
+msgstr "ಅವಕಾಶಗಳನ್ನು ಆಲಿಸಿ"
+
+#: index.html:340
+msgid "Listen"
+msgstr "ಕೇಳಿ"
+
+#: index.html:352
+msgid "Smart Career Matches"
+msgstr "ಸ್ಮಾರ್ಟ್ ಕೆರಿಯರ್ ಹೊಂದಾಣಿಕೆ"
+
+#: index.html:353
+msgid "AI-powered roles that best fit your demonstrated strengths."
+msgstr "ನಿಮ್ಮ ಸಾಮರ್ಥ್ಯಗಳಿಗೆ ಹೊಂದಿಕೆಯಾಗುವ AI ಆಯ್ದ ಪಾತ್ರಗಳು."
+
+#: index.html:364
+msgid "Generate Final Portfolio"
+msgstr "ಅಂತಿಮ ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ರಚಿಸಿ"
+
+#: index.html:368 index.html:369
+msgid "Share on WhatsApp"
+msgstr "WhatsApp ನಲ್ಲಿ ಹಂಚಿಕೊಳ್ಳಿ"
+
+#: index.html:394
+msgid "Your Portfolio is Ready!"
+msgstr "ನಿಮ್ಮ ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಸಿದ್ಧವಾಗಿದೆ!"
+
+#: index.html:395
+msgid ""
+"Your unpaid activities have been fully mapped to corporate skills and "
+"verified."
+msgstr ""
+"ನಿಮ್ಮ ಅವೇತನ ಚಟುವಟಿಕೆಗಳು ಸಂಪೂರ್ಣವಾಗಿ ವೃತ್ತಿಪರ ಕೌಶಲಗಳಾಗಿ ಪರಿವರ್ತಿತವಾಗಿವೆ."
+
+#: index.html:399
+msgid "Download Professional Portfolio"
+msgstr "ವೃತ್ತಿಪರ ಪೋರ್ಟ್‌ಫೋಲಿಯೊ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
+
+#: index.html:403
+msgid "Start Over with a New Activity"
+msgstr "ಹೊಸ ಚಟುವಟಿಕೆಯಿಂದ ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ"
+
+#: index.html:420
+msgid "Your 3-Step Business Roadmap"
+msgstr "ನಿಮ್ಮ 3-ಹಂತದ ವ್ಯಾಪಾರ ರೋಡ್‌ಮ್ಯಾಪ್"
+
+#: index.html:429
+msgid "Licensing &amp; Operations"
+msgstr "ಪರವಾನಗಿ ಮತ್ತು ಕಾರ್ಯಾಚರಣೆಗಳು"
+
+#: index.html:430
+msgid ""
+"Register your business legally and secure any local compliance documents "
+"required for your specific product/service."
+msgstr ""
+"ನಿಮ್ಮ ವ್ಯಾಪಾರವನ್ನು ಕಾನೂನುಬದ್ಧವಾಗಿ ನೋಂದಾಯಿಸಿ ಮತ್ತು ನಿಮ್ಮ ನಿರ್ದಿಷ್ಟ "
+"ಉತ್ಪನ್ನ/ಸೇವೆಗೆ ಅಗತ್ಯವಿರುವ ಯಾವುದೇ ಸ್ಥಳೀಯ ಅನುಸರಣೆ ದಾಖಲೆಗಳನ್ನು ಪಡೆದುಕೊಳ್ಳಿ."
+
+#: index.html:438
+msgid "Service &amp; Pricing"
+msgstr "ಸೇವೆ ಮತ್ತು ಬೆಲೆ ನಿಗದಿ"
+
+#: index.html:439
+msgid ""
+"Design your core offering and calculate a competitive pricing model based on"
+" a markup of your base operating costs."
+msgstr ""
+"ನಿಮ್ಮ ಮುಖ್ಯ ಕೊಡುಗೆಯನ್ನು ವಿನ್ಯಾಸಗೊಳಿಸಿ ಮತ್ತು ನಿಮ್ಮ ಮೂಲ ಕಾರ್ಯಾಚರಣಾ ವೆಚ್ಚಗಳ "
+"ಮಾರ್ಕ್‌ಅಪ್ ಆಧಾರದ ಮೇಲೆ ಸ್ಪರ್ಧಾತ್ಮಕ ಬೆಲೆ ನಿಗದಿ ಮಾದರಿಯನ್ನು ಲೆಕ್ಕಹಾಕಿ."
+
+#: index.html:445
+msgid "Local Outreach"
+msgstr "ಸ್ಥಳೀಯ ಪ್ರಚಾರ"
+
+#: index.html:446
+msgid ""
+"Identify exactly two community channels (e.g., local WhatsApp groups or "
+"community boards) to broadcast your launch message."
+msgstr ""
+"ನಿಮ್ಮ ಪ್ರಾರಂಭ ಸಂದೇಶವನ್ನು ಪ್ರಸಾರ ಮಾಡಲು ನಿಖರವಾಗಿ ಎರಡು ಸಮುದಾಯ ಚಾನೆಲ್‌ಗಳನ್ನು "
+"(ಉದಾ., ಸ್ಥಳೀಯ WhatsApp ಗುಂಪುಗಳು ಅಥವಾ ಸಮುದಾಯ ಫಲಕಗಳು) ಗುರುತಿಸಿ."
+
+#: index.html:451
+msgid "Got it — I'm Ready!"
+msgstr "ಅರ್ಥವಾಯಿತು — ನಾನು ಸಿದ್ಧ!"
+
+#: index.html:465
+msgid "Your Pitch Email"
+msgstr "ನಿಮ್ಮ ಪಿಚ್ ಇಮೇಲ್"
+
+#: index.html:470
+msgid "Copy and send this to your target company:"
+msgstr "ಇದನ್ನು ನಕಲಿಸಿ ನಿಮ್ಮ ಗುರಿ ಕಂಪನಿಗೆ ಕಳುಹಿಸಿ:"
+
+#: index.html:472
+msgid "Subject:"
+msgstr "ವಿಷಯ:"
+
+#: index.html:473
+msgid "Partnership Proposal — Local Service Collaboration"
+msgstr "ಪಾಲುದಾರಿಕೆ ಪ್ರಸ್ತಾಪ — ಸ್ಥಳೀಯ ಸೇವಾ ಸಹಯೋಗ"
+
+#: index.html:475
+msgid "Hi [Decision Maker],"
+msgstr "ನಮಸ್ಕಾರ [ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳುವವರು],"
+
+#: index.html:476
+msgid ""
+"I have extensive experience coordinating successful community operations and"
+" would love to discuss a potential partnership. I specialize in delivering "
+"culturally authentic, timely structural results for local teams."
+msgstr ""
+"ಯಶಸ್ವಿ ಸಮುದಾಯ ಕಾರ್ಯಾಚರಣೆಗಳನ್ನು ಸಂಘಟಿಸುವಲ್ಲಿ ನನಗೆ ವ್ಯಾಪಕ ಅನುಭವವಿದೆ ಮತ್ತು "
+"ಸಂಭಾವ್ಯ ಪಾಲುದಾರಿಕೆಯ ಬಗ್ಗೆ ಚರ್ಚಿಸಲು ಇಷ್ಟಪಡುತ್ತೇನೆ. ಸ್ಥಳೀಯ ತಂಡಗಳಿಗೆ "
+"ಸಾಂಸ್ಕೃತಿಕವಾಗಿ ಅಧಿಕೃತ, ಸಕಾಲಿಕ ರಚನಾತ್ಮಕ ಫಲಿತಾಂಶಗಳನ್ನು ನೀಡುವಲ್ಲಿ ನಾನು ಪರಿಣತಿ "
+"ಹೊಂದಿದ್ದೇನೆ."
+
+#: index.html:477
+msgid "Would you be open to a 15-minute call this week?"
+msgstr "ಈ ವಾರ 15 ನಿಮಿಷಗಳ ಕರೆಗೆ ನೀವು ಸಿದ್ಧರಿದ್ದೀರಾ?"
+
+#: index.html:479
+msgid "Warm regards,"
+msgstr "ವಂದನೆಗಳೊಂದಿಗೆ,"
+
+#: index.html:479
+msgid "[Your Name]"
+msgstr "[ನಿಮ್ಮ ಹೆಸರು]"
+
+#: index.html:484
+msgid "Copy"
+msgstr "ನಕಲಿಸಿ"
+
+#: index.html:487
+msgid "Done"
+msgstr "ಮುಗಿದಿದೆ"
+
+#: index.html:501
+msgid "Startup Idea"
+msgstr "ಸ್ಟಾರ್ಟಪ್ ಆಲೋಚನೆ"
+
+#: index.html:502
+msgid "Collaboration Match"
+msgstr "ಸಹಯೋಗ ಹೊಂದಾಣಿಕೆ"
+
+#: index.html:503
+msgid "Specific Job Roles"
+msgstr "ನಿರ್ದಿಷ್ಟ ಉದ್ಯೋಗ ಪಾತ್ರಗಳು"
+
+#: index.html:504
+msgid "Growth Plan"
+msgstr "ಬೆಳವಣಿಗೆ ಯೋಜನೆ"
+
+#: index.html:505
+msgid "Match"
+msgstr "ಹೊಂದಾಣಿಕೆ"
+
+#: index.html:506
+msgid "Learn How to Start This"
+msgstr "ಇದನ್ನು ಹೇಗೆ ಪ್ರಾರಂಭಿಸುವುದು"
+
+#: index.html:507
+msgid "Draft a Pitch to This Company"
+msgstr "ಈ ಕಂಪನಿಗೆ ಪಿಚ್ ಬರೆಯಿರಿ"
+
+#: index.html:508
+msgid "View Openings"
+msgstr "ಹುದ್ದೆಗಳನ್ನು ನೋಡಿ"
+
+#: index.html:509
+msgid "Start Learning"
+msgstr "ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಿ"
+
+#: index.html:510
+msgid "We're quite sure about this one"
+msgstr "ಇದರ ಬಗ್ಗೆ ನಮಗೆ ಸಂಪೂರ್ಣ ಖಚಿತವಿದೆ"
+
+#: index.html:511
+msgid "We're fairly confident about this one"
+msgstr "ಇದರ ಬಗ್ಗೆ ನಮಗೆ ಸಾಕಷ್ಟು ವಿಶ್ವಾಸವಿದೆ"
+
+#: index.html:512
+msgid "We think this might apply — tell us more if it doesn't sound right"
+msgstr ""
+"ಇದು ಅನ್ವಯವಾಗಬಹುದು ಎಂದು ನಾವು ಭಾವಿಸುತ್ತೇವೆ — ಇದು ಸರಿಯಾಗಿ ಕಾಣದಿದ್ದರೆ ನಮಗೆ "
+"ಇನ್ನಷ್ಟು ತಿಳಿಸಿ"
+
+#: index.html:513
+msgid ""
+"We're using our backup way of understanding your story right now — "
+"everything still works."
+msgstr ""
+"ನಾವು ಈಗ ನಿಮ್ಮ ಕಥೆಯನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವ ಬ್ಯಾಕಪ್ ವಿಧಾನವನ್ನು ಬಳಸುತ್ತಿದ್ದೇವೆ — "
+"ಎಲ್ಲವೂ ಇನ್ನೂ ಕೆಲಸ ಮಾಡುತ್ತದೆ."
+
+#: index.html:514
+msgid ""
+"Something needs attention on our end — please let us know if this keeps "
+"happening."
+msgstr ""
+"ನಮ್ಮ ಕಡೆಯಿಂದ ಏನೋ ಗಮನ ಬೇಕಾಗಿದೆ — ಇದು ಪದೇ ಪದೇ ಸಂಭವಿಸಿದರೆ ದಯವಿಟ್ಟು ನಮಗೆ ತಿಳಿಸಿ."
+
+#: index.html:515
+msgid ""
+"We've reached today's limit for our fastest AI helper, so we're using our "
+"backup one instead."
+msgstr ""
+"ನಮ್ಮ ವೇಗದ AI ಸಹಾಯಕಕ್ಕೆ ಇಂದಿನ ಮಿತಿಯನ್ನು ನಾವು ತಲುಪಿದ್ದೇವೆ, ಆದ್ದರಿಂದ ಬದಲಿಗೆ "
+"ನಮ್ಮ ಬ್ಯಾಕಪ್ ಸಹಾಯಕವನ್ನು ಬಳಸುತ್ತಿದ್ದೇವೆ."
+
+#: index.html:516
+msgid ""
+"We're working in offline mode right now — everything still works, just a "
+"little differently."
+msgstr ""
+"ನಾವು ಈಗ ಆಫ್‌ಲೈನ್ ಮೋಡ್‌ನಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದೇವೆ — ಎಲ್ಲವೂ ಇನ್ನೂ ಕೆಲಸ "
+"ಮಾಡುತ್ತದೆ, ಸ್ವಲ್ಪ ವಿಭಿನ್ನವಾಗಿ."
+
+#: index.html:517
+msgid ""
+"We're having trouble understanding this one right now. Try again in a "
+"moment, or describe it a little differently."
+msgstr ""
+"ಇದೀಗ ಇದನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ನಮಗೆ ತೊಂದರೆಯಾಗುತ್ತಿದೆ. ಸ್ವಲ್ಪ ಸಮಯದಲ್ಲಿ ಮತ್ತೆ "
+"ಪ್ರಯತ್ನಿಸಿ, ಅಥವಾ ಇದನ್ನು ಸ್ವಲ್ಪ ವಿಭಿನ್ನವಾಗಿ ವಿವರಿಸಿ."
+
+#: index.html:518
+msgid "Why we found this skill"
+msgstr "ನಮಗೆ ಈ ಕೌಶಲ್ಯ ಏಕೆ ಸಿಕ್ಕಿತು"
+
+#: index.html:519
+msgid "Skill we recognised:"
+msgstr "ನಾವು ಗುರುತಿಸಿದ ಕೌಶಲ್ಯ:"
+
+#: index.html:520
+msgid "How sure we are:"
+msgstr "ನಮಗೆ ಎಷ್ಟು ಖಚಿತವಿದೆ:"
+
+#: index.html:521
+msgid "What you told us that led us here:"
+msgstr "ನಮ್ಮನ್ನು ಇಲ್ಲಿಗೆ ತಂದ ನೀವು ಹೇಳಿದ ಸಂಗತಿ:"
+
+#: index.html:522
+msgid "We also considered:"
+msgstr "ನಾವು ಇವುಗಳನ್ನೂ ಪರಿಗಣಿಸಿದ್ದೇವೆ:"
+
+#: index.html:528
+msgid "Competency Map"
+msgstr "ಸಾಮರ್ಥ್ಯ ನಕ್ಷೆ"
+
+#: index.html:529
+msgid "Historical Strength"
+msgstr "ಐತಿಹಾಸಿಕ ಸಾಮರ್ಥ್ಯ"
+
+#: index.html:530
+msgid "Making Good Calls"
+msgstr "ಒಳ್ಳೆಯ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುವುದು"
+
+#: index.html:531
+msgid "Making the Most of What You Have"
+msgstr "ನಿಮ್ಮ ಬಳಿ ಇರುವುದನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಬಳಸಿಕೊಳ್ಳುವುದು"
+
+#: index.html:532
+msgid "Bringing People Together"
+msgstr "ಜನರನ್ನು ಒಟ್ಟುಗೂಡಿಸುವುದು"
+
+#: index.html:533
+msgid "Helping Others Grow"
+msgstr "ಇತರರು ಬೆಳೆಯಲು ಸಹಾಯ ಮಾಡುವುದು"
+
+#: index.html:534
+msgid "Staying Calm Under Pressure"
+msgstr "ಒತ್ತಡದಲ್ಲಿ ಶಾಂತವಾಗಿರುವುದು"
+
+#: index.html:535
+msgid "Est. Budget"
+msgstr "ಅಂದಾಜು ಬಜೆಟ್"
+
+#: index.html:536
+msgid "Impact"
+msgstr "ಪರಿಣಾಮ"
+
+#: index.html:537
+msgid "Low Risk Start"
+msgstr "ಕಡಿಮೆ ಅಪಾಯದ ಆರಂಭ"
+
+#: index.html:538
+msgid "Type"
+msgstr "ಪ್ರಕಾರ"
+
+#: index.html:539
+msgid "Partnership"
+msgstr "ಪಾಲುದಾರಿಕೆ"
+
+#: index.html:540
+msgid "Difficulty"
+msgstr "ಕಷ್ಟದ ಮಟ್ಟ"
+
+#: index.html:541
+msgid "Medium"
+msgstr "ಮಧ್ಯಮ"
+
+#: index.html:542
+msgid "Time to Apply"
+msgstr "ಅರ್ಜಿ ಸಲ್ಲಿಸುವ ಸಮಯ"
+
+#: index.html:543
+msgid "1–2 Days"
+msgstr "1–2 ದಿನಗಳು"
+
+#: index.html:544
+msgid "Skills Gained"
+msgstr "ಗಳಿಸಿದ ಕೌಶಲ್ಯಗಳು"
+
+#: index.html:545
+msgid "Leadership + PM"
+msgstr "ನಾಯಕತ್ವ + PM"
+
+#: index.html:546
+msgid "Duration"
+msgstr "ಅವಧಿ"
+
+#: index.html:547
+msgid "30 Days"
+msgstr "30 ದಿನಗಳು"
+
+#: index.html:548
+msgid "Beginner"
+msgstr "ಆರಂಭಿಕ"
+
+#: index.html:549
+msgid "Listening…"
+msgstr "ಆಲಿಸಲಾಗುತ್ತಿದೆ…"
+
+#: index.html:550
+msgid "Network error connecting to the server."
+msgstr "ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕಿಸುವಲ್ಲಿ ನೆಟ್‌ವರ್ಕ್ ದೋಷ."
+
+#: index.html:551
+msgid "Analyzing your activity…"
+msgstr "ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ…"
+
+#: index.html:552
+msgid "Generating your match…"
+msgstr "ನಿಮ್ಮ ಹೊಂದಿಕೆಯನ್ನು ರಚಿಸಲಾಗುತ್ತಿದೆ…"
+
+#: login.html:7
+msgid "ISIS — Sign In"
+msgstr "ISIS — ಸೈನ್ ಇನ್"
+
+#: login.html:181
+msgid "Welcome back"
+msgstr "ಮತ್ತೆ ಸ್ವಾಗತ"
+
+#: login.html:182
+msgid "Sign in to your ISIS Portfolio"
+msgstr "ನಿಮ್ಮ ISIS ಪೋರ್ಟ್‌ಫೋಲಿಯೊಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ"
+
+#: login.html:198 register.html:224
+msgid "Username"
+msgstr "ಬಳಕೆದಾರಹೆಸರು"
+
+#: login.html:206 register.html:235
+msgid "Password"
+msgstr "ಪಾಸ್‌ವರ್ಡ್"
+
+#: login.html:214
+msgid "Sign In"
+msgstr "ಸೈನ್ ಇನ್"
+
+#: login.html:218 register.html:264
+msgid "or"
+msgstr "ಅಥವಾ"
+
+#: login.html:220
+msgid "No account?"
+msgstr "ಖಾತೆ ಇಲ್ಲವೇ?"
+
+#: login.html:221
+msgid "Create one free"
+msgstr "ಉಚಿತವಾಗಿ ಒಂದನ್ನು ರಚಿಸಿ"
+
+#: register.html:7
+msgid "ISIS — Create Account"
+msgstr "ISIS — ಖಾತೆ ರಚಿಸಿ"
+
+#: register.html:207
+msgid "Create account"
+msgstr "ಖಾತೆ ರಚಿಸಿ"
+
+#: register.html:208
+msgid "Start mapping your invisible skills today"
+msgstr "ಇಂದೇ ನಿಮ್ಮ ಅದೃಶ್ಯ ಕೌಶಲ್ಯಗಳನ್ನು ಮ್ಯಾಪ್ ಮಾಡಲು ಪ್ರಾರಂಭಿಸಿ"
+
+#: register.html:231
+msgid "3–30 characters, letters/numbers/underscores only"
+msgstr "3–30 ಅಕ್ಷರಗಳು, ಕೇವಲ ಅಕ್ಷರಗಳು/ಸಂಖ್ಯೆಗಳು/ಅಂಡರ್‌ಸ್ಕೋರ್‌ಗಳು"
+
+#: register.html:239
+msgid "Min 8 characters"
+msgstr "ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳು"
+
+#: register.html:245 register.html:276
+msgid "Type a password"
+msgstr "ಒಂದು ಪಾಸ್‌ವರ್ಡ್ ಟೈಪ್ ಮಾಡಿ"
+
+#: register.html:249
+msgid "Confirm Password"
+msgstr "ಪಾಸ್‌ವರ್ಡ್ ದೃಢೀಕರಿಸಿ"
+
+#: register.html:253
+msgid "Re-enter password"
+msgstr "ಪಾಸ್‌ವರ್ಡ್ ಮತ್ತೆ ನಮೂದಿಸಿ"
+
+#: register.html:256
+msgid "Passwords do not match"
+msgstr "ಪಾಸ್‌ವರ್ಡ್‌ಗಳು ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ"
+
+#: register.html:260
+msgid "Create Account"
+msgstr "ಖಾತೆ ರಚಿಸಿ"
+
+#: register.html:266
+msgid "Already have an account?"
+msgstr "ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ?"
+
+#: register.html:267
+msgid "Sign in"
+msgstr "ಸೈನ್ ಇನ್ ಮಾಡಿ"
+
+#: register.html:277
+msgid "Weak"
+msgstr "ದುರ್ಬಲ"
+
+#: register.html:278
+msgid "Fair"
+msgstr "ಸಾಧಾರಣ"
+
+#: register.html:279
+msgid "Good"
+msgstr "ಒಳ್ಳೆಯದು"
+
+#: register.html:280
+msgid "Strong"
+msgstr "ಬಲವಾದ"
+
+#: services/resume_parser.py:57
+msgid "File has no extension. Please upload a .pdf or .docx file."
+msgstr ""
+"ಫೈಲ್‌ಗೆ ಯಾವುದೇ ವಿಸ್ತರಣೆ ಇಲ್ಲ. ದಯವಿಟ್ಟು .pdf ಅಥವಾ .docx ಫೈಲ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ."
+
+#: services/resume_parser.py:61
+#, python-format
+msgid "Unsupported file type '.%(ext)s'. Please upload a .pdf or .docx file."
+msgstr ""
+"ಬೆಂಬಲಿಸದ ಫೈಲ್ ಪ್ರಕಾರ '.%(ext)s'. ದಯವಿಟ್ಟು .pdf ಅಥವಾ .docx ಫೈಲ್ ಅಪ್‌ಲೋಡ್ "
+"ಮಾಡಿ."
+
+#: services/resume_parser.py:64 utils/validators.py:71
+msgid "Uploaded file is empty."
+msgstr "ಅಪ್‌ಲೋಡ್ ಮಾಡಿದ ಫೈಲ್ ಖಾಲಿಯಾಗಿದೆ."
+
+#: services/resume_parser.py:68
+#, python-format
+msgid "File is too large (%(size)sMB). Maximum size is %(max_size)sMB."
+msgstr "ಫೈಲ್ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ (%(size)sMB). ಗರಿಷ್ಠ ಗಾತ್ರ %(max_size)sMB."
+
+#: services/resume_parser.py:89
+#, python-format
+msgid "Unsupported extension: %(ext)s"
+msgstr "ಬೆಂಬಲಿಸದ ವಿಸ್ತರಣೆ: %(ext)s"
+
+#: services/resume_parser.py:95
+#, python-format
+msgid ""
+"Could not read the %(ext)s file — it may be corrupted, password-protected, "
+"or an image-only scan with no extractable text."
+msgstr ""
+"%(ext)s ಫೈಲ್ ಓದಲು ಆಗಲಿಲ್ಲ — ಇದು ಹಾಳಾಗಿರಬಹುದು, ಪಾಸ್‌ವರ್ಡ್-ಸಂರಕ್ಷಿತವಾಗಿರಬಹುದು,"
+" ಅಥವಾ ಪಠ್ಯ ಹೊರತೆಗೆಯಲಾಗದ ಚಿತ್ರ-ಮಾತ್ರ ಸ್ಕ್ಯಾನ್ ಆಗಿರಬಹುದು."
+
+#: services/resume_parser.py:106
+msgid "This PDF is password-protected. Please upload an unprotected version."
+msgstr ""
+"ಈ PDF ಪಾಸ್‌ವರ್ಡ್-ಸಂರಕ್ಷಿತವಾಗಿದೆ. ದಯವಿಟ್ಟು ಸಂರಕ್ಷಿಸದ ಆವೃತ್ತಿಯನ್ನು ಅಪ್‌ಲೋಡ್ "
+"ಮಾಡಿ."
+
+#: services/resume_parser.py:112
+msgid ""
+"No text could be extracted from this PDF — it may be a scanned image rather "
+"than actual text. Try uploading a DOCX version instead."
+msgstr ""
+"ಈ PDF ನಿಂದ ಯಾವುದೇ ಪಠ್ಯ ಹೊರತೆಗೆಯಲಾಗಲಿಲ್ಲ — ಇದು ನಿಜವಾದ ಪಠ್ಯದ ಬದಲು ಸ್ಕ್ಯಾನ್ "
+"ಮಾಡಿದ ಚಿತ್ರವಾಗಿರಬಹುದು. ಬದಲಿಗೆ DOCX ಆವೃತ್ತಿಯನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಪ್ರಯತ್ನಿಸಿ."
+
+#: services/resume_parser.py:134
+msgid "No text could be extracted from this DOCX file."
+msgstr "ಈ DOCX ಫೈಲ್‌ನಿಂದ ಯಾವುದೇ ಪಠ್ಯ ಹೊರತೆಗೆಯಲಾಗಲಿಲ್ಲ."
+
+#: utils/validators.py:38
+#, python-format
+msgid "Missing required field(s): %(fields)s."
+msgstr "ಅಗತ್ಯ ಕ್ಷೇತ್ರ(ಗಳು) ಕಾಣೆಯಾಗಿವೆ: %(fields)s."
+
+#: utils/validators.py:45
+#, python-format
+msgid "%(field)s must be at least %(min_length)s character(s)."
+msgstr "%(field)s ಕನಿಷ್ಠ %(min_length)s ಅಕ್ಷರ(ಗಳು) ಆಗಿರಬೇಕು."
+
+#: utils/validators.py:50
+#, python-format
+msgid "%(field)s must be %(max_length)s characters or fewer."
+msgstr "%(field)s %(max_length)s ಅಕ್ಷರಗಳು ಅಥವಾ ಅದಕ್ಕಿಂತ ಕಡಿಮೆ ಆಗಿರಬೇಕು."
+
+#: utils/validators.py:64
+msgid "File has no extension."
+msgstr "ಫೈಲ್‌ಗೆ ಯಾವುದೇ ವಿಸ್ತರಣೆ ಇಲ್ಲ."
+
+#: utils/validators.py:68
+#, python-format
+msgid "Unsupported file type '.%(ext)s'. Allowed: %(allowed)s."
+msgstr "ಬೆಂಬಲಿಸದ ಫೈಲ್ ಪ್ರಕಾರ '.%(ext)s'. ಅನುಮತಿಸಲಾದ: %(allowed)s."
+
+#: utils/validators.py:73
+#, python-format
+msgid "File is too large (max %(max_mb)sMB)."
+msgstr "ಫೈಲ್ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ (ಗರಿಷ್ಠ %(max_mb)sMB)."
+
+#: utils/validators.py:97
+msgid ""
+"Username must be 3-32 characters and contain only letters, numbers, dots, "
+"underscores, or hyphens."
+msgstr ""
+"ಬಳಕೆದಾರಹೆಸರು 3-32 ಅಕ್ಷರಗಳಾಗಿರಬೇಕು ಮತ್ತು ಕೇವಲ ಅಕ್ಷರಗಳು, ಸಂಖ್ಯೆಗಳು, ಚುಕ್ಕೆಗಳು,"
+" ಅಂಡರ್‌ಸ್ಕೋರ್‌ಗಳು ಅಥವಾ ಹೈಫನ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿರಬೇಕು."
+
+#~ msgid "Transform everyday activities into professional assets."
+#~ msgstr "ದೈನಂದಿನ ಚಟುವಟಿಕೆಗಳನ್ನು ವೃತ್ತಿಪರ ಸ್ವತ್ತುಗಳಾಗಿ ಪರಿವರ್ತಿಸಿ."
+
+#~ msgid "What did you manage today? Explain your unpaid labor."
+#~ msgstr "ಇಂದು ನೀವು ಏನು ನಿರ್ವಹಿಸಿದಿರಿ? ನಿಮ್ಮ ಅವೇತನ ಶ್ರಮವನ್ನು ವಿವರಿಸಿ."
+
+#~ msgid "What specific activity did you lead today?"
+#~ msgstr "ಇಂದು ನೀವು ಯಾವ ನಿರ್ದಿಷ್ಟ ಚಟುವಟಿಕೆಯನ್ನು ಮುನ್ನಡೆಸಿದಿರಿ?"
+
+#~ msgid "How many people did you coordinate?"
+#~ msgstr "ನೀವು ಎಷ್ಟು ಜನರನ್ನು ಸಂಘಟಿಸಿದಿರಿ?"
+
+#~ msgid "What was the total budget you handled?"
+#~ msgstr "ನೀವು ನಿರ್ವಹಿಸಿದ ಒಟ್ಟು ಬಜೆಟ್ ಎಷ್ಟು?"
+
+#~ msgid "What physical supplies or inventory did you manage?"
+#~ msgstr "ನೀವು ಯಾವ ಭೌತಿಕ ಸಾಮಗ್ರಿಗಳನ್ನು ನಿರ್ವಹಿಸಿದಿರಿ?"
+
+#~ msgid "Who was the primary audience or beneficiary?"
+#~ msgstr "ಮುಖ್ಯ ಫಲಾನುಭವಿ ಅಥವಾ ಪ್ರೇಕ್ಷಕರು ಯಾರು?"
+
+#~ msgid "Core Metrics"
+#~ msgstr "ಮುಖ್ಯ ಮಾಪನಗಳು"
+
+#~ msgid "5-Point Capabilities"
+#~ msgstr "5-ಅಂಶ ಸಾಮರ್ಥ್ಯಗಳು"
+
+#~ msgid "Analyze an activity to generate bullets."
+#~ msgstr "ಬುಲೆಟ್ ಪಾಯಿಂಟ್‌ಗಳನ್ನು ರಚಿಸಲು ಚಟುವಟಿಕೆ ದಾಖಲಿಸಿ."
+
+#~ msgid "Opportunity Engine"
+#~ msgstr "ಅವಕಾಶ ಇಂಜಿನ್"
+
+#~ msgid ""
+#~ "Based on your hidden skills, here are potential next steps in the market."
+#~ msgstr ""
+#~ "ನಿಮ್ಮ ಅಗೋಚರ ಕೌಶಲಗಳ ಆಧಾರದ ಮೇಲೆ, ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಸಂಭಾವ್ಯ ಮುಂದಿನ ಹೆಜ್ಜೆಗಳು."
+
+#~ msgid "Analyze Skills"
+#~ msgstr "ಕೌಶಲಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಿ"

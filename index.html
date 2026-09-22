@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="{{ session.get('lang', 'en') }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ _("ISIS - Professional Portfolio") }}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+    {% set active = 'dashboard' %}
+    {% set show_notifications = true %}
+    {% set show_theme_toggle = true %}
+    {% set extra_action_url = url_for('generate_pdf') + '?csrf_token=' + csrf_token() %}
+    {% set extra_action_label = _('Download Portfolio') %}
+    {% include "_navbar.html" with context %}
+
+    <!-- Main Content -->
+    <div class="container main-container pt-5 mt-5">
+        <div class="row mb-4 text-center">
+            <div class="col-12">
+                <h1 class="display-4 fw-bolder gradient-text mb-3">{{ _('Your Everyday Efforts Have Real Value.') }}</h1>
+                <p class="lead text-muted">{{ _('Tell us what you did — we\'ll help you see the skills already hiding inside it.') }}</p>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- WIZARD STEP 1: Questionnaire               -->
+        <!-- ========================================== -->
+        <div id="step-1" class="row justify-content-center mb-4">
+            <!-- Left Column: Activity Input Form -->
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <!-- Activity Input Card -->
+                <div class="card glass-card border-0 shadow-sm flex-fill">
+                    <div class="card-body p-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-box bg-primary-subtle text-primary me-3">
+                                <i class="bi bi-pencil-square fs-4"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-0">{{ _('Tell Us What You Did') }}</h4>
+                        </div>
+                        <p class="text-muted mb-4">{{ _("There's no wrong answer here — just tell us about something you handled recently, in your own words.") }}</p>
+
+                        <form id="activityForm">
+                            <div class="mb-4 custom-floating">
+                                <label for="q1" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-activity me-1"></i>{{ _("What's something you took charge of recently?") }}</label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q1"
+                                        placeholder="{{ _('e.g., Managed a household event') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted"
+                                        type="button" id="micBtn1" title="{{ _('Click to speak instead of typing') }}">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q2" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-people me-1"></i>{{ _('Were other people involved or counting on you?')
+                                    }}</label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q2"
+                                        placeholder="{{ _('e.g., 5 family members') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn2" data-target="q2" title="{{ _('Click to speak instead of typing') }}">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q3" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-clock me-1"></i>{{ _('About how much time did this take?')
+                                    }}</label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q3"
+                                        placeholder="{{ _('e.g., 4 hours per day over 3 days') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn3" data-target="q3" title="{{ _('Click to speak instead of typing') }}">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon3"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q4" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-currency-rupee me-1"></i>{{ _('Did you handle any money for this? Roughly how much?') }}</label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q4"
+                                        placeholder="{{ _('e.g., Rs. 5,000 for groceries') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn4" data-target="q4" title="{{ _('Click to speak instead of typing') }}">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q5" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-box-seam me-1"></i>{{ _('Did you keep track of any items, supplies, or stock?') }}</label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q5"
+                                        placeholder="{{ _('e.g., 10kg rice, decorations, 50 chairs') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn5" data-target="q5" title="{{ _('Click to speak instead of typing') }}">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q6" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-person-badge me-1"></i>{{ _('Who was this for?') }}</label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q6"
+                                        placeholder="{{ _('e.g., 50 neighborhood guests') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn6" data-target="q6" title="{{ _('Click to speak instead of typing') }}">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon6"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-4 custom-floating">
+                                <label for="q7" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-shield-check me-1"></i>{{ _('Did anything go wrong or change suddenly? How did you handle it?') }}</label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <input type="text" class="form-control border-end-0" id="q7"
+                                        placeholder="{{ _('e.g., Mediated a vendor dispute regarding late delivery') }}">
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn7" data-target="q7" title="{{ _('Click to speak instead of typing') }}">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon7"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-5 custom-floating">
+                                <label for="q8" class="form-label fw-bold text-primary"><i
+                                        class="bi bi-lightning-charge me-1"></i>{{ _('What was the hardest part?') }}</label>
+                                <div class="input-group input-group-lg shadow-sm">
+                                    <textarea class="form-control border-end-0" id="q8" rows="2"
+                                        placeholder="{{ _('e.g., Balancing emotional family needs while sticking strictly to the tight budget') }}"></textarea>
+                                    <button class="btn btn-outline-secondary border-start-0 bg-white text-muted mic-btn"
+                                        type="button" id="micBtn8" data-target="q8" title="{{ _('Click to speak instead of typing') }}">
+                                        <i class="bi bi-mic-fill fs-5" id="micIcon8"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2 text-center mt-2">
+                                <button type="button"
+                                    class="btn btn-primary btn-lg rounded-pill shadow-sm py-3 px-5 mx-auto"
+                                    id="analyzeBtn">
+                                    {{ _('Next') }} <i class="bi bi-arrow-right-circle ms-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Historical Skill Radar -->
+            <div class="col-lg-4">
+                <div class="card glass-card border-0 shadow-sm h-100 map-card">
+                    <div class="card-body p-4 d-flex flex-column text-center">
+                        <h5 class="fw-bold mb-2">{{ _('Your Skill Profile') }}</h5>
+                        <p class="small text-muted mb-4">{{ _('Based on your logged history') }}</p>
+                        <div class="chart-container flex-grow-1 position-relative d-flex align-items-center justify-content-center"
+                            style="min-height: 250px;">
+                            <canvas id="historyRadarChart"></canvas>
+                        </div>
+                        <div class="mt-3">
+                            <a href="/history" class="btn btn-sm btn-outline-primary rounded-pill w-100">
+                                <i class="bi bi-clock-history me-1"></i>{{ _('View Full History') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- WIZARD STEP 2: Results & Opportunities     -->
+        <!-- ========================================== -->
+        <div id="step-2" style="display: none;">
+            <!-- Back -->
+            <div class="row mb-3">
+                <div class="col-12">
+                    <button class="btn btn-link text-muted px-0 text-decoration-none hover-lift" id="backToStep1Btn"
+                        aria-label="{{ _('Back to activity form') }}">
+                        <i class="bi bi-chevron-left me-1"></i> {{ _('Previous') }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- ── Loading Progress ───────────────────────────── -->
+            <div id="analysisProgress" class="analysis-progress mb-4" role="status" aria-live="polite">
+                <div class="card card-flat">
+                    <div class="card-body p-compact">
+                        <div class="label-xs text-muted mb-3">{{ _('Analysing your activity…') }}</div>
+                        <div class="progress-step" id="ps-nlp">
+                            <span class="step-icon"><span class="step-spinner"></span></span>
+                            <span>{{ _('Running semantic skill extraction…') }}</span>
+                        </div>
+                        <div class="progress-step" id="ps-gemini">
+                            <span class="step-icon"><span class="step-spinner"></span></span>
+                            <span>{{ _('Generating career intelligence…') }}</span>
+                        </div>
+                        <div class="progress-step" id="ps-match">
+                            <span class="step-icon"><span class="step-spinner"></span></span>
+                            <span>{{ _('Matching opportunities…') }}</span>
+                        </div>
+                        <div class="progress-step" id="ps-dash">
+                            <span class="step-icon"><span class="step-spinner"></span></span>
+                            <span>{{ _('Building dashboard…') }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Career Snapshot Row ─────────────────────────── -->
+            <div class="section-label"><i class="bi bi-graph-up-arrow text-primary"></i>{{ _('Your Career Snapshot') }}</div>
+            <div class="row g-3 mb-4 align-items-stretch">
+                <!-- Core Metrics -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card glass-card card-hover h-100">
+                        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+                            <div class="label-xs text-muted mb-3">{{ _('Your Strengths') }}</div>
+                            <div class="row g-0 w-100">
+                                <div class="col-6 gauge-wrap">
+                                    <div class="gauge-container">
+                                        <svg viewBox="0 0 100 50" class="gauge-svg" aria-hidden="true">
+                                            <path class="gauge-bg" d="M 10,50 A 40,40 0 0,1 90,50"/>
+                                            <path class="gauge-fill leadership-fill" id="leadershipPath"
+                                                d="M 10,50 A 40,40 0 0,1 90,50"
+                                                stroke-dasharray="125.6" stroke-dashoffset="125.6"/>
+                                        </svg>
+                                        <div class="gauge-value" id="leadershipVal" aria-label="{{ _('Leadership shown') }}">0</div>
+                                    </div>
+                                    <div class="gauge-label">{{ _('Leadership Shown') }}</div>
+                                </div>
+                                <div class="col-6 gauge-wrap">
+                                    <div class="gauge-container">
+                                        <svg viewBox="0 0 100 50" class="gauge-svg" aria-hidden="true">
+                                            <path class="gauge-bg" d="M 10,50 A 40,40 0 0,1 90,50"/>
+                                            <path class="gauge-fill employability-fill" id="employabilityPath"
+                                                d="M 10,50 A 40,40 0 0,1 90,50"
+                                                stroke-dasharray="125.6" stroke-dashoffset="125.6"/>
+                                        </svg>
+                                        <div class="gauge-value" id="employabilityVal" aria-label="{{ _('Job readiness') }}">0</div>
+                                    </div>
+                                    <div class="gauge-label">{{ _('Job Readiness') }}</div>
+                                </div>
+                            </div>
+                            <!-- Skill area chip -->
+                            <div id="mappedSkillChip" class="mt-3 d-none">
+                                <span class="skill-badge badge-success" id="mappedSkillLabel"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Radar -->
+                <div class="col-lg-5 col-md-6">
+                    <div class="card glass-card card-hover h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div>
+                                    <div class="fw-bold" style="font-size:0.95rem;">{{ _('Professional Skill Map') }}</div>
+                                    <div class="label-xs text-muted">{{ _('Five key strengths, at a glance') }}</div>
+                                </div>
+                                <div class="icon-box icon-box-sm bg-primary-subtle text-primary" aria-hidden="true">
+                                    <i class="bi bi-radar"></i>
+                                </div>
+                            </div>
+                            <div class="chart-container flex-grow-1" style="min-height:220px;">
+                                <canvas id="skillRadarChart" aria-label="{{ _('Skill radar chart') }}"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume Feed -->
+                <div class="col-lg-4">
+                    <div class="card glass-card h-100" style="min-height: 320px;">
+                        <div class="card-body d-flex flex-column" style="padding: 1.25rem !important;">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="icon-box icon-box-sm bg-success bg-opacity-10 text-success" aria-hidden="true">
+                                        <i class="bi bi-card-text fs-6"></i>
+                                    </div>
+                                    <span class="fw-bold" style="font-size:0.95rem;">{{ _('Resume Feed') }}</span>
+                                </div>
+                                <span id="feedCount" class="label-xs text-muted d-none"></span>
+                            </div>
+
+                            <!-- Feed skeleton (shown while loading) -->
+                            <div id="feedSkeleton" class="d-none">
+                                <div class="feed-card" aria-hidden="true">
+                                    <div class="skeleton skeleton-line w-70 mb-2"></div>
+                                    <div class="skeleton skeleton-line w-90 mb-1"></div>
+                                    <div class="skeleton skeleton-line w-50"></div>
+                                </div>
+                            </div>
+
+                            <!-- Empty state -->
+                            <div id="emptyFeedState" class="empty-state flex-grow-1">
+                                <div class="empty-state-icon" aria-hidden="true">
+                                    <i class="bi bi-inbox"></i>
+                                </div>
+                                <h6>{{ _("You haven't shared anything yet") }}</h6>
+                                <p>{{ _("Tell us about something you did recently — we'll turn it into a professional highlight for you.") }}</p>
+                            </div>
+
+                            <!-- Feed items container -->
+                            <div class="resume-feed-scroll flex-grow-1 d-none" id="resumeFeedContainer"
+                                aria-label="{{ _('Resume feed') }}" aria-live="polite">
+                                <!-- Feed items injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Insights Row ────────────────────────────────── -->
+            <div class="section-label"><i class="bi bi-lightbulb text-warning"></i>{{ _('Jobs That Match Your Strengths') }}</div>
+            <div class="row mb-2" id="opportunityEngineContainer" style="display: none !important;">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <p class="text-muted small mb-0">{{ _('Based on what you\'ve already shown you can do, here are some paths worth exploring.') }}</p>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill d-flex align-items-center gap-1"
+                            id="btnListenOpps" aria-label="{{ _('Listen to opportunities') }}">
+                            <i class="bi bi-volume-up-fill" id="iconListenOpps"></i>
+                            <span class="fw-semibold">{{ _('Listen') }}</span>
+                        </button>
+                    </div>
+                    <div class="row g-3" id="opportunitiesRow">
+                        <!-- Cards injected here by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Smart Career Matches ────────────────────────── -->
+            <div class="row mb-5" id="smartMatchesContainer" style="display: none;">
+                <div class="col-12">
+                    <div class="section-label mt-3"><i class="bi bi-person-check text-primary"></i>{{ _('Smart Career Matches') }}</div>
+                    <p class="text-muted small mb-3">{{ _('AI-powered roles that best fit your demonstrated strengths.') }}</p>
+                    <div class="row g-3" id="smartMatchesRow">
+                        <!-- Cards injected here via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Row -->
+            <div class="row mt-2 mb-5 text-center">
+                <div class="col-12 d-flex flex-wrap justify-content-center gap-3">
+                    <button class="btn btn-success btn-lg rounded-pill shadow px-5 py-3" id="goToStep3Btn">
+                        {{ _('Generate Final Portfolio') }} <i class="bi bi-check-circle ms-2"></i>
+                    </button>
+                    <a id="whatsappShareBtn" href="#" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-lg rounded-pill shadow px-4 py-3 d-none"
+                        style="background:#25D366;color:#fff;border:none;" aria-label="{{ _('Share on WhatsApp') }}">
+                        <i class="bi bi-whatsapp me-2"></i>{{ _('Share on WhatsApp') }}
+                    </a>
+                    <a href="/career" class="btn btn-outline-primary btn-lg rounded-pill px-4 py-3">
+                        <i class="bi bi-bullseye me-2"></i>{{ _('Career Intelligence Hub') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- WIZARD STEP 3: Final Download              -->
+        <!-- ========================================== -->
+        <div id="step-3" style="display: none;">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <button class="btn btn-link text-muted px-0 text-decoration-none hover-lift" id="backToStep2Btn">
+                        <i class="bi bi-chevron-left me-1"></i> {{ _('Previous') }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-5 text-center">
+                <div class="col-lg-8">
+                    <div class="card glass-card border-0 shadow-lg py-5 px-4 mt-4">
+                        <i class="bi bi-award-fill text-warning" style="font-size: 4rem;"></i>
+                        <h2 class="fw-bolder mt-3 mb-2">{{ _('Your Portfolio is Ready!') }}</h2>
+                        <p class="text-muted mb-5">{{ _('Your unpaid activities have been fully mapped to corporate skills and verified.') }}</p>
+
+                        <button class="btn btn-primary btn-lg rounded-pill shadow px-5 py-3 mx-auto"
+                            id="downloadPdfBtn">
+                            <i class="bi bi-file-earmark-pdf-fill me-2 fs-4"></i> {{ _('Download Professional Portfolio') }}
+                        </button>
+
+                        <div class="mt-4 pt-3">
+                            <button class="btn btn-link text-muted small" id="restartWizardBtn">{{ _('Start Over with a New Activity') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============================================ -->
+        <!-- Action Trigger Modal 1: Business Plan        -->
+        <!-- ============================================ -->
+        <div class="modal fade" id="businessPlanModal" tabindex="-1" aria-labelledby="businessPlanModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content glass-card border-0 shadow-lg">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title fw-bold" id="businessPlanModalLabel">
+                            <i class="bi bi-rocket-takeoff-fill text-success me-2"></i>{{ _('Your 3-Step Business Roadmap') }}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ _('Close') }}"></button>
+                    </div>
+                    <div class="modal-body pt-3">
+                        <div class="d-flex align-items-start mb-3 p-3 rounded-3"
+                            style="background:rgba(25,135,84,0.08);">
+                            <span class="badge bg-success rounded-pill me-3 fs-6 px-3">1</span>
+                            <div>
+                                <h6 class="fw-bold mb-1" id="bp-step1-title">{{ _('Licensing &amp; Operations') }}</h6>
+                                <p class="small text-muted mb-0" id="bp-step1-desc">{{ _('Register your business legally and secure any local compliance documents required for your specific product/service.') }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-3 p-3 rounded-3"
+                            style="background:rgba(99,102,241,0.08);">
+                            <span class="badge bg-primary rounded-pill me-3 fs-6 px-3">2</span>
+                            <div>
+                                <h6 class="fw-bold mb-1" id="bp-step2-title">{{ _('Service &amp; Pricing') }}</h6>
+                                <p class="small text-muted mb-0" id="bp-step2-desc">{{ _('Design your core offering and calculate a competitive pricing model based on a markup of your base operating costs.') }}</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start p-3 rounded-3" style="background:rgba(255,193,7,0.08);">
+                            <span class="badge bg-warning text-dark rounded-pill me-3 fs-6 px-3">3</span>
+                            <div>
+                                <h6 class="fw-bold mb-1" id="bp-step3-title">{{ _('Local Outreach') }}</h6>
+                                <p class="small text-muted mb-0" id="bp-step3-desc">{{ _('Identify exactly two community channels (e.g., local WhatsApp groups or community boards) to broadcast your launch message.') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">{{ _("Got it — I'm Ready!") }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- Action Trigger Modal 2: Pitch Email Template -->
+        <!-- ============================================ -->
+        <div class="modal fade" id="pitchModal" tabindex="-1" aria-labelledby="pitchModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content glass-card border-0 shadow-lg">
+                    <div class="modal-header border-0 pb-0">
+                        <h5 class="modal-title fw-bold" id="pitchModalLabel">
+                            <i class="bi bi-envelope-paper-fill text-primary me-2"></i>{{ _('Your Pitch Email') }}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ _('Close') }}"></button>
+                    </div>
+                    <div class="modal-body pt-3">
+                        <p class="small text-muted mb-2">{{ _('Copy and send this to your target company:') }}</p>
+                        <div class="p-3 rounded-3 border" style="background:rgba(99,102,241,0.05);" id="pitchEmailBody">
+                            <p class="mb-1"><strong id="pitch-subject-label">{{ _('Subject:') }}</strong> <span
+                                    id="pitch-subject">{{ _('Partnership Proposal — Local Service Collaboration') }}</span></p>
+                            <hr class="my-2">
+                            <p class="mb-1" id="pitch-greeting">{{ _('Hi [Decision Maker],') }}</p>
+                            <p class="mb-1" id="pitch-body">{{ _('I have extensive experience coordinating successful community operations and would love to discuss a potential partnership. I specialize in delivering culturally authentic, timely structural results for local teams.') }}</p>
+                            <p class="mb-0">{{ _('Would you be open to a 15-minute call this week?') }}</p>
+                            <br>
+                            <p class="mb-0">{{ _('Warm regards,') }}<br><em>{{ _('[Your Name]') }}</em></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 pt-2 gap-2">
+                        <button type="button" class="btn btn-outline-secondary rounded-pill px-3" id="copyPitchBtn">
+                            <i class="bi bi-clipboard me-1"></i>{{ _('Copy') }}
+                        </button>
+                        <button type="button" class="btn btn-primary rounded-pill px-4"
+                            data-bs-dismiss="modal">{{ _('Done') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <!-- UI Translations for JS Injections -->
+        <script>
+            window.CURRENT_LANG = "{{ session.get('lang', 'en') }}";
+            window.OPP_I18N = {
+                startup: "{{ _('Startup Idea') }}",
+                collab: "{{ _('Collaboration Match') }}",
+                jobRoles: "{{ _('Specific Job Roles') }}",
+                growth: "{{ _('Growth Plan') }}",
+                match: "{{ _('Match') }}",
+                btnStart: "{{ _('Learn How to Start This') }}",
+                btnPitch: "{{ _('Draft a Pitch to This Company') }}",
+                btnDetails: "{{ _('View Openings') }}",
+                btnLearn: "{{ _('Start Learning') }}",
+                confHigh: {{ _("We're quite sure about this one")|tojson }},
+                confMed: {{ _("We're fairly confident about this one")|tojson }},
+                confLow: {{ _("We think this might apply — tell us more if it doesn't sound right")|tojson }},
+                errGeminiDefault: {{ _("We're using our backup way of understanding your story right now — everything still works.")|tojson }},
+                errGeminiConfig: {{ _('Something needs attention on our end — please let us know if this keeps happening.')|tojson }},
+                errGeminiQuota: {{ _("We've reached today's limit for our fastest AI helper, so we're using our backup one instead.")|tojson }},
+                errGeminiOffline: {{ _("We're working in offline mode right now — everything still works, just a little differently.")|tojson }},
+                errNlp: {{ _('We\'re having trouble understanding this one right now. Try again in a moment, or describe it a little differently.')|tojson }},
+                whyFoundSkill: {{ _('Why we found this skill')|tojson }},
+                skillRecognised: {{ _('Skill we recognised:')|tojson }},
+                howSureWeAre: {{ _('How sure we are:')|tojson }},
+                whatYouToldUs: {{ _('What you told us that led us here:')|tojson }},
+                weAlsoConsidered: {{ _('We also considered:')|tojson }},
+                radarPlanning: "{{ _('Planning Ahead') }}",
+                radarMoney: "{{ _('Managing Money') }}",
+                radarProblems: "{{ _('Handling Problems') }}",
+                radarTeam: "{{ _('Working With Others') }}",
+                radarPeople: "{{ _('Understanding People') }}",
+                competencyMap: "{{ _('Competency Map') }}",
+                historicalStrength: "{{ _('Historical Strength') }}",
+                leadDecisionMaking: "{{ _('Making Good Calls') }}",
+                leadResourceAllocation: "{{ _('Making the Most of What You Have') }}",
+                leadTeamCoordination: "{{ _('Bringing People Together') }}",
+                leadTeamDevelopment: "{{ _('Helping Others Grow') }}",
+                leadEmpathyCrisis: "{{ _('Staying Calm Under Pressure') }}",
+                estBudget: "{{ _('Est. Budget') }}",
+                impact: "{{ _('Impact') }}",
+                lowRiskStart: "{{ _('Low Risk Start') }}",
+                metaType: "{{ _('Type') }}",
+                partnership: "{{ _('Partnership') }}",
+                difficulty: "{{ _('Difficulty') }}",
+                medium: "{{ _('Medium') }}",
+                timeToApply: "{{ _('Time to Apply') }}",
+                oneToTwoDays: "{{ _('1–2 Days') }}",
+                skillsGained: "{{ _('Skills Gained') }}",
+                leadershipPM: "{{ _('Leadership + PM') }}",
+                duration: "{{ _('Duration') }}",
+                thirtyDays: "{{ _('30 Days') }}",
+                beginner: "{{ _('Beginner') }}",
+                listening: "{{ _('Listening…') }}",
+                networkError: "{{ _('Network error connecting to the server.') }}",
+                analyzingActivityFallback: "{{ _('Analyzing your activity…') }}",
+                generatingMatchFallback: "{{ _('Generating your match…') }}",
+            };
+        </script>
+
+        <!-- Custom JS -->
+        <script src="script.js"></script>
+        <script src="copilot_widget.js"></script>
+</body>
+
+</html>
