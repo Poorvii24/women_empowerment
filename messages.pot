@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-02-23 10:20+0530\n"
+"POT-Creation-Date: 2026-09-07 18:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,159 +17,1537 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: index.html:37
-msgid "Dashboard"
-msgstr ""
-
-#: index.html:40
-msgid "History"
-msgstr ""
-
-#: index.html:45
+#: _lang_switch.html:11 _navbar.html:42
 msgid "Language"
 msgstr ""
 
-#: index.html:68
+#: _navbar.html:31
+msgid "Dashboard"
+msgstr ""
+
+#: _navbar.html:34
+msgid "Career Hub"
+msgstr ""
+
+#: _navbar.html:37
+msgid "History"
+msgstr ""
+
+#: _navbar.html:55
+msgid "Notifications"
+msgstr ""
+
+#: _navbar.html:63
 msgid "Opportunities"
 msgstr ""
 
-#: index.html:71
+#: _navbar.html:65
 msgid "No notifications yet"
 msgstr ""
 
-#: index.html:77
+#: _navbar.html:78
 msgid "Sign Out"
 msgstr ""
 
-#: index.html:94
-msgid "Your Invisible Skills, Visible."
+#: _navbar.html:99
+msgid "Open Your Career Guide"
 msgstr ""
 
-#: index.html:95
-msgid "Transform everyday activities into professional assets."
+#: _navbar.html:100
+msgid "Your Career Guide"
 msgstr ""
 
-#: index.html:98
-msgid "Download Professional Portfolio"
+#: _navbar.html:101
+msgid "Clear conversation"
 msgstr ""
 
-#: index.html:115
-msgid "Record Activity"
+#: _navbar.html:102 index.html:422 index.html:467
+msgid "Close"
 msgstr ""
 
-#: index.html:117
-msgid "What did you manage today? Explain your unpaid labor."
+#: _navbar.html:103
+msgid "Send"
 msgstr ""
 
-#: index.html:122
+#: _navbar.html:104
+msgid "Ask me anything — how ready you are, what to learn next, what to try..."
+msgstr ""
+
+#: _navbar.html:106
+msgid "How ready am I for my next opportunity?"
+msgstr ""
+
+#: _navbar.html:107
+msgid "What skills could I learn next?"
+msgstr ""
+
+#: _navbar.html:108
+msgid "What should I try building next?"
+msgstr ""
+
+#: _navbar.html:109
+msgid "Am I ready for the role I want?"
+msgstr ""
+
+#: _navbar.html:111
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: _navbar.html:112
+msgid "Network error — please check your connection and try again."
+msgstr ""
+
+#: _navbar.html:113
+msgid "Clear this conversation? This can't be undone."
+msgstr ""
+
+#: app.py:356
+msgid "That took a little too long — please refresh the page and try again."
+msgstr ""
+
+#: app.py:366
+msgid "You're moving fast! Please wait a moment and try again."
+msgstr ""
+
+#: app.py:378
+msgid "Something didn't work on our end — please try again."
+msgstr ""
+
+#: app.py:477
 msgid ""
-"What task did you do\n"
-"                                    today?"
+"We couldn't find an account with that username and password. Please "
+"double-check and try again."
 msgstr ""
 
-#: index.html:125
-msgid "e.g., Managed household budget"
+#: app.py:492
+msgid "Please use a username with at least 3 letters or numbers."
 msgstr ""
 
-#: index.html:128
+#: app.py:494
 msgid ""
-"How many people were\n"
-"                                    involved?"
+"Usernames can only have letters, numbers, and underscores — no spaces or "
+"symbols."
 msgstr ""
 
-#: index.html:131
+#: app.py:496
+msgid "Please choose a password with at least 8 characters."
+msgstr ""
+
+#: app.py:498
+msgid "Those two passwords don't match — please try typing them again."
+msgstr ""
+
+#: app.py:504
+msgid "Someone's already using that username — please try a different one."
+msgstr ""
+
+#: app.py:507
+msgid "You're all set! Please sign in to get started."
+msgstr ""
+
+#: app.py:516
+msgid "You've been signed out. See you next time!"
+msgstr ""
+
+#: app.py:629
+msgid ""
+"Please tell us a little more about what you did — even a sentence or two "
+"helps."
+msgstr ""
+
+#: app.py:1401
+msgid "Could not load your portfolio data. Please try again."
+msgstr ""
+
+#: app.py:1743
+msgid "Could not generate your PDF. Please try again."
+msgstr ""
+
+#: app.py:1782
+msgid "Please choose one of the roles from the list."
+msgstr ""
+
+#: app.py:1785
+#, python-format
+msgid "Got it! You're now aiming for %(role)s."
+msgstr ""
+
+#: app.py:1800
+msgid "Please choose a file to upload."
+msgstr ""
+
+#: app.py:1804
+msgid "Please choose a file first."
+msgstr ""
+
+#: app.py:1815
+msgid ""
+"We had trouble reading that file. Please try again, or try a different "
+"file."
+msgstr ""
+
+#: app.py:1821
+msgid "We read your resume but couldn't save it just now. Please try again."
+msgstr ""
+
+#: app.py:1825
+#, python-format
+msgid "Great! We've added '%(filename)s' to your profile."
+msgstr ""
+
+#: app.py:1849
+msgid "Please tell us what role you're hoping for first, in the Career Hub."
+msgstr ""
+
+#: app.py:1880
+msgid ""
+"Skill gap analysis failed. This usually means the local AI model couldn't"
+" be loaded (it needs to download once from the internet the first time "
+"it's used). Check your connection and try again in a moment."
+msgstr ""
+
+#: app.py:2004
+msgid "We couldn't put your portfolio together just now. Please try again."
+msgstr ""
+
+#: app.py:2430
+msgid "Could not render portfolio PDF. Please try again."
+msgstr ""
+
+#: app.py:2474
+msgid "The Copilot couldn't respond. Please try again."
+msgstr ""
+
+#: app.py:2488
+msgid "Could not load conversation history."
+msgstr ""
+
+#: app.py:2502
+msgid "Could not clear conversation history."
+msgstr ""
+
+#: career.html:7
+msgid "ISIS - Career Intelligence Hub"
+msgstr ""
+
+#: career.html:18
+msgid "Career Portfolio PDF"
+msgstr ""
+
+#: career.html:27 index.html:372
+msgid "Career Intelligence Hub"
+msgstr ""
+
+#: career.html:29
+msgid ""
+"See how ready you are for a role you want, and a simple plan to get even "
+"more ready"
+msgstr ""
+
+#: career.html:40
+msgid "Step 1 — What Role Are You Hoping For?"
+msgstr ""
+
+#: career.html:41
+msgid ""
+"Pick something you'd like to work toward. We'll use this to see how your "
+"experience already matches up."
+msgstr ""
+
+#: career.html:50
+msgid "Save This Goal"
+msgstr ""
+
+#: career.html:55
+msgid "You're aiming for:"
+msgstr ""
+
+#: career.html:66
+msgid "Step 2 — Have a Resume? Add It (Optional)"
+msgstr ""
+
+#: career.html:67
+msgid ""
+"Don't have one? No problem at all — the activities you've already shared "
+"on your Dashboard are enough on their own."
+msgstr ""
+
+#: career.html:70
+msgid "We have this on file:"
+msgstr ""
+
+#: career.html:71
+msgid "(add a new one any time to replace it)"
+msgstr ""
+
+#: career.html:80
+msgid "Drag & drop, or click to choose a file"
+msgstr ""
+
+#: career.html:81
+msgid "PDF or Word document · up to 8MB"
+msgstr ""
+
+#: career.html:85
+msgid "Choose a File"
+msgstr ""
+
+#: career.html:98
+msgid "See How Ready I Am"
+msgstr ""
+
+#: career.html:102
+msgid "Looking at everything you've shared with us…"
+msgstr ""
+
+#: career.html:120
+msgid "Your Career Journey"
+msgstr ""
+
+#: career.html:121
+msgid ""
+"A simple path from what you're already great at, to where you could go "
+"next."
+msgstr ""
+
+#: career.html:135
+msgid "How Ready You Are for This Role"
+msgstr ""
+
+#: career.html:139
+msgid "out of 100"
+msgstr ""
+
+#: career.html:157
+msgid "Things You Already Do Well"
+msgstr ""
+
+#: career.html:165
+msgid "You're Partway There"
+msgstr ""
+
+#: career.html:173 career.html:420
+msgid "Skills You Can Learn Next"
+msgstr ""
+
+#: career.html:186
+msgid "How Well You Match This Role"
+msgstr ""
+
+#: career.html:192
+msgid "Match on the most important skills:"
+msgstr ""
+
+#: career.html:208
+msgid "Your Story, Summed Up"
+msgstr ""
+
+#: career.html:209
+msgid "A quick overview, the way an employer might see it"
+msgstr ""
+
+#: career.html:213 career.html:585
+msgid "How Ready You Are"
+msgstr ""
+
+#: career.html:224
+msgid "Top Strengths"
+msgstr ""
+
+#: career.html:230
+msgid "Where You Could Grow"
+msgstr ""
+
+#: career.html:237
+msgid "What To Try Next"
+msgstr ""
+
+#: career.html:250
+msgid "Resume Quality &amp; Interview Readiness"
+msgstr ""
+
+#: career.html:260
+msgid "Words Worth Adding to Your Resume"
+msgstr ""
+
+#: career.html:264
+msgid "Ways to Strengthen It"
+msgstr ""
+
+#: career.html:278
+msgid "Score Explainability"
+msgstr ""
+
+#: career.html:279
+msgid ""
+"Every score is derived from your actual activities, resume, and skill gap"
+" — not a black box."
+msgstr ""
+
+#: career.html:289
+msgid "Your 30/60/90-Day Learning Roadmap"
+msgstr ""
+
+#: career.html:291
+msgid "First 30 Days"
+msgstr ""
+
+#: career.html:291
+msgid "Days 31–60"
+msgstr ""
+
+#: career.html:291
+msgid "Days 61–90"
+msgstr ""
+
+#: career.html:308
+msgid "Skill Growth Over Time"
+msgstr ""
+
+#: career.html:316
+msgid "Skill Distribution"
+msgstr ""
+
+#: career.html:328
+msgid "Activity Consistency (Last 12 Weeks)"
+msgstr ""
+
+#: career.html:338
+msgid "Things Worth Trying Next"
+msgstr ""
+
+#: career.html:339
+msgid ""
+"Chosen because they build on what you're already good at, and move you "
+"closer to the role you're hoping for."
+msgstr ""
+
+#: career.html:344
+msgid "Projects to Build"
+msgstr ""
+
+#: career.html:352
+msgid "Hackathons"
+msgstr ""
+
+#: career.html:360
+msgid "Certifications"
+msgstr ""
+
+#: career.html:368
+msgid "Open Source"
+msgstr ""
+
+#: career.html:379
+msgid "Set your target role above"
+msgstr ""
+
+#: career.html:379
+msgid "to unlock your personalised career analysis."
+msgstr ""
+
+#: career.html:393
+msgid "Uploading and parsing…"
+msgstr ""
+
+#: career.html:394
+msgid "Sections found:"
+msgstr ""
+
+#: career.html:395
+msgid "Skills extracted:"
+msgstr ""
+
+#: career.html:396
+msgid "Upload failed:"
+msgstr ""
+
+#: career.html:397
+msgid "Pick a role you're aiming for above first, then try again."
+msgstr ""
+
+#: career.html:398
+msgid "We couldn't put this together just now. Please try again in a moment."
+msgstr ""
+
+#: career.html:399
+msgid "We couldn't put this together just now — "
+msgstr ""
+
+#: career.html:400
+msgid "Skills & Know-How"
+msgstr ""
+
+#: career.html:401
+msgid "Leading Others"
+msgstr ""
+
+#: career.html:402
+msgid "Explaining Things Clearly"
+msgstr ""
+
+#: career.html:403
+msgid "Staying Consistent"
+msgstr ""
+
+#: career.html:404
+msgid "Growing Over Time"
+msgstr ""
+
+#: career.html:405 history.html:173
+msgid "We're quite sure"
+msgstr ""
+
+#: career.html:406 history.html:173
+msgid "We're fairly sure"
+msgstr ""
+
+#: career.html:407 history.html:173
+msgid "Still learning about this"
+msgstr ""
+
+#: career.html:408
+msgid "Why We Think This"
+msgstr ""
+
+#: career.html:409
+msgid "Where We Saw It In Your Story"
+msgstr ""
+
+#: career.html:410
+msgid "How to Strengthen This"
+msgstr ""
+
+#: career.html:411
+msgid "Nothing specific yet — tell us more and we'll find it"
+msgstr ""
+
+#: career.html:412
+msgid "You're doing great here!"
+msgstr ""
+
+#: career.html:413
+msgid "What You're Already Great At"
+msgstr ""
+
+#: career.html:414
+msgid "Every story you share helps us find more of these."
+msgstr ""
+
+#: career.html:415
+msgid "Hidden Skills We Found"
+msgstr ""
+
+#: career.html:416
+msgid "Tell us a bit more and we'll spot skills you may not realise you have."
+msgstr ""
+
+#: career.html:417
+msgid "Jobs You Could Explore Today"
+msgstr ""
+
+#: career.html:418
+#, python-format
+msgid "Roles like %%(role)s"
+msgstr ""
+
+#: career.html:419
+#, python-format
+msgid "Once you pick a role like %%(role)s, we'll show real next steps here."
+msgstr ""
+
+#: career.html:421
+msgid "You're already covering everything important — nicely done!"
+msgstr ""
+
+#: career.html:422
+msgid "Where This Could Take You"
+msgstr ""
+
+#: career.html:423
+#, python-format
+msgid "With a bit more practice, %%(role)s could be well within reach."
+msgstr ""
+
+#: career.html:424
+msgid "your next role"
+msgstr ""
+
+#: career.html:425
+msgid "Strong match"
+msgstr ""
+
+#: career.html:426
+msgid "Good match"
+msgstr ""
+
+#: career.html:427
+msgid "Some overlap"
+msgstr ""
+
+#: career.html:428
+msgid ""
+"Nothing to show yet — tell us about a few more things you've done, or add"
+" your resume."
+msgstr ""
+
+#: career.html:429
+msgid "Nothing here right now."
+msgstr ""
+
+#: career.html:430
+msgid "You're already covering everything important — wonderful!"
+msgstr ""
+
+#: career.html:431
+msgid "from:"
+msgstr ""
+
+#: career.html:432
+msgid "Especially useful"
+msgstr ""
+
+#: career.html:433
+msgid "Good to have"
+msgstr ""
+
+#: career.html:434
+msgid "Nothing to do — great coverage!"
+msgstr ""
+
+#: career.html:435
+#, python-format
+msgid ""
+"Chosen because you've already shown skills like %%(skills)s — these build"
+" on that, and move you closer to %%(role)s."
+msgstr ""
+
+#: career.html:436
+#, python-format
+msgid "These are good general starting points for %%(role)s."
+msgstr ""
+
+#: career.html:437
+msgid "the role you're hoping for"
+msgstr ""
+
+#: career.html:438
+msgid "Nothing here yet — set a target role above to see suggestions."
+msgstr ""
+
+#: career.html:439
+#, python-format
+msgid "Why: hands-on practice that shows employers what you can do for %%(role)s."
+msgstr ""
+
+#: career.html:440
+msgid ""
+"Why: a chance to practice under real conditions, alongside others aiming "
+"for similar work."
+msgstr ""
+
+#: career.html:441
+msgid ""
+"Why: fills in a skill this role usually asks for, backed by a recognised "
+"provider."
+msgstr ""
+
+#: career.html:442
+msgid ""
+"Why: a low-pressure way to build a public track record of your skills "
+"over time."
+msgstr ""
+
+#: career.html:443
+msgid "Activities logged"
+msgstr ""
+
+#: career.html:444
+msgid "Avg Employability Score"
+msgstr ""
+
+#: career.html:445
+msgid "Activities"
+msgstr ""
+
+#: career.html:446
+msgid "this role"
+msgstr ""
+
+#: career.html:447
+msgid "Great"
+msgstr ""
+
+#: career.html:448
+msgid "Growing"
+msgstr ""
+
+#: career.html:449
+msgid "Just Starting"
+msgstr ""
+
+#: career.html:586
+msgid "Resume Quality"
+msgstr ""
+
+#: career.html:587
+msgid "How Strong Your Resume Is"
+msgstr ""
+
+#: career.html:588
+msgid "Interview Readiness"
+msgstr ""
+
+#: career.html:607
+msgid "Share a few more activities and we'll spot your strengths here."
+msgstr ""
+
+#: career.html:613
+msgid "No major gaps identified."
+msgstr ""
+
+#: career.html:625
+msgid "ATS Score"
+msgstr ""
+
+#: career.html:626
+msgid "Resume Strength"
+msgstr ""
+
+#: career.html:627
+msgid "Interview Ready"
+msgstr ""
+
+#: career.html:628
+msgid "Completeness"
+msgstr ""
+
+#: career.html:645
+msgid "All key ATS keywords are covered."
+msgstr ""
+
+#: career.html:657
+msgid "No major improvements needed."
+msgstr ""
+
+#: history.html:8
+msgid "ISIS – Activity History"
+msgstr ""
+
+#: history.html:103
+msgid "Everything You've Shared With Us"
+msgstr ""
+
+#: history.html:104
+#, python-format
+msgid "All %(count)s recorded activities from your portfolio."
+msgstr ""
+
+#: history.html:107
+msgid "🔍  Find something you shared before…"
+msgstr ""
+
+#: history.html:109
+msgid "New"
+msgstr ""
+
+#: history.html:119
+msgid "Total Activities"
+msgstr ""
+
+#: history.html:125
+msgid "Avg Leadership"
+msgstr ""
+
+#: history.html:131
+msgid "Avg Employability"
+msgstr ""
+
+#: history.html:137
+msgid "Top Skill Area"
+msgstr ""
+
+#: history.html:151
+msgid "What You Did"
+msgstr ""
+
+#: history.html:152
+msgid "Skill We Found"
+msgstr ""
+
+#: history.html:153
+msgid "Career Match"
+msgstr ""
+
+#: history.html:154
+msgid "Key Strengths"
+msgstr ""
+
+#: history.html:155 index.html:246
+msgid "Leadership Shown"
+msgstr ""
+
+#: history.html:156 index.html:258
+msgid "Job Readiness"
+msgstr ""
+
+#: history.html:157
+msgid "Date"
+msgstr ""
+
+#: history.html:172
+msgid "How sure we are that this is the right skill match"
+msgstr ""
+
+#: history.html:188 index.html:523
+msgid "Planning Ahead"
+msgstr ""
+
+#: history.html:188
+msgid "Plan"
+msgstr ""
+
+#: history.html:190 index.html:524
+msgid "Managing Money"
+msgstr ""
+
+#: history.html:190
+msgid "Money"
+msgstr ""
+
+#: history.html:192 index.html:525
+msgid "Handling Problems"
+msgstr ""
+
+#: history.html:192
+msgid "Problems"
+msgstr ""
+
+#: history.html:193 index.html:526
+msgid "Working With Others"
+msgstr ""
+
+#: history.html:193
+msgid "Team"
+msgstr ""
+
+#: history.html:194 index.html:527
+msgid "Understanding People"
+msgstr ""
+
+#: history.html:194
+msgid "People"
+msgstr ""
+
+#: history.html:219
+msgid "You haven't shared anything with us yet."
+msgstr ""
+
+#: history.html:220
+msgid "Tell us about something you did"
+msgstr ""
+
+#: index.html:8
+msgid "ISIS - Professional Portfolio"
+msgstr ""
+
+#: index.html:28
+msgid "Download Portfolio"
+msgstr ""
+
+#: index.html:35
+msgid "Your Everyday Efforts Have Real Value."
+msgstr ""
+
+#: index.html:36
+msgid ""
+"Tell us what you did — we'll help you see the skills already hiding "
+"inside it."
+msgstr ""
+
+#: index.html:53
+msgid "Tell Us What You Did"
+msgstr ""
+
+#: index.html:55
+msgid ""
+"There's no wrong answer here — just tell us about something you handled "
+"recently, in your own words."
+msgstr ""
+
+#: index.html:60
+msgid "What's something you took charge of recently?"
+msgstr ""
+
+#: index.html:63
+msgid "e.g., Managed a household event"
+msgstr ""
+
+#: index.html:65 index.html:78 index.html:91 index.html:103 index.html:115
+#: index.html:127 index.html:139 index.html:151
+msgid "Click to speak instead of typing"
+msgstr ""
+
+#: index.html:72
+msgid "Were other people involved or counting on you?"
+msgstr ""
+
+#: index.html:76
 msgid "e.g., 5 family members"
 msgstr ""
 
+#: index.html:85
+msgid "About how much time did this take?"
+msgstr ""
+
+#: index.html:89
+msgid "e.g., 4 hours per day over 3 days"
+msgstr ""
+
+#: index.html:98
+msgid "Did you handle any money for this? Roughly how much?"
+msgstr ""
+
+#: index.html:101
+msgid "e.g., Rs. 5,000 for groceries"
+msgstr ""
+
+#: index.html:110
+msgid "Did you keep track of any items, supplies, or stock?"
+msgstr ""
+
+#: index.html:113
+msgid "e.g., 10kg rice, decorations, 50 chairs"
+msgstr ""
+
+#: index.html:122
+msgid "Who was this for?"
+msgstr ""
+
+#: index.html:125
+msgid "e.g., 50 neighborhood guests"
+msgstr ""
+
 #: index.html:134
-msgid ""
-"Did you manage any\n"
-"                                    money or supplies?"
+msgid "Did anything go wrong or change suddenly? How did you handle it?"
 msgstr ""
 
 #: index.html:137
-msgid "e.g., Rs. 10,000 for groceries"
+msgid "e.g., Mediated a vendor dispute regarding late delivery"
 msgstr ""
 
-#: index.html:140
+#: index.html:146
+msgid "What was the hardest part?"
+msgstr ""
+
+#: index.html:149
 msgid ""
-"What was the hardest\n"
-"                                    part?"
+"e.g., Balancing emotional family needs while sticking strictly to the "
+"tight budget"
 msgstr ""
 
-#: index.html:143
-msgid "e.g., Balancing conflicting needs"
+#: index.html:160
+msgid "Next"
 msgstr ""
 
-#: index.html:148
-msgid "Analyze Skills"
+#: index.html:172
+msgid "Your Skill Profile"
 msgstr ""
 
-#: index.html:158
-msgid "Core Metrics"
+#: index.html:173
+msgid "Based on your logged history"
 msgstr ""
 
-#: index.html:171
-msgid "Leadership Index"
-msgstr ""
-
-#: index.html:185
-msgid "Employability Score"
+#: index.html:180
+msgid "View Full History"
 msgstr ""
 
 #: index.html:196
+msgid "Back to activity form"
+msgstr ""
+
+#: index.html:197 index.html:385
+msgid "Previous"
+msgstr ""
+
+#: index.html:206
+msgid "Analysing your activity…"
+msgstr ""
+
+#: index.html:209
+msgid "Running semantic skill extraction…"
+msgstr ""
+
+#: index.html:213
+msgid "Generating career intelligence…"
+msgstr ""
+
+#: index.html:217
+msgid "Matching opportunities…"
+msgstr ""
+
+#: index.html:221
+msgid "Building dashboard…"
+msgstr ""
+
+#: index.html:228
+msgid "Your Career Snapshot"
+msgstr ""
+
+#: index.html:234
+msgid "Your Strengths"
+msgstr ""
+
+#: index.html:244
+msgid "Leadership shown"
+msgstr ""
+
+#: index.html:256
+msgid "Job readiness"
+msgstr ""
+
+#: index.html:275
 msgid "Professional Skill Map"
 msgstr ""
 
-#: index.html:197
-msgid "5-Point Capabilities"
+#: index.html:276
+msgid "Five key strengths, at a glance"
 msgstr ""
 
-#: index.html:212
+#: index.html:283
+msgid "Skill radar chart"
+msgstr ""
+
+#: index.html:298
 msgid "Resume Feed"
 msgstr ""
 
-#: index.html:219
-msgid "Analyze an activity to generate bullets."
+#: index.html:317
+msgid "You haven't shared anything yet"
 msgstr ""
 
-#: index.html:231
+#: index.html:318
 msgid ""
-"Opportunity\n"
-"                    Engine"
+"Tell us about something you did recently — we'll turn it into a "
+"professional highlight for you."
 msgstr ""
 
-#: index.html:233
+#: index.html:323
+msgid "Resume feed"
+msgstr ""
+
+#: index.html:332
+msgid "Jobs That Match Your Strengths"
+msgstr ""
+
+#: index.html:336
 msgid ""
-"Based on your hidden skills, here are potential next steps in the\n"
-"                    market."
+"Based on what you've already shown you can do, here are some paths worth "
+"exploring."
 msgstr ""
 
-#: index.html:248
+#: index.html:338
+msgid "Listen to opportunities"
+msgstr ""
+
+#: index.html:340
+msgid "Listen"
+msgstr ""
+
+#: index.html:352
+msgid "Smart Career Matches"
+msgstr ""
+
+#: index.html:353
+msgid "AI-powered roles that best fit your demonstrated strengths."
+msgstr ""
+
+#: index.html:364
+msgid "Generate Final Portfolio"
+msgstr ""
+
+#: index.html:368 index.html:369
+msgid "Share on WhatsApp"
+msgstr ""
+
+#: index.html:394
+msgid "Your Portfolio is Ready!"
+msgstr ""
+
+#: index.html:395
+msgid ""
+"Your unpaid activities have been fully mapped to corporate skills and "
+"verified."
+msgstr ""
+
+#: index.html:399
+msgid "Download Professional Portfolio"
+msgstr ""
+
+#: index.html:403
+msgid "Start Over with a New Activity"
+msgstr ""
+
+#: index.html:420
+msgid "Your 3-Step Business Roadmap"
+msgstr ""
+
+#: index.html:429
+msgid "Licensing &amp; Operations"
+msgstr ""
+
+#: index.html:430
+msgid ""
+"Register your business legally and secure any local compliance documents "
+"required for your specific product/service."
+msgstr ""
+
+#: index.html:438
+msgid "Service &amp; Pricing"
+msgstr ""
+
+#: index.html:439
+msgid ""
+"Design your core offering and calculate a competitive pricing model based"
+" on a markup of your base operating costs."
+msgstr ""
+
+#: index.html:445
+msgid "Local Outreach"
+msgstr ""
+
+#: index.html:446
+msgid ""
+"Identify exactly two community channels (e.g., local WhatsApp groups or "
+"community boards) to broadcast your launch message."
+msgstr ""
+
+#: index.html:451
+msgid "Got it — I'm Ready!"
+msgstr ""
+
+#: index.html:465
+msgid "Your Pitch Email"
+msgstr ""
+
+#: index.html:470
+msgid "Copy and send this to your target company:"
+msgstr ""
+
+#: index.html:472
+msgid "Subject:"
+msgstr ""
+
+#: index.html:473
+msgid "Partnership Proposal — Local Service Collaboration"
+msgstr ""
+
+#: index.html:475
+msgid "Hi [Decision Maker],"
+msgstr ""
+
+#: index.html:476
+msgid ""
+"I have extensive experience coordinating successful community operations "
+"and would love to discuss a potential partnership. I specialize in "
+"delivering culturally authentic, timely structural results for local "
+"teams."
+msgstr ""
+
+#: index.html:477
+msgid "Would you be open to a 15-minute call this week?"
+msgstr ""
+
+#: index.html:479
+msgid "Warm regards,"
+msgstr ""
+
+#: index.html:479
+msgid "[Your Name]"
+msgstr ""
+
+#: index.html:484
+msgid "Copy"
+msgstr ""
+
+#: index.html:487
+msgid "Done"
+msgstr ""
+
+#: index.html:501
 msgid "Startup Idea"
 msgstr ""
 
-#: index.html:249
+#: index.html:502
 msgid "Collaboration Match"
 msgstr ""
 
-#: index.html:250
+#: index.html:503
 msgid "Specific Job Roles"
 msgstr ""
 
-#: index.html:251
+#: index.html:504
+msgid "Growth Plan"
+msgstr ""
+
+#: index.html:505
 msgid "Match"
 msgstr ""
 
-#: index.html:252
+#: index.html:506
 msgid "Learn How to Start This"
 msgstr ""
 
-#: index.html:253
+#: index.html:507
 msgid "Draft a Pitch to This Company"
 msgstr ""
 
-#: index.html:254
+#: index.html:508
 msgid "View Openings"
+msgstr ""
+
+#: index.html:509
+msgid "Start Learning"
+msgstr ""
+
+#: index.html:510
+msgid "We're quite sure about this one"
+msgstr ""
+
+#: index.html:511
+msgid "We're fairly confident about this one"
+msgstr ""
+
+#: index.html:512
+msgid "We think this might apply — tell us more if it doesn't sound right"
+msgstr ""
+
+#: index.html:513
+msgid ""
+"We're using our backup way of understanding your story right now — "
+"everything still works."
+msgstr ""
+
+#: index.html:514
+msgid ""
+"Something needs attention on our end — please let us know if this keeps "
+"happening."
+msgstr ""
+
+#: index.html:515
+msgid ""
+"We've reached today's limit for our fastest AI helper, so we're using our"
+" backup one instead."
+msgstr ""
+
+#: index.html:516
+msgid ""
+"We're working in offline mode right now — everything still works, just a "
+"little differently."
+msgstr ""
+
+#: index.html:517
+msgid ""
+"We're having trouble understanding this one right now. Try again in a "
+"moment, or describe it a little differently."
+msgstr ""
+
+#: index.html:518
+msgid "Why we found this skill"
+msgstr ""
+
+#: index.html:519
+msgid "Skill we recognised:"
+msgstr ""
+
+#: index.html:520
+msgid "How sure we are:"
+msgstr ""
+
+#: index.html:521
+msgid "What you told us that led us here:"
+msgstr ""
+
+#: index.html:522
+msgid "We also considered:"
+msgstr ""
+
+#: index.html:528
+msgid "Competency Map"
+msgstr ""
+
+#: index.html:529
+msgid "Historical Strength"
+msgstr ""
+
+#: index.html:530
+msgid "Making Good Calls"
+msgstr ""
+
+#: index.html:531
+msgid "Making the Most of What You Have"
+msgstr ""
+
+#: index.html:532
+msgid "Bringing People Together"
+msgstr ""
+
+#: index.html:533
+msgid "Helping Others Grow"
+msgstr ""
+
+#: index.html:534
+msgid "Staying Calm Under Pressure"
+msgstr ""
+
+#: index.html:535
+msgid "Est. Budget"
+msgstr ""
+
+#: index.html:536
+msgid "Impact"
+msgstr ""
+
+#: index.html:537
+msgid "Low Risk Start"
+msgstr ""
+
+#: index.html:538
+msgid "Type"
+msgstr ""
+
+#: index.html:539
+msgid "Partnership"
+msgstr ""
+
+#: index.html:540
+msgid "Difficulty"
+msgstr ""
+
+#: index.html:541
+msgid "Medium"
+msgstr ""
+
+#: index.html:542
+msgid "Time to Apply"
+msgstr ""
+
+#: index.html:543
+msgid "1–2 Days"
+msgstr ""
+
+#: index.html:544
+msgid "Skills Gained"
+msgstr ""
+
+#: index.html:545
+msgid "Leadership + PM"
+msgstr ""
+
+#: index.html:546
+msgid "Duration"
+msgstr ""
+
+#: index.html:547
+msgid "30 Days"
+msgstr ""
+
+#: index.html:548
+msgid "Beginner"
+msgstr ""
+
+#: index.html:549
+msgid "Listening…"
+msgstr ""
+
+#: index.html:550
+msgid "Network error connecting to the server."
+msgstr ""
+
+#: index.html:551
+msgid "Analyzing your activity…"
+msgstr ""
+
+#: index.html:552
+msgid "Generating your match…"
+msgstr ""
+
+#: login.html:7
+msgid "ISIS — Sign In"
+msgstr ""
+
+#: login.html:181
+msgid "Welcome back"
+msgstr ""
+
+#: login.html:182
+msgid "Sign in to your ISIS Portfolio"
+msgstr ""
+
+#: login.html:198 register.html:224
+msgid "Username"
+msgstr ""
+
+#: login.html:206 register.html:235
+msgid "Password"
+msgstr ""
+
+#: login.html:214
+msgid "Sign In"
+msgstr ""
+
+#: login.html:218 register.html:264
+msgid "or"
+msgstr ""
+
+#: login.html:220
+msgid "No account?"
+msgstr ""
+
+#: login.html:221
+msgid "Create one free"
+msgstr ""
+
+#: register.html:7
+msgid "ISIS — Create Account"
+msgstr ""
+
+#: register.html:207
+msgid "Create account"
+msgstr ""
+
+#: register.html:208
+msgid "Start mapping your invisible skills today"
+msgstr ""
+
+#: register.html:231
+msgid "3–30 characters, letters/numbers/underscores only"
+msgstr ""
+
+#: register.html:239
+msgid "Min 8 characters"
+msgstr ""
+
+#: register.html:245 register.html:276
+msgid "Type a password"
+msgstr ""
+
+#: register.html:249
+msgid "Confirm Password"
+msgstr ""
+
+#: register.html:253
+msgid "Re-enter password"
+msgstr ""
+
+#: register.html:256
+msgid "Passwords do not match"
+msgstr ""
+
+#: register.html:260
+msgid "Create Account"
+msgstr ""
+
+#: register.html:266
+msgid "Already have an account?"
+msgstr ""
+
+#: register.html:267
+msgid "Sign in"
+msgstr ""
+
+#: register.html:277
+msgid "Weak"
+msgstr ""
+
+#: register.html:278
+msgid "Fair"
+msgstr ""
+
+#: register.html:279
+msgid "Good"
+msgstr ""
+
+#: register.html:280
+msgid "Strong"
+msgstr ""
+
+#: services/resume_parser.py:57
+msgid "File has no extension. Please upload a .pdf or .docx file."
+msgstr ""
+
+#: services/resume_parser.py:61
+#, python-format
+msgid "Unsupported file type '.%(ext)s'. Please upload a .pdf or .docx file."
+msgstr ""
+
+#: services/resume_parser.py:64 utils/validators.py:71
+msgid "Uploaded file is empty."
+msgstr ""
+
+#: services/resume_parser.py:68
+#, python-format
+msgid "File is too large (%(size)sMB). Maximum size is %(max_size)sMB."
+msgstr ""
+
+#: services/resume_parser.py:89
+#, python-format
+msgid "Unsupported extension: %(ext)s"
+msgstr ""
+
+#: services/resume_parser.py:95
+#, python-format
+msgid ""
+"Could not read the %(ext)s file — it may be corrupted, password-"
+"protected, or an image-only scan with no extractable text."
+msgstr ""
+
+#: services/resume_parser.py:106
+msgid "This PDF is password-protected. Please upload an unprotected version."
+msgstr ""
+
+#: services/resume_parser.py:112
+msgid ""
+"No text could be extracted from this PDF — it may be a scanned image "
+"rather than actual text. Try uploading a DOCX version instead."
+msgstr ""
+
+#: services/resume_parser.py:134
+msgid "No text could be extracted from this DOCX file."
+msgstr ""
+
+#: utils/validators.py:38
+#, python-format
+msgid "Missing required field(s): %(fields)s."
+msgstr ""
+
+#: utils/validators.py:45
+#, python-format
+msgid "%(field)s must be at least %(min_length)s character(s)."
+msgstr ""
+
+#: utils/validators.py:50
+#, python-format
+msgid "%(field)s must be %(max_length)s characters or fewer."
+msgstr ""
+
+#: utils/validators.py:64
+msgid "File has no extension."
+msgstr ""
+
+#: utils/validators.py:68
+#, python-format
+msgid "Unsupported file type '.%(ext)s'. Allowed: %(allowed)s."
+msgstr ""
+
+#: utils/validators.py:73
+#, python-format
+msgid "File is too large (max %(max_mb)sMB)."
+msgstr ""
+
+#: utils/validators.py:97
+msgid ""
+"Username must be 3-32 characters and contain only letters, numbers, dots,"
+" underscores, or hyphens."
 msgstr ""
 

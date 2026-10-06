@@ -1,184 +1,1668 @@
-# Hindi translations for PROJECT.
-# Copyright (C) 2026 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
-#
+# Hindi translations for ISIS Portfolio — complete
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-02-23 10:20+0530\n"
-"PO-Revision-Date: 2026-02-23 09:32+0530\n"
+"POT-Creation-Date: 2026-09-07 18:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: hi\n"
 "Language: hi\n"
-"Language-Team: hi <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: index.html:37
-msgid "Dashboard"
-msgstr ""
-
-#: index.html:40
-msgid "History"
-msgstr ""
-
-#: index.html:45
+#: _lang_switch.html:11 _navbar.html:42
 msgid "Language"
-msgstr ""
+msgstr "भाषा"
 
-#: index.html:68
+#: _navbar.html:31
+msgid "Dashboard"
+msgstr "डैशबोर्ड"
+
+#: _navbar.html:34
+msgid "Career Hub"
+msgstr "करियर हब"
+
+#: _navbar.html:37
+msgid "History"
+msgstr "इतिहास"
+
+#: _navbar.html:55
+msgid "Notifications"
+msgstr "सूचनाएं"
+
+#: _navbar.html:63
 msgid "Opportunities"
-msgstr ""
+msgstr "अवसर"
 
-#: index.html:71
+#: _navbar.html:65
 msgid "No notifications yet"
-msgstr ""
+msgstr "अभी कोई सूचना नहीं"
 
-#: index.html:77
+#: _navbar.html:78
 msgid "Sign Out"
-msgstr ""
+msgstr "साइन आउट"
 
-#: index.html:94
-msgid "Your Invisible Skills, Visible."
-msgstr ""
+#: _navbar.html:99
+msgid "Open Your Career Guide"
+msgstr "अपना करियर गाइड खोलें"
 
-#: index.html:95
-msgid "Transform everyday activities into professional assets."
+#: _navbar.html:100
+msgid "Your Career Guide"
+msgstr "आपका करियर गाइड"
+
+#: _navbar.html:101
+msgid "Clear conversation"
+msgstr "बातचीत साफ़ करें"
+
+#: _navbar.html:102 index.html:422 index.html:467
+msgid "Close"
+msgstr "बंद करें"
+
+#: _navbar.html:103
+msgid "Send"
+msgstr "भेजें"
+
+#: _navbar.html:104
+msgid ""
+"Ask me anything — how ready you are, what to learn next, what to try..."
 msgstr ""
+"मुझसे कुछ भी पूछें — आप कितने तैयार हैं, आगे क्या सीखें, क्या आज़माएं..."
+
+#: _navbar.html:106
+msgid "How ready am I for my next opportunity?"
+msgstr "मैं अपने अगले अवसर के लिए कितना तैयार हूँ?"
+
+#: _navbar.html:107
+msgid "What skills could I learn next?"
+msgstr "आगे मुझे कौन-से कौशल सीखने चाहिए?"
+
+#: _navbar.html:108
+msgid "What should I try building next?"
+msgstr "मुझे आगे क्या बनाने की कोशिश करनी चाहिए?"
+
+#: _navbar.html:109
+msgid "Am I ready for the role I want?"
+msgstr "क्या मैं अपनी मनचाही भूमिका के लिए तैयार हूँ?"
+
+#: _navbar.html:111
+msgid "Something went wrong. Please try again."
+msgstr "कुछ गड़बड़ हो गई। कृपया फिर से कोशिश करें।"
+
+#: _navbar.html:112
+msgid "Network error — please check your connection and try again."
+msgstr "नेटवर्क त्रुटि — कृपया अपना कनेक्शन जाँचें और फिर से कोशिश करें।"
+
+#: _navbar.html:113
+msgid "Clear this conversation? This can't be undone."
+msgstr "इस बातचीत को साफ़ करें? इसे पूर्ववत नहीं किया जा सकता।"
+
+#: app.py:356
+msgid "That took a little too long — please refresh the page and try again."
+msgstr ""
+"इसमें थोड़ा ज़्यादा समय लग गया — कृपया पेज को रीफ़्रेश करके फिर से कोशिश "
+"करें।"
+
+#: app.py:366
+msgid "You're moving fast! Please wait a moment and try again."
+msgstr "आप तेज़ी से आगे बढ़ रहे हैं! कृपया थोड़ा रुककर फिर से कोशिश करें।"
+
+#: app.py:378
+msgid "Something didn't work on our end — please try again."
+msgstr "हमारी तरफ़ से कुछ काम नहीं कर पाया — कृपया फिर से कोशिश करें।"
+
+#: app.py:477
+msgid ""
+"We couldn't find an account with that username and password. Please double-"
+"check and try again."
+msgstr ""
+"हमें उस उपयोगकर्ता नाम और पासवर्ड से कोई खाता नहीं मिला। कृपया दोबारा जाँचकर"
+" फिर से कोशिश करें।"
+
+#: app.py:492
+msgid "Please use a username with at least 3 letters or numbers."
+msgstr "कृपया कम से कम 3 अक्षरों या अंकों वाला उपयोगकर्ता नाम चुनें।"
+
+#: app.py:494
+msgid ""
+"Usernames can only have letters, numbers, and underscores — no spaces or "
+"symbols."
+msgstr ""
+"उपयोगकर्ता नाम में केवल अक्षर, अंक और अंडरस्कोर हो सकते हैं — कोई स्पेस या "
+"चिह्न नहीं।"
+
+#: app.py:496
+msgid "Please choose a password with at least 8 characters."
+msgstr "कृपया कम से कम 8 अक्षरों वाला पासवर्ड चुनें।"
+
+#: app.py:498
+msgid "Those two passwords don't match — please try typing them again."
+msgstr "दोनों पासवर्ड मेल नहीं खाते — कृपया उन्हें फिर से टाइप करें।"
+
+#: app.py:504
+msgid "Someone's already using that username — please try a different one."
+msgstr ""
+"वह उपयोगकर्ता नाम पहले से ही किसी और के पास है — कृपया कोई दूसरा नाम "
+"आज़माएं।"
+
+#: app.py:507
+msgid "You're all set! Please sign in to get started."
+msgstr "सब कुछ तैयार है! शुरू करने के लिए कृपया साइन इन करें।"
+
+#: app.py:516
+msgid "You've been signed out. See you next time!"
+msgstr "आपको साइन आउट कर दिया गया है। फिर मिलेंगे!"
+
+#: app.py:629
+msgid ""
+"Please tell us a little more about what you did — even a sentence or two "
+"helps."
+msgstr ""
+"कृपया हमें अपने काम के बारे में थोड़ा और बताएं — एक-दो वाक्य भी मदद करते "
+"हैं।"
+
+#: app.py:1401
+msgid "Could not load your portfolio data. Please try again."
+msgstr "आपका पोर्टफ़ोलियो डेटा लोड नहीं हो सका। कृपया फिर से कोशिश करें।"
+
+#: app.py:1743
+msgid "Could not generate your PDF. Please try again."
+msgstr "आपकी PDF नहीं बन सकी। कृपया फिर से कोशिश करें।"
+
+#: app.py:1782
+msgid "Please choose one of the roles from the list."
+msgstr "कृपया सूची में से कोई एक भूमिका चुनें।"
+
+#: app.py:1785
+#, python-format
+msgid "Got it! You're now aiming for %(role)s."
+msgstr "समझ गए! अब आपका लक्ष्य %(role)s है।"
+
+#: app.py:1800
+msgid "Please choose a file to upload."
+msgstr "कृपया अपलोड करने के लिए एक फ़ाइल चुनें।"
+
+#: app.py:1804
+msgid "Please choose a file first."
+msgstr "कृपया पहले एक फ़ाइल चुनें।"
+
+#: app.py:1815
+msgid ""
+"We had trouble reading that file. Please try again, or try a different file."
+msgstr ""
+"उस फ़ाइल को पढ़ने में हमें दिक़्क़त हुई। कृपया फिर से कोशिश करें, या कोई "
+"दूसरी फ़ाइल आज़माएं।"
+
+#: app.py:1821
+msgid "We read your resume but couldn't save it just now. Please try again."
+msgstr ""
+"हमने आपका रिज़्यूमे पढ़ लिया, लेकिन अभी उसे सहेज नहीं सके। कृपया फिर से "
+"कोशिश करें।"
+
+#: app.py:1825
+#, python-format
+msgid "Great! We've added '%(filename)s' to your profile."
+msgstr "बढ़िया! हमने '%(filename)s' को आपकी प्रोफ़ाइल में जोड़ दिया है।"
+
+#: app.py:1849
+msgid "Please tell us what role you're hoping for first, in the Career Hub."
+msgstr "कृपया पहले करियर हब में बताएं कि आप किस भूमिका की उम्मीद कर रहे हैं।"
+
+#: app.py:1880
+msgid ""
+"Skill gap analysis failed. This usually means the local AI model couldn't be"
+" loaded (it needs to download once from the internet the first time it's "
+"used). Check your connection and try again in a moment."
+msgstr ""
+"कौशल अंतर विश्लेषण विफल हो गया। आमतौर पर इसका मतलब है कि स्थानीय AI मॉडल लोड"
+" नहीं हो सका (पहली बार उपयोग में इसे इंटरनेट से एक बार डाउनलोड होना ज़रूरी "
+"है)। अपना कनेक्शन जाँचकर थोड़ी देर में फिर से कोशिश करें।"
+
+#: app.py:2004
+msgid "We couldn't put your portfolio together just now. Please try again."
+msgstr "हम अभी आपका पोर्टफ़ोलियो तैयार नहीं कर सके। कृपया फिर से कोशिश करें।"
+
+#: app.py:2430
+msgid "Could not render portfolio PDF. Please try again."
+msgstr "पोर्टफ़ोलियो PDF नहीं बन सकी। कृपया फिर से कोशिश करें।"
+
+#: app.py:2474
+msgid "The Copilot couldn't respond. Please try again."
+msgstr "कोपायलट जवाब नहीं दे सका। कृपया फिर से कोशिश करें।"
+
+#: app.py:2488
+msgid "Could not load conversation history."
+msgstr "बातचीत का इतिहास लोड नहीं हो सका।"
+
+#: app.py:2502
+msgid "Could not clear conversation history."
+msgstr "बातचीत का इतिहास साफ़ नहीं हो सका।"
+
+#: career.html:7
+msgid "ISIS - Career Intelligence Hub"
+msgstr "ISIS - करियर इंटेलिजेंस हब"
+
+#: career.html:18
+msgid "Career Portfolio PDF"
+msgstr "करियर पोर्टफ़ोलियो PDF"
+
+#: career.html:27 index.html:372
+msgid "Career Intelligence Hub"
+msgstr "करियर इंटेलिजेंस हब"
+
+#: career.html:29
+msgid ""
+"See how ready you are for a role you want, and a simple plan to get even "
+"more ready"
+msgstr ""
+"देखें कि आप अपनी मनचाही भूमिका के लिए कितने तैयार हैं, और और तैयार होने की "
+"एक सरल योजना पाएं"
+
+#: career.html:40
+msgid "Step 1 — What Role Are You Hoping For?"
+msgstr "चरण 1 — आप किस भूमिका की उम्मीद कर रहे हैं?"
+
+#: career.html:41
+msgid ""
+"Pick something you'd like to work toward. We'll use this to see how your "
+"experience already matches up."
+msgstr ""
+"कुछ ऐसा चुनें जिसकी ओर आप बढ़ना चाहते हैं। हम इससे देखेंगे कि आपका अनुभव "
+"पहले से कितना मेल खाता है।"
+
+#: career.html:50
+msgid "Save This Goal"
+msgstr "यह लक्ष्य सहेजें"
+
+#: career.html:55
+msgid "You're aiming for:"
+msgstr "आपका लक्ष्य है:"
+
+#: career.html:66
+msgid "Step 2 — Have a Resume? Add It (Optional)"
+msgstr "चरण 2 — क्या आपके पास रिज़्यूमे है? इसे जोड़ें (वैकल्पिक)"
+
+#: career.html:67
+msgid ""
+"Don't have one? No problem at all — the activities you've already shared on "
+"your Dashboard are enough on their own."
+msgstr ""
+"नहीं है? कोई बात नहीं — आपने डैशबोर्ड पर जो गतिविधियां पहले ही साझा की हैं, "
+"वे अपने आप में काफ़ी हैं।"
+
+#: career.html:70
+msgid "We have this on file:"
+msgstr "यह हमारे पास पहले से मौजूद है:"
+
+#: career.html:71
+msgid "(add a new one any time to replace it)"
+msgstr "(इसे बदलने के लिए कभी भी नई फ़ाइल जोड़ें)"
+
+#: career.html:80
+msgid "Drag & drop, or click to choose a file"
+msgstr "फ़ाइल को खींचकर छोड़ें, या चुनने के लिए क्लिक करें"
+
+#: career.html:81
+msgid "PDF or Word document · up to 8MB"
+msgstr "PDF या Word दस्तावेज़ · 8MB तक"
+
+#: career.html:85
+msgid "Choose a File"
+msgstr "एक फ़ाइल चुनें"
+
+#: career.html:98
+msgid "See How Ready I Am"
+msgstr "देखें मैं कितना तैयार हूँ"
+
+#: career.html:102
+msgid "Looking at everything you've shared with us…"
+msgstr "आपने हमारे साथ जो कुछ साझा किया है, उसे देखा जा रहा है…"
+
+#: career.html:120
+msgid "Your Career Journey"
+msgstr "आपकी करियर यात्रा"
+
+#: career.html:121
+msgid ""
+"A simple path from what you're already great at, to where you could go next."
+msgstr ""
+"जो चीज़ें आप पहले से बेहतरीन करते हैं, वहां से आगे कहां जा सकते हैं — इसका "
+"एक सरल रास्ता।"
+
+#: career.html:135
+msgid "How Ready You Are for This Role"
+msgstr "आप इस भूमिका के लिए कितने तैयार हैं"
+
+#: career.html:139
+msgid "out of 100"
+msgstr "100 में से"
+
+#: career.html:157
+msgid "Things You Already Do Well"
+msgstr "वे चीज़ें जो आप पहले से अच्छी तरह करते हैं"
+
+#: career.html:165
+msgid "You're Partway There"
+msgstr "आप आधे रास्ते तक पहुँच चुके हैं"
+
+#: career.html:173 career.html:420
+msgid "Skills You Can Learn Next"
+msgstr "आगे सीखे जाने वाले कौशल"
+
+#: career.html:186
+msgid "How Well You Match This Role"
+msgstr "आप इस भूमिका से कितनी अच्छी तरह मेल खाते हैं"
+
+#: career.html:192
+msgid "Match on the most important skills:"
+msgstr "सबसे ज़रूरी कौशलों पर मेल:"
+
+#: career.html:208
+msgid "Your Story, Summed Up"
+msgstr "आपकी कहानी, संक्षेप में"
+
+#: career.html:209
+msgid "A quick overview, the way an employer might see it"
+msgstr "एक त्वरित अवलोकन, जैसे कोई नियोक्ता इसे देख सकता है"
+
+#: career.html:213 career.html:585
+msgid "How Ready You Are"
+msgstr "आप कितने तैयार हैं"
+
+#: career.html:224
+msgid "Top Strengths"
+msgstr "शीर्ष मज़बूतियां"
+
+#: career.html:230
+msgid "Where You Could Grow"
+msgstr "आप कहां और बढ़ सकते हैं"
+
+#: career.html:237
+msgid "What To Try Next"
+msgstr "आगे क्या आज़माएं"
+
+#: career.html:250
+msgid "Resume Quality &amp; Interview Readiness"
+msgstr "रिज़्यूमे की गुणवत्ता और इंटरव्यू की तैयारी"
+
+#: career.html:260
+msgid "Words Worth Adding to Your Resume"
+msgstr "आपके रिज़्यूमे में जोड़ने लायक शब्द"
+
+#: career.html:264
+msgid "Ways to Strengthen It"
+msgstr "इसे मज़बूत बनाने के तरीक़े"
+
+#: career.html:278
+msgid "Score Explainability"
+msgstr "स्कोर की व्याख्या"
+
+#: career.html:279
+msgid ""
+"Every score is derived from your actual activities, resume, and skill gap — "
+"not a black box."
+msgstr ""
+"हर स्कोर आपकी असली गतिविधियों, रिज़्यूमे और कौशल अंतर से निकाला जाता है — यह"
+" कोई ब्लैक बॉक्स नहीं है।"
+
+#: career.html:289
+msgid "Your 30/60/90-Day Learning Roadmap"
+msgstr "आपका 30/60/90-दिन का सीखने का रोडमैप"
+
+#: career.html:291
+msgid "First 30 Days"
+msgstr "पहले 30 दिन"
+
+#: career.html:291
+msgid "Days 31–60"
+msgstr "दिन 31–60"
+
+#: career.html:291
+msgid "Days 61–90"
+msgstr "दिन 61–90"
+
+#: career.html:308
+msgid "Skill Growth Over Time"
+msgstr "समय के साथ कौशल की वृद्धि"
+
+#: career.html:316
+msgid "Skill Distribution"
+msgstr "कौशल वितरण"
+
+#: career.html:328
+msgid "Activity Consistency (Last 12 Weeks)"
+msgstr "गतिविधि की निरंतरता (पिछले 12 सप्ताह)"
+
+#: career.html:338
+msgid "Things Worth Trying Next"
+msgstr "आगे आज़माने लायक चीज़ें"
+
+#: career.html:339
+msgid ""
+"Chosen because they build on what you're already good at, and move you "
+"closer to the role you're hoping for."
+msgstr ""
+"इन्हें इसलिए चुना गया क्योंकि ये आपकी मौजूदा मज़बूतियों पर आधारित हैं, और "
+"आपको आपकी मनचाही भूमिका के क़रीब लाते हैं।"
+
+#: career.html:344
+msgid "Projects to Build"
+msgstr "बनाने लायक परियोजनाएं"
+
+#: career.html:352
+msgid "Hackathons"
+msgstr "हैकाथॉन"
+
+#: career.html:360
+msgid "Certifications"
+msgstr "प्रमाणपत्र"
+
+#: career.html:368
+msgid "Open Source"
+msgstr "ओपन सोर्स"
+
+#: career.html:379
+msgid "Set your target role above"
+msgstr "ऊपर अपनी लक्षित भूमिका चुनें"
+
+#: career.html:379
+msgid "to unlock your personalised career analysis."
+msgstr "अपना व्यक्तिगत करियर विश्लेषण अनलॉक करने के लिए।"
+
+#: career.html:393
+msgid "Uploading and parsing…"
+msgstr "अपलोड और विश्लेषण हो रहा है…"
+
+#: career.html:394
+msgid "Sections found:"
+msgstr "मिले हुए खंड:"
+
+#: career.html:395
+msgid "Skills extracted:"
+msgstr "निकाले गए कौशल:"
+
+#: career.html:396
+msgid "Upload failed:"
+msgstr "अपलोड विफल:"
+
+#: career.html:397
+msgid "Pick a role you're aiming for above first, then try again."
+msgstr "पहले ऊपर अपनी लक्षित भूमिका चुनें, फिर फिर से कोशिश करें।"
+
+#: career.html:398
+msgid "We couldn't put this together just now. Please try again in a moment."
+msgstr "हम अभी इसे तैयार नहीं कर सके। कृपया थोड़ी देर में फिर से कोशिश करें।"
+
+#: career.html:399
+msgid "We couldn't put this together just now — "
+msgstr "हम अभी इसे तैयार नहीं कर सके — "
+
+#: career.html:400
+msgid "Skills & Know-How"
+msgstr "कौशल और जानकारी"
+
+#: career.html:401
+msgid "Leading Others"
+msgstr "दूसरों का नेतृत्व"
+
+#: career.html:402
+msgid "Explaining Things Clearly"
+msgstr "बातों को स्पष्ट रूप से समझाना"
+
+#: career.html:403
+msgid "Staying Consistent"
+msgstr "निरंतर बने रहना"
+
+#: career.html:404
+msgid "Growing Over Time"
+msgstr "समय के साथ बढ़ना"
+
+#: career.html:405 history.html:173
+msgid "We're quite sure"
+msgstr "हमें पूरा यक़ीन है"
+
+#: career.html:406 history.html:173
+msgid "We're fairly sure"
+msgstr "हमें काफ़ी हद तक यक़ीन है"
+
+#: career.html:407 history.html:173
+msgid "Still learning about this"
+msgstr "इसके बारे में अभी सीख रहे हैं"
+
+#: career.html:408
+msgid "Why We Think This"
+msgstr "हम ऐसा क्यों सोचते हैं"
+
+#: career.html:409
+msgid "Where We Saw It In Your Story"
+msgstr "हमने इसे आपकी कहानी में कहां देखा"
+
+#: career.html:410
+msgid "How to Strengthen This"
+msgstr "इसे कैसे मज़बूत करें"
+
+#: career.html:411
+msgid "Nothing specific yet — tell us more and we'll find it"
+msgstr "अभी कुछ ख़ास नहीं — हमें और बताएं और हम इसे ढूंढ लेंगे"
+
+#: career.html:412
+msgid "You're doing great here!"
+msgstr "आप यहां बहुत अच्छा कर रहे हैं!"
+
+#: career.html:413
+msgid "What You're Already Great At"
+msgstr "जिसमें आप पहले से बेहतरीन हैं"
+
+#: career.html:414
+msgid "Every story you share helps us find more of these."
+msgstr "आपकी हर कहानी हमें ऐसी और चीज़ें ढूंढने में मदद करती है।"
+
+#: career.html:415
+msgid "Hidden Skills We Found"
+msgstr "हमें मिले छिपे हुए कौशल"
+
+#: career.html:416
+msgid "Tell us a bit more and we'll spot skills you may not realise you have."
+msgstr ""
+"हमें थोड़ा और बताएं और हम वे कौशल पहचान लेंगे जिनके बारे में शायद आपको ख़ुद "
+"पता न हो।"
+
+#: career.html:417
+msgid "Jobs You Could Explore Today"
+msgstr "आज आप जिन नौकरियों को तलाश सकते हैं"
+
+#: career.html:418
+#, python-format
+msgid "Roles like %%(role)s"
+msgstr "%%(role)s जैसी भूमिकाएं"
+
+#: career.html:419
+#, python-format
+msgid "Once you pick a role like %%(role)s, we'll show real next steps here."
+msgstr "%%(role)s जैसी भूमिका चुनते ही, हम यहां असली अगले क़दम दिखाएंगे।"
+
+#: career.html:421
+msgid "You're already covering everything important — nicely done!"
+msgstr "आप पहले से ही सारी ज़रूरी बातें कवर कर रहे हैं — बहुत बढ़िया!"
+
+#: career.html:422
+msgid "Where This Could Take You"
+msgstr "यह आपको कहां तक ले जा सकता है"
+
+#: career.html:423
+#, python-format
+msgid "With a bit more practice, %%(role)s could be well within reach."
+msgstr "थोड़े और अभ्यास से, %%(role)s आपकी पहुंच में हो सकता है।"
+
+#: career.html:424
+msgid "your next role"
+msgstr "आपकी अगली भूमिका"
+
+#: career.html:425
+msgid "Strong match"
+msgstr "ज़बरदस्त मेल"
+
+#: career.html:426
+msgid "Good match"
+msgstr "अच्छा मेल"
+
+#: career.html:427
+msgid "Some overlap"
+msgstr "कुछ हद तक मेल"
+
+#: career.html:428
+msgid ""
+"Nothing to show yet — tell us about a few more things you've done, or add "
+"your resume."
+msgstr ""
+"अभी दिखाने के लिए कुछ नहीं — हमें अपने कुछ और कामों के बारे में बताएं, या "
+"अपना रिज़्यूमे जोड़ें।"
+
+#: career.html:429
+msgid "Nothing here right now."
+msgstr "अभी यहां कुछ नहीं है।"
+
+#: career.html:430
+msgid "You're already covering everything important — wonderful!"
+msgstr "आप पहले से ही सारी ज़रूरी बातें कवर कर रहे हैं — शानदार!"
+
+#: career.html:431
+msgid "from:"
+msgstr "स्रोत:"
+
+#: career.html:432
+msgid "Especially useful"
+msgstr "ख़ासतौर पर उपयोगी"
+
+#: career.html:433
+msgid "Good to have"
+msgstr "होना अच्छा है"
+
+#: career.html:434
+msgid "Nothing to do — great coverage!"
+msgstr "करने के लिए कुछ नहीं — बेहतरीन कवरेज!"
+
+#: career.html:435
+#, python-format
+msgid ""
+"Chosen because you've already shown skills like %%(skills)s — these build on"
+" that, and move you closer to %%(role)s."
+msgstr ""
+"इन्हें इसलिए चुना गया क्योंकि आपने पहले ही %%(skills)s जैसे कौशल दिखाए हैं —"
+" ये उसी पर आधारित हैं, और आपको %%(role)s के क़रीब लाते हैं।"
+
+#: career.html:436
+#, python-format
+msgid "These are good general starting points for %%(role)s."
+msgstr "ये %%(role)s के लिए अच्छे सामान्य शुरुआती बिंदु हैं।"
+
+#: career.html:437
+msgid "the role you're hoping for"
+msgstr "आपकी मनचाही भूमिका"
+
+#: career.html:438
+msgid "Nothing here yet — set a target role above to see suggestions."
+msgstr "अभी यहां कुछ नहीं — सुझाव देखने के लिए ऊपर एक लक्षित भूमिका चुनें।"
+
+#: career.html:439
+#, python-format
+msgid ""
+"Why: hands-on practice that shows employers what you can do for %%(role)s."
+msgstr ""
+"क्यों: व्यावहारिक अभ्यास जो नियोक्ताओं को दिखाता है कि आप %%(role)s के लिए "
+"क्या कर सकते हैं।"
+
+#: career.html:440
+msgid ""
+"Why: a chance to practice under real conditions, alongside others aiming for"
+" similar work."
+msgstr ""
+"क्यों: असली परिस्थितियों में अभ्यास करने का मौक़ा, उन लोगों के साथ जो समान "
+"काम की तलाश में हैं।"
+
+#: career.html:441
+msgid ""
+"Why: fills in a skill this role usually asks for, backed by a recognised "
+"provider."
+msgstr ""
+"क्यों: यह उस कौशल को पूरा करता है जो इस भूमिका में आमतौर पर मांगा जाता है, "
+"एक मान्यता प्राप्त प्रदाता द्वारा समर्थित।"
+
+#: career.html:442
+msgid ""
+"Why: a low-pressure way to build a public track record of your skills over "
+"time."
+msgstr ""
+"क्यों: समय के साथ अपने कौशल का सार्वजनिक रिकॉर्ड बनाने का एक आसान तरीक़ा।"
+
+#: career.html:443
+msgid "Activities logged"
+msgstr "दर्ज की गई गतिविधियां"
+
+#: career.html:444
+msgid "Avg Employability Score"
+msgstr "औसत रोज़गार-योग्यता स्कोर"
+
+#: career.html:445
+msgid "Activities"
+msgstr "गतिविधियां"
+
+#: career.html:446
+msgid "this role"
+msgstr "यह भूमिका"
+
+#: career.html:447
+msgid "Great"
+msgstr "बेहतरीन"
+
+#: career.html:448
+msgid "Growing"
+msgstr "बढ़ रहे हैं"
+
+#: career.html:449
+msgid "Just Starting"
+msgstr "अभी शुरुआत"
+
+#: career.html:586
+msgid "Resume Quality"
+msgstr "रिज़्यूमे की गुणवत्ता"
+
+#: career.html:587
+msgid "How Strong Your Resume Is"
+msgstr "आपका रिज़्यूमे कितना मज़बूत है"
+
+#: career.html:588
+msgid "Interview Readiness"
+msgstr "इंटरव्यू की तैयारी"
+
+#: career.html:607
+msgid "Share a few more activities and we'll spot your strengths here."
+msgstr "कुछ और गतिविधियां साझा करें और हम यहां आपकी मज़बूतियां ढूंढ लेंगे।"
+
+#: career.html:613
+msgid "No major gaps identified."
+msgstr "कोई बड़ी कमी नहीं पाई गई।"
+
+#: career.html:625
+msgid "ATS Score"
+msgstr "ATS स्कोर"
+
+#: career.html:626
+msgid "Resume Strength"
+msgstr "रिज़्यूमे की मज़बूती"
+
+#: career.html:627
+msgid "Interview Ready"
+msgstr "इंटरव्यू के लिए तैयार"
+
+#: career.html:628
+msgid "Completeness"
+msgstr "पूर्णता"
+
+#: career.html:645
+msgid "All key ATS keywords are covered."
+msgstr "सभी ज़रूरी ATS कीवर्ड शामिल हैं।"
+
+#: career.html:657
+msgid "No major improvements needed."
+msgstr "किसी बड़े सुधार की ज़रूरत नहीं है।"
+
+#: history.html:8
+msgid "ISIS – Activity History"
+msgstr "ISIS – गतिविधि इतिहास"
+
+#: history.html:103
+msgid "Everything You've Shared With Us"
+msgstr "आपने हमारे साथ जो कुछ साझा किया है"
+
+#: history.html:104
+#, python-format
+msgid "All %(count)s recorded activities from your portfolio."
+msgstr "आपके पोर्टफ़ोलियो से दर्ज सभी %(count)s गतिविधियां।"
+
+#: history.html:107
+msgid "🔍  Find something you shared before…"
+msgstr "🔍  पहले साझा की गई कोई चीज़ ढूंढें…"
+
+#: history.html:109
+msgid "New"
+msgstr "नई"
+
+#: history.html:119
+msgid "Total Activities"
+msgstr "कुल गतिविधियां"
+
+#: history.html:125
+msgid "Avg Leadership"
+msgstr "औसत नेतृत्व"
+
+#: history.html:131
+msgid "Avg Employability"
+msgstr "औसत रोज़गार-योग्यता"
+
+#: history.html:137
+msgid "Top Skill Area"
+msgstr "शीर्ष कौशल क्षेत्र"
+
+#: history.html:151
+msgid "What You Did"
+msgstr "आपने क्या किया"
+
+#: history.html:152
+msgid "Skill We Found"
+msgstr "हमें मिला कौशल"
+
+#: history.html:153
+msgid "Career Match"
+msgstr "करियर मेल"
+
+#: history.html:154
+msgid "Key Strengths"
+msgstr "मुख्य मज़बूतियां"
+
+#: history.html:155 index.html:246
+msgid "Leadership Shown"
+msgstr "दिखाया गया नेतृत्व"
+
+#: history.html:156 index.html:258
+msgid "Job Readiness"
+msgstr "नौकरी के लिए तैयारी"
+
+#: history.html:157
+msgid "Date"
+msgstr "तारीख़"
+
+#: history.html:172
+msgid "How sure we are that this is the right skill match"
+msgstr "हमें कितना यक़ीन है कि यह सही कौशल मेल है"
+
+#: history.html:188 index.html:523
+msgid "Planning Ahead"
+msgstr "आगे की योजना बनाना"
+
+#: history.html:188
+msgid "Plan"
+msgstr "योजना"
+
+#: history.html:190 index.html:524
+msgid "Managing Money"
+msgstr "पैसों का प्रबंधन"
+
+#: history.html:190
+msgid "Money"
+msgstr "पैसा"
+
+#: history.html:192 index.html:525
+msgid "Handling Problems"
+msgstr "समस्याओं को संभालना"
+
+#: history.html:192
+msgid "Problems"
+msgstr "समस्याएं"
+
+#: history.html:193 index.html:526
+msgid "Working With Others"
+msgstr "दूसरों के साथ काम करना"
+
+#: history.html:193
+msgid "Team"
+msgstr "टीम"
+
+#: history.html:194 index.html:527
+msgid "Understanding People"
+msgstr "लोगों को समझना"
+
+#: history.html:194
+msgid "People"
+msgstr "लोग"
+
+#: history.html:219
+msgid "You haven't shared anything with us yet."
+msgstr "आपने अभी तक हमारे साथ कुछ भी साझा नहीं किया है।"
+
+#: history.html:220
+msgid "Tell us about something you did"
+msgstr "हमें अपने किसी काम के बारे में बताएं"
+
+#: index.html:8
+msgid "ISIS - Professional Portfolio"
+msgstr "ISIS - पेशेवर पोर्टफ़ोलियो"
+
+#: index.html:28
+msgid "Download Portfolio"
+msgstr "पोर्टफोलियो डाउनलोड करें"
+
+#: index.html:35
+msgid "Your Everyday Efforts Have Real Value."
+msgstr "आपके रोज़मर्रा के प्रयासों का असली मूल्य है।"
+
+#: index.html:36
+msgid ""
+"Tell us what you did — we'll help you see the skills already hiding inside "
+"it."
+msgstr ""
+"हमें बताएं कि आपने क्या किया — हम आपको उसमें छिपे कौशल दिखाने में मदद "
+"करेंगे।"
+
+#: index.html:53
+msgid "Tell Us What You Did"
+msgstr "हमें बताएं कि आपने क्या किया"
+
+#: index.html:55
+msgid ""
+"There's no wrong answer here — just tell us about something you handled "
+"recently, in your own words."
+msgstr ""
+"यहां कोई ग़लत जवाब नहीं है — बस अपने शब्दों में हाल ही में संभाली गई किसी "
+"बात के बारे में बताएं।"
+
+#: index.html:60
+msgid "What's something you took charge of recently?"
+msgstr "हाल ही में आपने किस चीज़ की ज़िम्मेदारी संभाली?"
+
+#: index.html:63
+msgid "e.g., Managed a household event"
+msgstr "उदा., घर का कार्यक्रम आयोजित किया"
+
+#: index.html:65 index.html:78 index.html:91 index.html:103 index.html:115
+#: index.html:127 index.html:139 index.html:151
+msgid "Click to speak instead of typing"
+msgstr "टाइप करने के बजाय बोलने के लिए क्लिक करें"
+
+#: index.html:72
+msgid "Were other people involved or counting on you?"
+msgstr "क्या इसमें अन्य लोग शामिल थे या आप पर निर्भर थे?"
+
+#: index.html:76
+msgid "e.g., 5 family members"
+msgstr "उदा., 5 परिवार के सदस्य"
+
+#: index.html:85
+msgid "About how much time did this take?"
+msgstr "इसमें लगभग कितना समय लगा?"
+
+#: index.html:89
+msgid "e.g., 4 hours per day over 3 days"
+msgstr "उदा., 3 दिनों तक प्रतिदिन 4 घंटे"
 
 #: index.html:98
-msgid "Download Professional Portfolio"
-msgstr ""
+msgid "Did you handle any money for this? Roughly how much?"
+msgstr "क्या आपने इसके लिए किसी पैसे का प्रबंधन किया? लगभग कितना?"
 
-#: index.html:115
-msgid "Record Activity"
-msgstr ""
+#: index.html:101
+msgid "e.g., Rs. 5,000 for groceries"
+msgstr "उदा., किराने के लिए ₹5,000"
 
-#: index.html:117
-msgid "What did you manage today? Explain your unpaid labor."
-msgstr ""
+#: index.html:110
+msgid "Did you keep track of any items, supplies, or stock?"
+msgstr "क्या आपने किसी सामान, आपूर्ति या स्टॉक का हिसाब रखा?"
+
+#: index.html:113
+msgid "e.g., 10kg rice, decorations, 50 chairs"
+msgstr "उदा., 10 किलो चावल, सजावट, 50 कुर्सियाँ"
 
 #: index.html:122
-msgid ""
-"What task did you do\n"
-"                                    today?"
-msgstr ""
+msgid "Who was this for?"
+msgstr "यह किसके लिए था?"
 
 #: index.html:125
-msgid "e.g., Managed household budget"
-msgstr ""
-
-#: index.html:128
-msgid ""
-"How many people were\n"
-"                                    involved?"
-msgstr ""
-
-#: index.html:131
-msgid "e.g., 5 family members"
-msgstr ""
+msgid "e.g., 50 neighborhood guests"
+msgstr "उदा., मोहल्ले के 50 मेहमान"
 
 #: index.html:134
-msgid ""
-"Did you manage any\n"
-"                                    money or supplies?"
-msgstr ""
+msgid "Did anything go wrong or change suddenly? How did you handle it?"
+msgstr "क्या कुछ ग़लत हुआ या अचानक बदल गया? आपने इसे कैसे संभाला?"
 
 #: index.html:137
-msgid "e.g., Rs. 10,000 for groceries"
-msgstr ""
+msgid "e.g., Mediated a vendor dispute regarding late delivery"
+msgstr "उदा., देरी से डिलीवरी पर विक्रेता विवाद सुलझाया"
 
-#: index.html:140
+#: index.html:146
+msgid "What was the hardest part?"
+msgstr "सबसे मुश्किल हिस्सा क्या था?"
+
+#: index.html:149
 msgid ""
-"What was the hardest\n"
-"                                    part?"
-msgstr ""
+"e.g., Balancing emotional family needs while sticking strictly to the tight "
+"budget"
+msgstr "उदा., सख्त बजट में रहते हुए परिवार की भावनात्मक जरूरतें पूरी करना"
 
-#: index.html:143
-msgid "e.g., Balancing conflicting needs"
-msgstr ""
+#: index.html:160
+msgid "Next"
+msgstr "आगे"
 
-#: index.html:148
-msgid "Analyze Skills"
-msgstr ""
+#: index.html:172
+msgid "Your Skill Profile"
+msgstr "आपकी कौशल प्रोफ़ाइल"
 
-#: index.html:158
-msgid "Core Metrics"
-msgstr ""
+#: index.html:173
+msgid "Based on your logged history"
+msgstr "आपके दर्ज इतिहास के आधार पर"
 
-#: index.html:171
-msgid "Leadership Index"
-msgstr ""
-
-#: index.html:185
-msgid "Employability Score"
-msgstr ""
+#: index.html:180
+msgid "View Full History"
+msgstr "पूरा इतिहास देखें"
 
 #: index.html:196
+msgid "Back to activity form"
+msgstr "गतिविधि फ़ॉर्म पर वापस जाएं"
+
+#: index.html:197 index.html:385
+msgid "Previous"
+msgstr "पीछे"
+
+#: index.html:206
+msgid "Analysing your activity…"
+msgstr "आपकी गतिविधि का विश्लेषण हो रहा है…"
+
+#: index.html:209
+msgid "Running semantic skill extraction…"
+msgstr "कौशल निष्कर्षण चल रहा है…"
+
+#: index.html:213
+msgid "Generating career intelligence…"
+msgstr "करियर इंटेलिजेंस तैयार हो रहा है…"
+
+#: index.html:217
+msgid "Matching opportunities…"
+msgstr "अवसरों का मिलान हो रहा है…"
+
+#: index.html:221
+msgid "Building dashboard…"
+msgstr "डैशबोर्ड तैयार हो रहा है…"
+
+#: index.html:228
+msgid "Your Career Snapshot"
+msgstr "आपका करियर स्नैपशॉट"
+
+#: index.html:234
+msgid "Your Strengths"
+msgstr "आपकी मज़बूतियां"
+
+#: index.html:244
+msgid "Leadership shown"
+msgstr "दिखाया गया नेतृत्व"
+
+#: index.html:256
+msgid "Job readiness"
+msgstr "नौकरी के लिए तैयारी"
+
+#: index.html:275
 msgid "Professional Skill Map"
-msgstr ""
+msgstr "पेशेवर कौशल मानचित्र"
 
-#: index.html:197
-msgid "5-Point Capabilities"
-msgstr ""
+#: index.html:276
+msgid "Five key strengths, at a glance"
+msgstr "पांच मुख्य मज़बूतियां, एक नज़र में"
 
-#: index.html:212
+#: index.html:283
+msgid "Skill radar chart"
+msgstr "कौशल रडार चार्ट"
+
+#: index.html:298
 msgid "Resume Feed"
-msgstr ""
+msgstr "रिज्यूमे फ़ीड"
 
-#: index.html:219
-msgid "Analyze an activity to generate bullets."
-msgstr ""
+#: index.html:317
+msgid "You haven't shared anything yet"
+msgstr "आपने अभी तक कुछ भी साझा नहीं किया है"
 
-#: index.html:231
+#: index.html:318
 msgid ""
-"Opportunity\n"
-"                    Engine"
+"Tell us about something you did recently — we'll turn it into a professional"
+" highlight for you."
 msgstr ""
+"हाल ही में किए गए किसी काम के बारे में बताएं — हम इसे आपके लिए एक पेशेवर "
+"हाइलाइट में बदल देंगे।"
 
-#: index.html:233
+#: index.html:323
+msgid "Resume feed"
+msgstr "रिज़्यूमे फ़ीड"
+
+#: index.html:332
+msgid "Jobs That Match Your Strengths"
+msgstr "आपकी मज़बूतियों से मेल खाती नौकरियां"
+
+#: index.html:336
 msgid ""
-"Based on your hidden skills, here are potential next steps in the\n"
-"                    market."
+"Based on what you've already shown you can do, here are some paths worth "
+"exploring."
 msgstr ""
+"आपने जो करने की क्षमता पहले ही दिखाई है, उसके आधार पर, ये कुछ रास्ते तलाशने "
+"लायक हैं।"
 
-#: index.html:248
+#: index.html:338
+msgid "Listen to opportunities"
+msgstr "अवसरों को सुनें"
+
+#: index.html:340
+msgid "Listen"
+msgstr "सुनें"
+
+#: index.html:352
+msgid "Smart Career Matches"
+msgstr "स्मार्ट करियर मिलान"
+
+#: index.html:353
+msgid "AI-powered roles that best fit your demonstrated strengths."
+msgstr ""
+"AI द्वारा चुनी गई भूमिकाएं जो आपकी क्षमताओं से सबसे अच्छी तरह मेल खाती हैं।"
+
+#: index.html:364
+msgid "Generate Final Portfolio"
+msgstr "अंतिम पोर्टफोलियो बनाएं"
+
+#: index.html:368 index.html:369
+msgid "Share on WhatsApp"
+msgstr "WhatsApp पर साझा करें"
+
+#: index.html:394
+msgid "Your Portfolio is Ready!"
+msgstr "आपका पोर्टफोलियो तैयार है!"
+
+#: index.html:395
+msgid ""
+"Your unpaid activities have been fully mapped to corporate skills and "
+"verified."
+msgstr ""
+"आपकी अवैतनिक गतिविधियाँ पूरी तरह से पेशेवर कौशल में परिवर्तित हो गई हैं।"
+
+#: index.html:399
+msgid "Download Professional Portfolio"
+msgstr "पेशेवर पोर्टफोलियो डाउनलोड करें"
+
+#: index.html:403
+msgid "Start Over with a New Activity"
+msgstr "नई गतिविधि से दोबारा शुरू करें"
+
+#: index.html:420
+msgid "Your 3-Step Business Roadmap"
+msgstr "आपका 3-चरण व्यवसाय रोडमैप"
+
+#: index.html:429
+msgid "Licensing &amp; Operations"
+msgstr "लाइसेंसिंग और संचालन"
+
+#: index.html:430
+msgid ""
+"Register your business legally and secure any local compliance documents "
+"required for your specific product/service."
+msgstr ""
+"अपने व्यवसाय को क़ानूनी रूप से पंजीकृत करें और अपने विशिष्ट उत्पाद/सेवा के "
+"लिए ज़रूरी स्थानीय अनुपालन दस्तावेज़ प्राप्त करें।"
+
+#: index.html:438
+msgid "Service &amp; Pricing"
+msgstr "सेवा और मूल्य निर्धारण"
+
+#: index.html:439
+msgid ""
+"Design your core offering and calculate a competitive pricing model based on"
+" a markup of your base operating costs."
+msgstr ""
+"अपनी मुख्य पेशकश तैयार करें और अपनी बुनियादी परिचालन लागत पर मार्कअप के आधार"
+" पर एक प्रतिस्पर्धी मूल्य निर्धारण मॉडल तैयार करें।"
+
+#: index.html:445
+msgid "Local Outreach"
+msgstr "स्थानीय पहुंच"
+
+#: index.html:446
+msgid ""
+"Identify exactly two community channels (e.g., local WhatsApp groups or "
+"community boards) to broadcast your launch message."
+msgstr ""
+"अपने लॉन्च संदेश को प्रसारित करने के लिए ठीक दो सामुदायिक चैनल (जैसे, "
+"स्थानीय WhatsApp समूह या सामुदायिक बोर्ड) चुनें।"
+
+#: index.html:451
+msgid "Got it — I'm Ready!"
+msgstr "समझ गए — मैं तैयार हूँ!"
+
+#: index.html:465
+msgid "Your Pitch Email"
+msgstr "आपका पिच ईमेल"
+
+#: index.html:470
+msgid "Copy and send this to your target company:"
+msgstr "इसे कॉपी करके अपनी लक्षित कंपनी को भेजें:"
+
+#: index.html:472
+msgid "Subject:"
+msgstr "विषय:"
+
+#: index.html:473
+msgid "Partnership Proposal — Local Service Collaboration"
+msgstr "साझेदारी प्रस्ताव — स्थानीय सेवा सहयोग"
+
+#: index.html:475
+msgid "Hi [Decision Maker],"
+msgstr "नमस्ते [निर्णयकर्ता],"
+
+#: index.html:476
+msgid ""
+"I have extensive experience coordinating successful community operations and"
+" would love to discuss a potential partnership. I specialize in delivering "
+"culturally authentic, timely structural results for local teams."
+msgstr ""
+"मुझे सफल सामुदायिक कार्यों के समन्वय का व्यापक अनुभव है और मैं एक संभावित "
+"साझेदारी पर चर्चा करना चाहूंगा। मैं स्थानीय टीमों के लिए सांस्कृतिक रूप से "
+"प्रामाणिक, समय पर संरचनात्मक परिणाम देने में विशेषज्ञ हूं।"
+
+#: index.html:477
+msgid "Would you be open to a 15-minute call this week?"
+msgstr "क्या आप इस सप्ताह 15 मिनट की कॉल के लिए तैयार होंगे?"
+
+#: index.html:479
+msgid "Warm regards,"
+msgstr "सादर,"
+
+#: index.html:479
+msgid "[Your Name]"
+msgstr "[आपका नाम]"
+
+#: index.html:484
+msgid "Copy"
+msgstr "कॉपी करें"
+
+#: index.html:487
+msgid "Done"
+msgstr "हो गया"
+
+#: index.html:501
 msgid "Startup Idea"
-msgstr ""
+msgstr "स्टार्टअप विचार"
 
-#: index.html:249
+#: index.html:502
 msgid "Collaboration Match"
-msgstr ""
+msgstr "सहयोग मिलान"
 
-#: index.html:250
+#: index.html:503
 msgid "Specific Job Roles"
-msgstr ""
+msgstr "विशिष्ट नौकरी भूमिकाएं"
 
-#: index.html:251
+#: index.html:504
+msgid "Growth Plan"
+msgstr "विकास योजना"
+
+#: index.html:505
 msgid "Match"
-msgstr ""
+msgstr "मिलान"
 
-#: index.html:252
+#: index.html:506
 msgid "Learn How to Start This"
-msgstr ""
+msgstr "यह कैसे शुरू करें"
 
-#: index.html:253
+#: index.html:507
 msgid "Draft a Pitch to This Company"
-msgstr ""
+msgstr "इस कंपनी को पिच लिखें"
 
-#: index.html:254
+#: index.html:508
 msgid "View Openings"
-msgstr ""
+msgstr "नौकरियाँ देखें"
 
-#~ msgid "Describe your activity"
-#~ msgstr ""
+#: index.html:509
+msgid "Start Learning"
+msgstr "सीखना शुरू करें"
+
+#: index.html:510
+msgid "We're quite sure about this one"
+msgstr "हमें इसके बारे में पूरा यक़ीन है"
+
+#: index.html:511
+msgid "We're fairly confident about this one"
+msgstr "हमें इसके बारे में काफ़ी भरोसा है"
+
+#: index.html:512
+msgid "We think this might apply — tell us more if it doesn't sound right"
+msgstr ""
+"हमें लगता है कि यह लागू हो सकता है — अगर यह सही नहीं लगे तो हमें और बताएं"
+
+#: index.html:513
+msgid ""
+"We're using our backup way of understanding your story right now — "
+"everything still works."
+msgstr ""
+"हम अभी आपकी कहानी समझने का बैकअप तरीक़ा इस्तेमाल कर रहे हैं — फिर भी सब कुछ "
+"काम कर रहा है।"
+
+#: index.html:514
+msgid ""
+"Something needs attention on our end — please let us know if this keeps "
+"happening."
+msgstr ""
+"हमारी तरफ़ से कुछ ध्यान देने लायक है — अगर यह बार-बार हो तो कृपया हमें "
+"बताएं।"
+
+#: index.html:515
+msgid ""
+"We've reached today's limit for our fastest AI helper, so we're using our "
+"backup one instead."
+msgstr ""
+"हम आज की सीमा तक पहुँच गए हैं अपने सबसे तेज़ AI सहायक के लिए, इसलिए हम इसके "
+"बदले अपना बैकअप सहायक इस्तेमाल कर रहे हैं।"
+
+#: index.html:516
+msgid ""
+"We're working in offline mode right now — everything still works, just a "
+"little differently."
+msgstr ""
+"हम अभी ऑफ़लाइन मोड में काम कर रहे हैं — फिर भी सब कुछ काम कर रहा है, बस "
+"थोड़े अलग तरीक़े से।"
+
+#: index.html:517
+msgid ""
+"We're having trouble understanding this one right now. Try again in a "
+"moment, or describe it a little differently."
+msgstr ""
+"अभी इसे समझने में हमें दिक़्क़त हो रही है। थोड़ी देर में फिर से कोशिश करें, "
+"या इसे थोड़े अलग ढंग से बताएं।"
+
+#: index.html:518
+msgid "Why we found this skill"
+msgstr "हमें यह कौशल क्यों मिला"
+
+#: index.html:519
+msgid "Skill we recognised:"
+msgstr "हमने जो कौशल पहचाना:"
+
+#: index.html:520
+msgid "How sure we are:"
+msgstr "हमें कितना यक़ीन है:"
+
+#: index.html:521
+msgid "What you told us that led us here:"
+msgstr "आपने हमें जो बताया जिससे हम यहां पहुंचे:"
+
+#: index.html:522
+msgid "We also considered:"
+msgstr "हमने इन पर भी विचार किया:"
+
+#: index.html:528
+msgid "Competency Map"
+msgstr "योग्यता मानचित्र"
+
+#: index.html:529
+msgid "Historical Strength"
+msgstr "ऐतिहासिक मज़बूती"
+
+#: index.html:530
+msgid "Making Good Calls"
+msgstr "सही फ़ैसले लेना"
+
+#: index.html:531
+msgid "Making the Most of What You Have"
+msgstr "जो आपके पास है उसका पूरा उपयोग करना"
+
+#: index.html:532
+msgid "Bringing People Together"
+msgstr "लोगों को साथ लाना"
+
+#: index.html:533
+msgid "Helping Others Grow"
+msgstr "दूसरों को आगे बढ़ने में मदद करना"
+
+#: index.html:534
+msgid "Staying Calm Under Pressure"
+msgstr "दबाव में शांत रहना"
+
+#: index.html:535
+msgid "Est. Budget"
+msgstr "अनुमानित बजट"
+
+#: index.html:536
+msgid "Impact"
+msgstr "प्रभाव"
+
+#: index.html:537
+msgid "Low Risk Start"
+msgstr "कम जोख़िम वाली शुरुआत"
+
+#: index.html:538
+msgid "Type"
+msgstr "प्रकार"
+
+#: index.html:539
+msgid "Partnership"
+msgstr "साझेदारी"
+
+#: index.html:540
+msgid "Difficulty"
+msgstr "कठिनाई"
+
+#: index.html:541
+msgid "Medium"
+msgstr "मध्यम"
+
+#: index.html:542
+msgid "Time to Apply"
+msgstr "आवेदन का समय"
+
+#: index.html:543
+msgid "1–2 Days"
+msgstr "1–2 दिन"
+
+#: index.html:544
+msgid "Skills Gained"
+msgstr "प्राप्त कौशल"
+
+#: index.html:545
+msgid "Leadership + PM"
+msgstr "नेतृत्व + PM"
+
+#: index.html:546
+msgid "Duration"
+msgstr "अवधि"
+
+#: index.html:547
+msgid "30 Days"
+msgstr "30 दिन"
+
+#: index.html:548
+msgid "Beginner"
+msgstr "शुरुआती"
+
+#: index.html:549
+msgid "Listening…"
+msgstr "सुन रहे हैं…"
+
+#: index.html:550
+msgid "Network error connecting to the server."
+msgstr "सर्वर से जुड़ने में नेटवर्क त्रुटि।"
+
+#: index.html:551
+msgid "Analyzing your activity…"
+msgstr "आपकी गतिविधि का विश्लेषण हो रहा है…"
+
+#: index.html:552
+msgid "Generating your match…"
+msgstr "आपका मेल तैयार हो रहा है…"
+
+#: login.html:7
+msgid "ISIS — Sign In"
+msgstr "ISIS — साइन इन"
+
+#: login.html:181
+msgid "Welcome back"
+msgstr "वापसी पर स्वागत है"
+
+#: login.html:182
+msgid "Sign in to your ISIS Portfolio"
+msgstr "अपने ISIS पोर्टफ़ोलियो में साइन इन करें"
+
+#: login.html:198 register.html:224
+msgid "Username"
+msgstr "उपयोगकर्ता नाम"
+
+#: login.html:206 register.html:235
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: login.html:214
+msgid "Sign In"
+msgstr "साइन इन"
+
+#: login.html:218 register.html:264
+msgid "or"
+msgstr "या"
+
+#: login.html:220
+msgid "No account?"
+msgstr "खाता नहीं है?"
+
+#: login.html:221
+msgid "Create one free"
+msgstr "मुफ़्त में एक बनाएं"
+
+#: register.html:7
+msgid "ISIS — Create Account"
+msgstr "ISIS — खाता बनाएं"
+
+#: register.html:207
+msgid "Create account"
+msgstr "खाता बनाएं"
+
+#: register.html:208
+msgid "Start mapping your invisible skills today"
+msgstr "आज ही अपने अदृश्य कौशल मैप करना शुरू करें"
+
+#: register.html:231
+msgid "3–30 characters, letters/numbers/underscores only"
+msgstr "3–30 अक्षर, केवल अक्षर/अंक/अंडरस्कोर"
+
+#: register.html:239
+msgid "Min 8 characters"
+msgstr "कम से कम 8 अक्षर"
+
+#: register.html:245 register.html:276
+msgid "Type a password"
+msgstr "एक पासवर्ड टाइप करें"
+
+#: register.html:249
+msgid "Confirm Password"
+msgstr "पासवर्ड की पुष्टि करें"
+
+#: register.html:253
+msgid "Re-enter password"
+msgstr "पासवर्ड फिर से डालें"
+
+#: register.html:256
+msgid "Passwords do not match"
+msgstr "पासवर्ड मेल नहीं खाते"
+
+#: register.html:260
+msgid "Create Account"
+msgstr "खाता बनाएं"
+
+#: register.html:266
+msgid "Already have an account?"
+msgstr "पहले से खाता है?"
+
+#: register.html:267
+msgid "Sign in"
+msgstr "साइन इन करें"
+
+#: register.html:277
+msgid "Weak"
+msgstr "कमज़ोर"
+
+#: register.html:278
+msgid "Fair"
+msgstr "ठीक-ठाक"
+
+#: register.html:279
+msgid "Good"
+msgstr "अच्छा"
+
+#: register.html:280
+msgid "Strong"
+msgstr "मज़बूत"
+
+#: services/resume_parser.py:57
+msgid "File has no extension. Please upload a .pdf or .docx file."
+msgstr "फ़ाइल का कोई एक्सटेंशन नहीं है। कृपया .pdf या .docx फ़ाइल अपलोड करें।"
+
+#: services/resume_parser.py:61
+#, python-format
+msgid "Unsupported file type '.%(ext)s'. Please upload a .pdf or .docx file."
+msgstr ""
+"असमर्थित फ़ाइल प्रकार '.%(ext)s'। कृपया .pdf या .docx फ़ाइल अपलोड करें।"
+
+#: services/resume_parser.py:64 utils/validators.py:71
+msgid "Uploaded file is empty."
+msgstr "अपलोड की गई फ़ाइल ख़ाली है।"
+
+#: services/resume_parser.py:68
+#, python-format
+msgid "File is too large (%(size)sMB). Maximum size is %(max_size)sMB."
+msgstr "फ़ाइल बहुत बड़ी है (%(size)sMB)। अधिकतम आकार %(max_size)sMB है।"
+
+#: services/resume_parser.py:89
+#, python-format
+msgid "Unsupported extension: %(ext)s"
+msgstr "असमर्थित एक्सटेंशन: %(ext)s"
+
+#: services/resume_parser.py:95
+#, python-format
+msgid ""
+"Could not read the %(ext)s file — it may be corrupted, password-protected, "
+"or an image-only scan with no extractable text."
+msgstr ""
+"%(ext)s फ़ाइल पढ़ी नहीं जा सकी — यह ख़राब, पासवर्ड-सुरक्षित, या बिना पढ़े "
+"जाने योग्य टेक्स्ट वाला केवल-चित्र स्कैन हो सकती है।"
+
+#: services/resume_parser.py:106
+msgid "This PDF is password-protected. Please upload an unprotected version."
+msgstr "यह PDF पासवर्ड-सुरक्षित है। कृपया असुरक्षित संस्करण अपलोड करें।"
+
+#: services/resume_parser.py:112
+msgid ""
+"No text could be extracted from this PDF — it may be a scanned image rather "
+"than actual text. Try uploading a DOCX version instead."
+msgstr ""
+"इस PDF से कोई टेक्स्ट नहीं निकाला जा सका — यह असली टेक्स्ट के बजाय स्कैन की "
+"गई छवि हो सकती है। इसके बजाय DOCX संस्करण अपलोड करने की कोशिश करें।"
+
+#: services/resume_parser.py:134
+msgid "No text could be extracted from this DOCX file."
+msgstr "इस DOCX फ़ाइल से कोई टेक्स्ट नहीं निकाला जा सका।"
+
+#: utils/validators.py:38
+#, python-format
+msgid "Missing required field(s): %(fields)s."
+msgstr "ज़रूरी फ़ील्ड गायब हैं: %(fields)s।"
+
+#: utils/validators.py:45
+#, python-format
+msgid "%(field)s must be at least %(min_length)s character(s)."
+msgstr "%(field)s कम से कम %(min_length)s अक्षर का होना चाहिए।"
+
+#: utils/validators.py:50
+#, python-format
+msgid "%(field)s must be %(max_length)s characters or fewer."
+msgstr "%(field)s %(max_length)s अक्षर या उससे कम का होना चाहिए।"
+
+#: utils/validators.py:64
+msgid "File has no extension."
+msgstr "फ़ाइल का कोई एक्सटेंशन नहीं है।"
+
+#: utils/validators.py:68
+#, python-format
+msgid "Unsupported file type '.%(ext)s'. Allowed: %(allowed)s."
+msgstr "असमर्थित फ़ाइल प्रकार '.%(ext)s'। अनुमत: %(allowed)s।"
+
+#: utils/validators.py:73
+#, python-format
+msgid "File is too large (max %(max_mb)sMB)."
+msgstr "फ़ाइल बहुत बड़ी है (अधिकतम %(max_mb)sMB)।"
+
+#: utils/validators.py:97
+msgid ""
+"Username must be 3-32 characters and contain only letters, numbers, dots, "
+"underscores, or hyphens."
+msgstr ""
+"उपयोगकर्ता नाम 3-32 अक्षरों का होना चाहिए और इसमें केवल अक्षर, अंक, बिंदु, "
+"अंडरस्कोर या हाइफ़न हो सकते हैं।"
+
+#~ msgid "Transform everyday activities into professional assets."
+#~ msgstr "रोज़मर्रा की गतिविधियों को पेशेवर संपत्ति में बदलें।"
+
+#~ msgid "What did you manage today? Explain your unpaid labor."
+#~ msgstr "आज आपने क्या किया? अपने अवैतनिक श्रम का वर्णन करें।"
+
+#~ msgid "What specific activity did you lead today?"
+#~ msgstr "आज आपने कौन सी विशेष गतिविधि का नेतृत्व किया?"
+
+#~ msgid "How many people did you coordinate?"
+#~ msgstr "आपने कितने लोगों का समन्वय किया?"
+
+#~ msgid "What was the total budget you handled?"
+#~ msgstr "आपने कुल कितने बजट का प्रबंधन किया?"
+
+#~ msgid "What physical supplies or inventory did you manage?"
+#~ msgstr "आपने कौन सी भौतिक सामग्री या इन्वेंटरी संभाली?"
+
+#~ msgid "Who was the primary audience or beneficiary?"
+#~ msgstr "मुख्य लाभार्थी या दर्शक कौन थे?"
+
+#~ msgid "Core Metrics"
+#~ msgstr "मुख्य मापदंड"
+
+#~ msgid "5-Point Capabilities"
+#~ msgstr "5-बिंदु क्षमताएं"
+
+#~ msgid "Analyze an activity to generate bullets."
+#~ msgstr "बुलेट पॉइंट बनाने के लिए कोई गतिविधि दर्ज करें।"
+
+#~ msgid "Opportunity Engine"
+#~ msgstr "अवसर इंजन"
 
 #~ msgid ""
-#~ "E.g., \"Managing the household\n"
-#~ "                                    budget...\""
-#~ msgstr ""
+#~ "Based on your hidden skills, here are potential next steps in the market."
+#~ msgstr "आपके छिपे हुए कौशल के आधार पर, बाज़ार में संभावित अगले कदम।"
 
+#~ msgid "Analyze Skills"
+#~ msgstr "कौशल विश्लेषण करें"

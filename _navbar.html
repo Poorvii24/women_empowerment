@@ -1,0 +1,115 @@
+{# ---------------------------------------------------------------------
+   _navbar.html — shared authenticated-page navbar.
+
+   Included (not duplicated) by index.html, career.html, and history.html
+   so navigation labels, the language switcher, and Sign Out always match
+   across every page — previously each page had its own hand-copied navbar
+   markup, which is exactly how "Career Hub" ended up untranslated on
+   index.html/history.html and the language switcher was missing entirely
+   on career.html.
+
+   Params (all optional):
+     active               - 'dashboard' | 'career' | 'history' (highlights current page)
+     show_notifications   - bool, renders the notification bell (index.html only; the
+                             bell's live behavior lives in script.js, which only index.html loads)
+     show_theme_toggle     - bool, renders the dark-mode toggle button
+     extra_action_url/_label/_icon - optional single extra button before Sign Out
+                             (e.g. each page's own portfolio-PDF download link, which
+                             point at different routes/reports and so aren't merged into one)
+--------------------------------------------------------------------- #}
+<nav class="navbar navbar-expand-lg glass-nav fixed-top mb-5">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="bi bi-stars text-primary"></i> ISIS <span class="fw-light text-muted">Portfolio</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="bi bi-list fs-2"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link {{ 'fw-bold text-primary' if active == 'dashboard' else '' }}" href="/">{{ _('Dashboard') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ 'fw-bold text-primary' if active == 'career' else '' }}" href="/career"><i class="bi bi-bullseye me-1"></i>{{ _('Career Hub') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ 'fw-bold text-primary' if active == 'history' else '' }}" href="/history">{{ _('History') }}</a>
+                </li>
+                <li class="nav-item dropdown ms-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-globe me-1"></i>{{ _('Language') }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0 glass-dropdown"
+                        aria-labelledby="langDropdown">
+                        <li><a class="dropdown-item {{ 'active fw-semibold' if session.get('lang', 'en') == 'en' else '' }}" href="{{ url_for('set_language', lang='en') }}">English</a></li>
+                        <li><a class="dropdown-item {{ 'active fw-semibold' if session.get('lang') == 'hi' else '' }}" href="{{ url_for('set_language', lang='hi') }}">हिंदी (Hindi)</a></li>
+                        <li><a class="dropdown-item {{ 'active fw-semibold' if session.get('lang') == 'kn' else '' }}" href="{{ url_for('set_language', lang='kn') }}">ಕನ್ನಡ (Kannada)</a></li>
+                    </ul>
+                </li>
+                {% if show_notifications %}
+                <!-- Notification Bell -->
+                <li class="nav-item ms-2 position-relative" id="notifBellWrapper">
+                    <a class="nav-link position-relative" href="#" id="notifBell" data-bs-toggle="dropdown"
+                        aria-expanded="false" title="{{ _('Notifications') }}">
+                        <i class="bi bi-bell-fill fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle d-none"
+                            id="notifDot"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0 glass-dropdown p-2"
+                        style="min-width:300px;" aria-labelledby="notifBell" id="notifDropdown">
+                        <li>
+                            <h6 class="dropdown-header fw-bold mb-1"><i class="bi bi-lightning-charge-fill text-warning me-1"></i>{{ _('Opportunities') }}</h6>
+                        </li>
+                        <li id="notifEmpty" class="text-center text-muted small py-2">{{ _('No notifications yet') }}</li>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if extra_action_url %}
+                <li class="nav-item ms-2">
+                    <a href="{{ extra_action_url }}" class="btn btn-sm btn-success rounded-pill px-3">
+                        <i class="bi {{ extra_action_icon or 'bi-file-earmark-arrow-down' }} me-1"></i>{{ extra_action_label }}
+                    </a>
+                </li>
+                {% endif %}
+                <li class="nav-item ms-2">
+                    <a href="/logout" class="btn btn-sm btn-outline-danger rounded-pill px-3">
+                        <i class="bi bi-box-arrow-right me-1"></i>{{ _('Sign Out') }}
+                    </a>
+                </li>
+                {% if show_theme_toggle %}
+                <li class="nav-item ms-3">
+                    <button class="btn btn-primary rounded-pill px-4" id="theme-toggle">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{# window.COPILOT_I18N — translation bridge for copilot_widget.js, a plain
+   static JS asset that can't call Jinja's _() itself. Defined here (once,
+   in the partial shared by every page that loads copilot_widget.js) rather
+   than repeated inline in index.html/career.html/history.html. #}
+<script>
+    window.COPILOT_I18N = {
+        openCareerGuide: {{ _('Open Your Career Guide')|tojson }},
+        careerGuideTitle: {{ _('Your Career Guide')|tojson }},
+        clearConversation: {{ _('Clear conversation')|tojson }},
+        close: {{ _('Close')|tojson }},
+        send: {{ _('Send')|tojson }},
+        inputPlaceholder: {{ _('Ask me anything — how ready you are, what to learn next, what to try...')|tojson }},
+        suggestedQuestions: [
+            {{ _('How ready am I for my next opportunity?')|tojson }},
+            {{ _('What skills could I learn next?')|tojson }},
+            {{ _('What should I try building next?')|tojson }},
+            {{ _('Am I ready for the role I want?')|tojson }}
+        ],
+        genericError: {{ _('Something went wrong. Please try again.')|tojson }},
+        networkError: {{ _('Network error — please check your connection and try again.')|tojson }},
+        confirmClear: {{ _("Clear this conversation? This can't be undone.")|tojson }},
+    };
+</script>

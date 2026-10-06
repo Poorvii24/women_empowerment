@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Lint (flake8) — informational, does not fail the build
+        # The pre-existing app.py/db.py/services/*.py files predate this CI
+        # pipeline and weren't reformatted in this pass (see
+        # docs/ARCHITECTURE.md). This step surfaces style issues without
+        # blocking merges on a large legacy-formatting backlog.
+        run: |
+          flake8 --config=setup.cfg . || true
+
+      - name: Check formatting (black) — new modules only
+        run: |
+          black --check config.py services/ai_copilot.py repositories/ utils/ scripts/ \
+            tests/conftest.py tests/test_auth.py tests/test_dashboard.py tests/test_career_hub.py \
+            tests/test_copilot.py tests/test_portfolio_pdf.py tests/test_history.py \
+            tests/test_opportunity_engine.py tests/test_repositories_and_validators.py \
+            tests/test_healthz.py tests/test_api_docs.py
+
+      - name: Run test suite
+        env:
+          ISIS_ENV: testing
+          ISIS_LOG_TO_FILE: "false"
+        run: |
+          pytest tests/ -v --cov=app --cov=db --cov=services --cov=repositories --cov=utils --cov=config --cov-report=term-missing
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t isis-career-platform:ci .
+
+      - name: Verify container starts and passes its health check
+        run: |
+          docker run -d --name isis-ci-check \
+            -e ISIS_SECRET_KEY=ci-test-secret-key-not-for-production \
+            -p 5000:5000 \
+            isis-career-platform:ci
+          echo "Waiting for the container to become healthy..."
+          for i in $(seq 1 20); do
+            status=$(docker inspect --format='{{.State.Health.Status}}' isis-ci-check || echo "starting")
+            echo "  health status: $status"
+            if [ "$status" = "healthy" ]; then
+              echo "Container is healthy."
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Container never became healthy — dumping logs:"
+          docker logs isis-ci-check
+          exit 1
+
+      - name: Clean up
+        if: always()
+        run: docker rm -f isis-ci-check || true

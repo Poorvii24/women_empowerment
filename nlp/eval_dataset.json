@@ -1,0 +1,153 @@
+{
+  "_readme": "Manually labelled evaluation set for nlp/skill_matcher.py. 'expected_skills' values MUST exactly match a 'professional_skill' string in skills.json — this is enforced by tests/test_evaluation.py. Each example is hand-written/hand-labelled, not generated or scraped.",
+  "examples": [
+    {
+      "id": "single_01",
+      "text": "I tutor and mentor neighborhood kids in maths after school every day.",
+      "expected_skills": ["Training, Mentoring & Instruction"]
+    },
+    {
+      "id": "single_02",
+      "text": "I managed our household budget and tracked monthly savings carefully.",
+      "expected_skills": ["Financial Management & Budget Allocation"]
+    },
+    {
+      "id": "single_03",
+      "text": "I cook meals every day for a family of six, planning the weekly menu.",
+      "expected_skills": ["Nutritional Planning & Catering Operations"]
+    },
+    {
+      "id": "single_04",
+      "text": "I take care of my elderly father, managing his medication schedule.",
+      "expected_skills": ["Healthcare Coordination & Patient Care"]
+    },
+    {
+      "id": "single_05",
+      "text": "I mediated a dispute between two neighbors over a shared fence.",
+      "expected_skills": ["Negotiation & Conflict Resolution"]
+    },
+    {
+      "id": "single_06",
+      "text": "I led a small volunteer team, assigning tasks and keeping everyone motivated.",
+      "expected_skills": ["Team Leadership & People Management"]
+    },
+    {
+      "id": "single_07",
+      "text": "I researched local school ratings and wrote up a comparison report for parents.",
+      "expected_skills": ["Research, Analysis & Reporting"]
+    },
+    {
+      "id": "single_08",
+      "text": "I fixed the recurring leak under the sink after troubleshooting the pipe fittings.",
+      "expected_skills": ["Problem Solving & Process Improvement"]
+    },
+    {
+      "id": "multi_01",
+      "text": "I managed the household budget, negotiated with vendors, celebrated a family birthday party, and tutored my children.",
+      "expected_skills": [
+        "Financial Management & Budget Allocation",
+        "Negotiation & Conflict Resolution",
+        "Event Planning & Community Outreach",
+        "Training, Mentoring & Instruction"
+      ]
+    },
+    {
+      "id": "multi_02",
+      "text": "I coordinated my daughter's wedding logistics, negotiated prices with caterers, and kept track of the whole event budget.",
+      "expected_skills": [
+        "Organizational Planning & Coordination",
+        "Negotiation & Conflict Resolution",
+        "Financial Management & Budget Allocation"
+      ]
+    },
+    {
+      "id": "multi_03",
+      "text": "I led my team and also managed the household budget and savings.",
+      "expected_skills": [
+        "Team Leadership & People Management",
+        "Financial Management & Budget Allocation"
+      ]
+    },
+    {
+      "id": "multi_04",
+      "text": "I take care of my elderly parent, managing health checkups and medication.",
+      "expected_skills": [
+        "Healthcare Coordination & Patient Care",
+        "Organizational Planning & Coordination"
+      ]
+    },
+    {
+      "id": "paraphrase_01",
+      "text": "I sat down with suppliers and worked out a fair deal for both sides.",
+      "expected_skills": ["Negotiation & Conflict Resolution"]
+    },
+    {
+      "id": "paraphrase_02",
+      "text": "I looked after my mother's health needs and organized her doctor visits.",
+      "expected_skills": ["Healthcare Coordination & Patient Care"]
+    },
+    {
+      "id": "paraphrase_03",
+      "text": "I helped my younger cousins with their homework and explained tricky topics until they understood.",
+      "expected_skills": ["Training, Mentoring & Instruction"]
+    },
+    {
+      "id": "paraphrase_04",
+      "text": "I kept our family's spending on track and put money aside every month for emergencies.",
+      "expected_skills": ["Financial Management & Budget Allocation"]
+    },
+    {
+      "id": "no_skill_01",
+      "text": "The sky was cloudy, the traffic was slow, and the coffee was cold.",
+      "expected_skills": []
+    },
+    {
+      "id": "no_skill_02",
+      "text": "It rained yesterday and I watched a movie in the evening.",
+      "expected_skills": []
+    },
+    {
+      "id": "no_skill_03",
+      "text": "asdkjf qwoeiru nnnnn zzz",
+      "expected_skills": []
+    },
+    {
+      "id": "short_01",
+      "text": "budgeted",
+      "expected_skills": ["Financial Management & Budget Allocation"]
+    },
+    {
+      "id": "short_02",
+      "text": "cooked meals",
+      "expected_skills": ["Nutritional Planning & Catering Operations"]
+    },
+    {
+      "id": "short_03",
+      "text": "tutored kids",
+      "expected_skills": ["Training, Mentoring & Instruction"]
+    },
+    {
+      "id": "household_01",
+      "text": "Every morning I plan the day's chores for the household, assign who does what, and make sure everything runs on schedule.",
+      "expected_skills": ["Organizational Planning & Coordination"]
+    },
+    {
+      "id": "household_02",
+      "text": "I organized the community food drive, coordinating volunteers and collecting donations for the local shelter.",
+      "expected_skills": ["Event Planning & Community Outreach"]
+    },
+    {
+      "id": "household_03",
+      "text": "I noticed our monthly grocery costs kept rising, so I compared prices across three stores and switched suppliers to cut costs.",
+      "expected_skills": [
+        "Research, Analysis & Reporting",
+        "Problem Solving & Process Improvement"
+      ]
+    },
+    {
+      "id": "household_04",
+      "text": "I run the weekly community potluck, keeping everyone's dietary needs in mind when planning the menu.",
+      "expected_skills": ["Nutritional Planning & Catering Operations"]
+    }
+  ]
+}

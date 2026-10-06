@@ -1,0 +1,54 @@
+# ISIS Career Intelligence Platform — Docker Compose
+#
+# Production (gunicorn, per the Dockerfile):
+#   docker compose up -d
+#
+# Development (Flask dev server with auto-reload, source mounted read-write):
+#   docker compose --profile dev up
+#
+# Both profiles persist the SQLite database and log files in named volumes
+# so they survive container restarts/rebuilds.
+
+services:
+  isis:
+    build: .
+    image: isis-career-platform:latest
+    ports:
+      - "${ISIS_PORT:-5000}:5000"
+    environment:
+      - ISIS_ENV=production
+      - ISIS_SECRET_KEY=${ISIS_SECRET_KEY:?Set ISIS_SECRET_KEY in your .env file}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - SESSION_COOKIE_SECURE=${SESSION_COOKIE_SECURE:-true}
+      - GUNICORN_WORKERS=${GUNICORN_WORKERS:-2}
+    volumes:
+      - isis-db:/app/instance
+      - isis-logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/healthz"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    restart: unless-stopped
+
+  isis-dev:
+    build: .
+    image: isis-career-platform:dev
+    profiles: ["dev"]
+    ports:
+      - "${ISIS_PORT:-5000}:5000"
+    environment:
+      - ISIS_ENV=development
+      - FLASK_DEBUG=true
+      - ISIS_SECRET_KEY=${ISIS_SECRET_KEY:-dev-only-not-for-production}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    volumes:
+      - .:/app  # live source mount for auto-reload during development
+      - isis-db-dev:/app/instance
+    command: ["python", "app.py"]
+
+volumes:
+  isis-db:
+  isis-logs:
+  isis-db-dev:

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ session.get('lang', 'en') }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISIS – Activity History</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ _("ISIS – Activity History") }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
@@ -92,32 +93,20 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg glass-nav fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/"><i class="bi bi-stars text-primary"></i> ISIS <span
-                    class="fw-light text-muted">Portfolio</span></a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link active fw-semibold" href="/history">History</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {% set active = 'history' %}
+    {% include "_navbar.html" with context %}
 
     <div class="container main-container pt-5 mt-5">
         <!-- Header row -->
         <div class="row mb-4 align-items-center">
             <div class="col">
-                <h2 class="fw-bolder gradient-text mb-1">Activity History</h2>
-                <p class="text-muted mb-0">All <strong id="totalCount">{{ activities|length }}</strong> recorded
-                    activities from your portfolio.</p>
+                <h2 class="fw-bolder gradient-text mb-1">{{ _("Everything You've Shared With Us") }}</h2>
+                <p class="text-muted mb-0">{{ _('All %(count)s recorded activities from your portfolio.', count=('<strong id="totalCount">%d</strong>' % (activities|length))|safe) }}</p>
             </div>
             <div class="col-auto d-flex gap-2">
-                <input type="text" id="searchInput" class="form-control" placeholder="🔍  Search activities…">
+                <input type="text" id="searchInput" class="form-control" placeholder="{{ _('🔍  Find something you shared before…') }}">
                 <a href="/" class="btn btn-primary rounded-pill px-4">
-                    <i class="bi bi-plus-lg me-1"></i> New
+                    <i class="bi bi-plus-lg me-1"></i> {{ _('New') }}
                 </a>
             </div>
         </div>
@@ -127,25 +116,25 @@
             <div class="col-6 col-md-3">
                 <div class="card glass-card border-0 text-center py-3 px-2">
                     <div class="fs-3 fw-bolder gradient-text">{{ activities|length }}</div>
-                    <div class="small text-muted">Total Activities</div>
+                    <div class="small text-muted">{{ _('Total Activities') }}</div>
                 </div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="card glass-card border-0 text-center py-3 px-2">
                     <div class="fs-3 fw-bolder" style="color:#6366f1">{{ avg_leadership }}</div>
-                    <div class="small text-muted">Avg Leadership</div>
+                    <div class="small text-muted">{{ _('Avg Leadership') }}</div>
                 </div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="card glass-card border-0 text-center py-3 px-2">
                     <div class="fs-3 fw-bolder" style="color:#ec4899">{{ avg_employability }}</div>
-                    <div class="small text-muted">Avg Employability</div>
+                    <div class="small text-muted">{{ _('Avg Employability') }}</div>
                 </div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="card glass-card border-0 text-center py-3 px-2">
                     <div class="fs-3 fw-bolder" style="color:#10b981">{{ top_skill }}</div>
-                    <div class="small text-muted">Top Skill Area</div>
+                    <div class="small text-muted">{{ _('Top Skill Area') }}</div>
                 </div>
             </div>
         </div>
@@ -159,13 +148,13 @@
                         <thead class="border-bottom">
                             <tr>
                                 <th class="ps-4 py-3">#</th>
-                                <th class="py-3">Activity</th>
-                                <th class="py-3">Professional Title</th>
-                                <th class="py-3">Career Match</th>
-                                <th class="py-3">Radar Skills</th>
-                                <th class="py-3 text-center">Leadership</th>
-                                <th class="py-3 text-center">Employability</th>
-                                <th class="py-3 pe-4">Date</th>
+                                <th class="py-3">{{ _('What You Did') }}</th>
+                                <th class="py-3">{{ _('Skill We Found') }}</th>
+                                <th class="py-3">{{ _('Career Match') }}</th>
+                                <th class="py-3">{{ _('Key Strengths') }}</th>
+                                <th class="py-3 text-center">{{ _('Leadership Shown') }}</th>
+                                <th class="py-3 text-center">{{ _('Job Readiness') }}</th>
+                                <th class="py-3 pe-4">{{ _('Date') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -179,6 +168,11 @@
                                 <td>
                                     <span class="fw-semibold">{{ a.mapped_skill }}</span>
                                     <div class="small text-muted">{{ a.onet_category }}</div>
+                                    {% if a.nlp_confidence_pct %}
+                                    <span class="badge bg-light text-dark border mt-1" title="{{ _('How sure we are that this is the right skill match') }}">
+                                        <i class="bi bi-cpu me-1"></i>{% if a.nlp_confidence_pct >= 75 %}{{ _("We're quite sure") }}{% elif a.nlp_confidence_pct >= 45 %}{{ _("We're fairly sure") }}{% else %}{{ _('Still learning about this') }}{% endif %}
+                                    </span>
+                                    {% endif %}
                                 </td>
                                 <td>
                                     {% if a.career_equivalency %}
@@ -191,13 +185,13 @@
                                 </td>
                                 <td>
                                     <div class="radar-mini">
-                                        {% if a.radar_strategic %}<span>Str {{ a.radar_strategic|int }}</span>{% endif
+                                        {% if a.radar_strategic %}<span title="{{ _('Planning Ahead') }}">{{ _('Plan') }} {{ a.radar_strategic|int }}</span>{% endif
                                         %}
-                                        {% if a.radar_financial %}<span>Fin {{ a.radar_financial|int }}</span>{% endif
+                                        {% if a.radar_financial %}<span title="{{ _('Managing Money') }}">{{ _('Money') }} {{ a.radar_financial|int }}</span>{% endif
                                         %}
-                                        {% if a.radar_crisis %}<span>Crs {{ a.radar_crisis|int }}</span>{% endif %}
-                                        {% if a.radar_team %}<span>Tm {{ a.radar_team|int }}</span>{% endif %}
-                                        {% if a.radar_emotional %}<span>Emo {{ a.radar_emotional|int }}</span>{% endif
+                                        {% if a.radar_crisis %}<span title="{{ _('Handling Problems') }}">{{ _('Problems') }} {{ a.radar_crisis|int }}</span>{% endif %}
+                                        {% if a.radar_team %}<span title="{{ _('Working With Others') }}">{{ _('Team') }} {{ a.radar_team|int }}</span>{% endif %}
+                                        {% if a.radar_emotional %}<span title="{{ _('Understanding People') }}">{{ _('People') }} {{ a.radar_emotional|int }}</span>{% endif
                                         %}
                                     </div>
                                 </td>
@@ -222,8 +216,8 @@
                 {% else %}
                 <div class="empty-state">
                     <i class="bi bi-inbox fs-1 d-block mb-3 opacity-50"></i>
-                    <p class="mb-2 fw-semibold">No activities yet.</p>
-                    <a href="/" class="btn btn-primary rounded-pill px-4">Record your first activity</a>
+                    <p class="mb-2 fw-semibold">{{ _("You haven't shared anything with us yet.") }}</p>
+                    <a href="/" class="btn btn-primary rounded-pill px-4">{{ _('Tell us about something you did') }}</a>
                 </div>
                 {% endif %}
             </div>
@@ -240,6 +234,7 @@
             });
         });
     </script>
+    <script src="copilot_widget.js"></script>
 </body>
 
 </html>
