@@ -458,13 +458,18 @@ def _local_fallback(context, message):
         if not gap:
             return missing_target_role()
         verdict = recruiter["overall_tier"] if recruiter else None
-        verdict_word = {"Strong": "in great shape", "Developing": "well on your way", "Needs Work": "just getting started"}.get(
-            verdict, _tier_word(score["overall"])
-        )
+        verdict_word = {
+            "Strong": "in great shape",
+            "Developing": "well on your way",
+            "Needs Work": "just getting started",
+        }.get(verdict, _tier_word(score["overall"]))
         return {
             "answer": f"Based on everything you've shared, you're **{verdict_word}** for {role} — about "
             f"{gap['coverage_pct']:.0f}% of what's usually asked for already matches what you've done.",
-            "evidence": [f"How ready overall: {score['overall']:.0f}/100", f"How well you match: {gap['coverage_pct']:.0f}%"],
+            "evidence": [
+                f"How ready overall: {score['overall']:.0f}/100",
+                f"How well you match: {gap['coverage_pct']:.0f}%",
+            ],
             "confidence": "Medium",
             "next_action": recruiter["next_action"] if recruiter else None,
             "expected_impact": None,
@@ -502,7 +507,11 @@ def _local_fallback(context, message):
     # Generic fallback — still grounded in real data, never invented
     return {
         "answer": f"Here's where things stand: you're {_tier_word(score['overall'])} ({score['overall']:.0f} out of 100)"
-        + (f", working toward {role}." if role != "Not set" else ". You haven't told us what role you're hoping for yet."),
+        + (
+            f", working toward {role}."
+            if role != "Not set"
+            else ". You haven't told us what role you're hoping for yet."
+        ),
         "evidence": [],
         "confidence": "Medium",
         "next_action": None,

@@ -65,7 +65,11 @@ def validate_file_upload(
     ext = filename.rsplit(".", 1)[-1].lower()
     if ext not in allowed_extensions:
         raise ValidationError(
-            _("Unsupported file type '.%(ext)s'. Allowed: %(allowed)s.", ext=ext, allowed=", ".join(sorted(allowed_extensions)))
+            _(
+                "Unsupported file type '.%(ext)s'. Allowed: %(allowed)s.",
+                ext=ext,
+                allowed=", ".join(sorted(allowed_extensions)),
+            )
         )
     if not file_bytes:
         raise ValidationError(_("Uploaded file is empty."))
@@ -94,7 +98,6 @@ def validate_username(username: str):
     username = (username or "").strip()
     if not _USERNAME_RE.match(username):
         raise ValidationError(
-            _("Username must be 3-32 characters and contain only letters, numbers, dots, "
-              "underscores, or hyphens.")
+            _("Username must be 3-32 characters and contain only letters, numbers, dots, " "underscores, or hyphens.")
         )
     return username
