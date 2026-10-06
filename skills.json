@@ -6,7 +6,8 @@
       "onet_category": "Business & Financial Operations",
       "leadership_category": "Resource Allocation",
       "market_value": "High",
-      "base_magnitude": 85
+      "base_magnitude": 85,
+      "description": "Planning, tracking, and allocating money across competing needs, including household or community budgets, expense tracking, and savings goals."
     },
     {
       "keywords": ["organiz", "plan", "schedul", "coordinat", "arrang", "manag"],
@@ -14,7 +15,8 @@
       "onet_category": "Management Occupations",
       "leadership_category": "Strategic Planning",
       "market_value": "High",
-      "base_magnitude": 80
+      "base_magnitude": 80,
+      "description": "Arranging schedules, coordinating multiple people or tasks, and managing day-to-day logistics so activities run smoothly and on time."
     },
     {
       "keywords": ["teach", "tutor", "train", "educat", "mentor", "coach", "guid"],
@@ -22,7 +24,8 @@
       "onet_category": "Education, Training & Library",
       "leadership_category": "Team Development",
       "market_value": "Medium",
-      "base_magnitude": 75
+      "base_magnitude": 75,
+      "description": "Teaching, tutoring, or coaching others to build a skill, guiding someone through learning, or mentoring a less experienced person."
     },
     {
       "keywords": ["negoti", "resolv", "conflict", "mediat", "persuad", "communicat", "discuss"],
@@ -30,7 +33,8 @@
       "onet_category": "Legal Occupations",
       "leadership_category": "Decision Making",
       "market_value": "Very High",
-      "base_magnitude": 90
+      "base_magnitude": 90,
+      "description": "Resolving disagreements between people, mediating disputes, negotiating terms, or persuading others toward a fair outcome."
     },
     {
       "keywords": ["care", "health", "medical", "nurse", "patient", "elder", "child", "family"],
@@ -38,7 +42,8 @@
       "onet_category": "Healthcare Support",
       "leadership_category": "Empathy & Crisis Management",
       "market_value": "High",
-      "base_magnitude": 82
+      "base_magnitude": 82,
+      "description": "Caring for a sick, elderly, or young family member, coordinating medical appointments, or providing hands-on patient/family support."
     },
     {
       "keywords": ["event", "communit", "volunteer", "fundrais", "rally", "celebrat", "gathering"],
@@ -46,7 +51,8 @@
       "onet_category": "Arts, Design & Entertainment",
       "leadership_category": "Team Coordination",
       "market_value": "Medium",
-      "base_magnitude": 72
+      "base_magnitude": 72,
+      "description": "Planning a community event, gathering, celebration, or fundraiser, including volunteer coordination and outreach to participants."
     },
     {
       "keywords": ["cook", "meal", "nutrition", "food", "diet", "recipe", "catering"],
@@ -54,7 +60,8 @@
       "onet_category": "Food Preparation & Serving",
       "leadership_category": "Resource Allocation",
       "market_value": "Medium",
-      "base_magnitude": 65
+      "base_magnitude": 65,
+      "description": "Planning meals, managing nutrition for a household or group, preparing food at scale, or running informal catering for events."
     },
     {
       "keywords": ["lead", "supervis", "direct", "motivat", "inspir", "team", "group"],
@@ -62,7 +69,8 @@
       "onet_category": "Management Occupations",
       "leadership_category": "Decision Making",
       "market_value": "Very High",
-      "base_magnitude": 95
+      "base_magnitude": 95,
+      "description": "Leading, supervising, or motivating a group of people toward a shared goal, directing a team's effort, or inspiring others to act."
     },
     {
       "keywords": ["research", "analys", "data", "report", "assess", "evaluat", "review"],
@@ -70,7 +78,8 @@
       "onet_category": "Computer & Mathematical",
       "leadership_category": "Strategic Planning",
       "market_value": "High",
-      "base_magnitude": 88
+      "base_magnitude": 88,
+      "description": "Gathering information, analyzing data or a situation, evaluating options, and reporting findings or recommendations to others."
     },
     {
       "keywords": ["problem", "solution", "fix", "repair", "troubleshoot", "improve", "innovat"],
@@ -78,7 +87,8 @@
       "onet_category": "Architecture & Engineering",
       "leadership_category": "Crisis Management",
       "market_value": "High",
-      "base_magnitude": 86
+      "base_magnitude": 86,
+      "description": "Diagnosing and fixing a recurring problem, repairing something broken, troubleshooting an issue, or improving an inefficient process."
     }
   ],
   "leadership_categories": {

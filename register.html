@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ session.get('lang', 'en') }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISIS — Create Account</title>
+    <title>{{ _("ISIS — Create Account") }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700;800&display=swap"
@@ -200,9 +200,12 @@
 
 <body>
     <div class="auth-card">
+        <div class="d-flex justify-content-end mb-2">
+            {% include "_lang_switch.html" with context %}
+        </div>
         <div class="brand-icon"><i class="bi bi-stars"></i></div>
-        <h2>Create account</h2>
-        <p class="sub">Start mapping your invisible skills today</p>
+        <h2>{{ _('Create account') }}</h2>
+        <p class="sub">{{ _('Start mapping your invisible skills today') }}</p>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -216,56 +219,66 @@
         {% endwith %}
 
         <form method="POST" action="/register" id="registerForm">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <div class="mb-3">
-                <label for="username">Username</label>
+                <label for="username">{{ _('Username') }}</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person"></i></span>
                     <input type="text" class="form-control" id="username" name="username" placeholder="yourname"
                         required autofocus autocomplete="username" minlength="3" maxlength="30" pattern="[a-zA-Z0-9_]+">
                 </div>
                 <div class="requirement mt-1">
-                    <i class="bi bi-info-circle"></i>3–30 characters, letters/numbers/underscores only
+                    <i class="bi bi-info-circle"></i>{{ _('3–30 characters, letters/numbers/underscores only') }}
                 </div>
             </div>
             <div class="mb-2">
-                <label for="password">Password</label>
+                <label for="password">{{ _('Password') }}</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
                     <input type="password" class="form-control" id="password" name="password"
-                        placeholder="Min 8 characters" required autocomplete="new-password" minlength="8">
+                        placeholder="{{ _('Min 8 characters') }}" required autocomplete="new-password" minlength="8">
                 </div>
                 <div class="mt-2 mb-1">
                     <div style="background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;height:4px;">
                         <div class="password-strength" id="strengthBar"></div>
                     </div>
-                    <span class="strength-label" id="strengthLabel">Type a password</span>
+                    <span class="strength-label" id="strengthLabel">{{ _('Type a password') }}</span>
                 </div>
             </div>
             <div class="mb-4">
-                <label for="confirm_password">Confirm Password</label>
+                <label for="confirm_password">{{ _('Confirm Password') }}</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-shield-lock"></i></span>
                     <input type="password" class="form-control" id="confirm_password" name="confirm_password"
-                        placeholder="Re-enter password" required autocomplete="new-password">
+                        placeholder="{{ _('Re-enter password') }}" required autocomplete="new-password">
                 </div>
                 <div class="requirement mt-1" id="matchHint" style="display:none;color:#ef4444;">
-                    <i class="bi bi-x-circle"></i>Passwords do not match
+                    <i class="bi bi-x-circle"></i>{{ _('Passwords do not match') }}
                 </div>
             </div>
             <button type="submit" class="btn btn-primary w-100 mb-3" id="submitBtn">
-                <i class="bi bi-person-plus me-2"></i>Create Account
+                <i class="bi bi-person-plus me-2"></i>{{ _('Create Account') }}
             </button>
         </form>
 
-        <div class="divider">or</div>
+        <div class="divider">{{ _('or') }}</div>
         <div class="text-center">
-            <span style="color:#64748b;font-size:.88rem">Already have an account?&nbsp;</span>
-            <a href="/login" class="link-muted fw-semibold">Sign in</a>
+            <span style="color:#64748b;font-size:.88rem">{{ _('Already have an account?') }}&nbsp;</span>
+            <a href="/login" class="link-muted fw-semibold">{{ _('Sign in') }}</a>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Password-strength labels — static UI text, translated the same way
+        // as the rest of the page (Flask-Babel), not hardcoded per-language.
+        const REGISTER_I18N = {
+            typeAPassword: {{ _('Type a password')|tojson }},
+            weak: {{ _('Weak')|tojson }},
+            fair: {{ _('Fair')|tojson }},
+            good: {{ _('Good')|tojson }},
+            strong: {{ _('Strong')|tojson }},
+        };
         const pwdInput = document.getElementById('password');
         const confirmInput = document.getElementById('confirm_password');
         const bar = document.getElementById('strengthBar');
@@ -285,10 +298,10 @@
         pwdInput.addEventListener('input', () => {
             const sc = getSt(pwdInput.value);
             const cols = ['#ef4444', '#f97316', '#eab308', '#22c55e'];
-            const labels = ['Weak', 'Fair', 'Good', 'Strong'];
+            const labels = [REGISTER_I18N.weak, REGISTER_I18N.fair, REGISTER_I18N.good, REGISTER_I18N.strong];
             bar.style.width = (sc * 25) + '%';
             bar.style.background = cols[sc - 1] || '#64748b';
-            label.textContent = sc > 0 ? labels[sc - 1] : 'Type a password';
+            label.textContent = sc > 0 ? labels[sc - 1] : REGISTER_I18N.typeAPassword;
             label.style.color = cols[sc - 1] || '#64748b';
         });
 

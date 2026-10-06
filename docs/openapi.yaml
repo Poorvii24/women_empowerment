@@ -1,0 +1,292 @@
+openapi: 3.0.3
+info:
+  title: ISIS Career Intelligence Platform API
+  description: >
+    Invisible Skill Intelligence System — translates logged real-world
+    activities into recognized professional skills, career readiness
+    scoring, resume/skill-gap analysis against a target role, and an AI
+    Career Copilot mentor. Session-cookie authenticated (Flask-Login);
+    state-changing requests require a CSRF token.
+  version: "1.0.0"
+servers:
+  - url: http://localhost:5000
+    description: Local development
+security:
+  - sessionAuth: []
+
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: cookie
+      name: session
+      description: >
+        Flask-Login session cookie, established via POST /login. All
+        authenticated endpoints below also require the CSRF token from the
+        `csrf-token` meta tag / GET form, sent as the `X-CSRFToken` header
+        (fetch/JSON requests) or a `csrf_token` form field (HTML forms).
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status: { type: string, example: error }
+        message: { type: string, example: "Something went wrong. Please try again." }
+    OkResponse:
+      type: object
+      properties:
+        status: { type: string, example: ok }
+
+paths:
+  /login:
+    get:
+      summary: Login page
+      security: []
+      responses:
+        "200": { description: HTML login form }
+    post:
+      summary: Authenticate
+      security: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username: { type: string }
+                password: { type: string, format: password }
+                csrf_token: { type: string }
+      responses:
+        "302": { description: "Redirect to dashboard on success, or back to /login on failure" }
+
+  /register:
+    get:
+      summary: Registration page
+      security: []
+      responses:
+        "200": { description: HTML registration form }
+    post:
+      summary: Create a new account
+      security: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username: { type: string, minLength: 3, maxLength: 32 }
+                password: { type: string, format: password }
+                confirm_password: { type: string, format: password }
+                csrf_token: { type: string }
+      responses:
+        "302": { description: "Redirect to /login on success, or back to /register with a flashed error" }
+
+  /logout:
+    get:
+      summary: End the current session
+      responses:
+        "302": { description: Redirect to /login }
+
+  /healthz:
+    get:
+      summary: Readiness check (Docker/CI/load balancers)
+      description: Verifies database connectivity. Does not require authentication.
+      security: []
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: ok }
+                  database: { type: string, example: ok }
+                  gemini_configured: { type: boolean }
+        "503": { description: Database unreachable }
+
+  /health:
+    get:
+      summary: Basic liveness ping (legacy — predates /healthz)
+      security: []
+      responses:
+        "200": { description: Always OK if the process is running at all }
+
+  /:
+    get:
+      summary: Dashboard (main frontend)
+      responses:
+        "200": { description: HTML dashboard }
+        "302": { description: Redirect to /login if not authenticated }
+
+  /dashboard_metrics:
+    get:
+      summary: Chart-ready metrics for the Dashboard's radar/summary widgets
+      responses:
+        "200": { description: JSON metrics }
+
+  /analyze_activity:
+    post:
+      summary: Submit a logged activity for AI analysis
+      description: >
+        Runs the activity through Gemini (if configured) or the local NLP
+        fallback, producing a mapped professional skill, career
+        equivalency, employability score, and leadership index.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                q1: { type: string, description: "What did you do?" }
+                q2: { type: string }
+                q3: { type: string }
+      responses:
+        "200": { description: Analysis result }
+        "429": { description: Rate limit exceeded }
+
+  /notifications:
+    get:
+      summary: Recent Opportunity Engine notifications (marks them read as a side effect)
+      responses:
+        "200": { description: List of notifications }
+
+  /notifications/count:
+    get:
+      summary: Unread notification count
+      responses:
+        "200":
+          description: Count
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  unread_count: { type: integer }
+
+  /notifications/mark_read:
+    post:
+      summary: Mark all notifications as read
+      responses:
+        "200": { $ref: "#/components/schemas/OkResponse" }
+
+  /history:
+    get:
+      summary: History page — all logged activities
+      responses:
+        "200": { description: HTML history page }
+
+  /generate_pdf:
+    get:
+      summary: Generate the Professional Portfolio PDF
+      description: >
+        Activities-based recruiter brochure (9 pages) — NOT derived from
+        the uploaded resume. See docs/ARCHITECTURE.md for why these two
+        PDFs are deliberately separate.
+      parameters:
+        - name: csrf_token
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: application/pdf }
+        "400": { description: Missing/invalid CSRF token }
+
+  /career:
+    get:
+      summary: Career Intelligence Hub page
+      responses:
+        "200": { description: HTML page }
+
+  /career/set_target:
+    post:
+      summary: Set the user's target career role
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                target_role: { type: string }
+                csrf_token: { type: string }
+      responses:
+        "302": { description: Redirect back to /career }
+
+  /career/upload_resume:
+    post:
+      summary: Upload and parse a resume (PDF or DOCX, max 8MB)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                resume: { type: string, format: binary }
+                csrf_token: { type: string }
+      responses:
+        "200": { description: Parsed successfully }
+        "422": { description: "Validation failed (bad file type, too large, corrupt, password-protected)" }
+
+  /career/analysis:
+    get:
+      summary: Skill-gap analysis against the target role
+      responses:
+        "200": { description: "Career readiness, ATS analysis, skill gap, and learning roadmap" }
+        "500": { description: Analysis failed (e.g. the local NLP model couldn't load) }
+
+  /career/portfolio_pdf:
+    get:
+      summary: Generate the Career Intelligence Report PDF
+      description: >
+        Resume + target-role analytics report (10 pages) — the AI-analysis
+        counterpart to /generate_pdf's activities-based brochure.
+      responses:
+        "200": { description: application/pdf }
+
+  /career/growth_data:
+    get:
+      summary: Growth-tracker chart data for the Career Hub
+      responses:
+        "200": { description: JSON chart data }
+
+  /copilot/ask:
+    post:
+      summary: Ask the AI Career Copilot a question
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [message]
+              properties:
+                message: { type: string, maxLength: 2000 }
+      responses:
+        "200":
+          description: Grounded answer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  answer: { type: string }
+                  evidence: { type: array, items: { type: string } }
+                  confidence: { type: string, nullable: true, enum: [High, Medium, Low, null] }
+                  next_action: { type: string, nullable: true }
+                  expected_impact: { type: string, nullable: true }
+                  estimated_effort: { type: string, nullable: true }
+                  follow_up_questions: { type: array, items: { type: string } }
+                  source: { type: string, enum: [gemini, local] }
+        "400": { description: Empty or over-length question }
+        "429": { description: Rate limit exceeded (30/hour) }
+
+  /copilot/history:
+    get:
+      summary: Recent Copilot conversation history
+      responses:
+        "200": { description: "List of {role, content, created_at} messages" }
+
+  /copilot/clear:
+    post:
+      summary: Clear Copilot conversation history
+      responses:
+        "200": { $ref: "#/components/schemas/OkResponse" }
